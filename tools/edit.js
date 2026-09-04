@@ -23,6 +23,8 @@
     border-radius:3px;cursor:text;transition:box-shadow .15s}
   [data-i18n][contenteditable="true"]:hover,[data-i18n][contenteditable="true"]:focus{
     outline-color:#f59e0b;box-shadow:0 0 0 3px rgba(245,158,11,.18);background:rgba(245,158,11,.05)}
+  .ve-on main img{outline:2px dashed rgba(245,158,11,.6);outline-offset:2px;cursor:pointer}
+  .ve-on main img:hover{outline-color:#f59e0b;box-shadow:0 0 0 3px rgba(245,158,11,.18)}
   .ve-badge{position:fixed;left:18px;bottom:18px;z-index:99997;font:600 12px/1 -apple-system,"PingFang SC",sans-serif;
     background:#fdf1dc;color:#7a4b00;border:1px solid #ecd3a0;border-radius:999px;padding:6px 11px}
   `;
@@ -32,6 +34,44 @@
 
   let on = false;
   let snap = null; // 进入编辑时的语言与原稿快照（undo）
+  const fileInput = document.createElement('input');
+  fileInput.type = 'file';
+  fileInput.accept = 'image/png,image/jpeg,image/webp,.png,.jpg,.jpeg,.webp';
+  fileInput.style.display = 'none';
+  document.body.appendChild(fileInput);
+
+  function imgs() { return [...document.querySelectorAll('main img')]; }
+  function onImgPick(e) {
+    e.preventDefault(); e.stopPropagation();
+    fileInput.onchange = async () => {
+      const f = fileInput.files[0];
+      if (!f) return;
+      const img = e.currentTarget;
+      const src = img.getAttribute('src');
+      if (!src || !src.startsWith('assets/')) { veMsg('暂只支持替换页面内 assets/ 图片', false); return; }
+      const ext = (f.name.match(/\.(png|jpe?g|webp)$/i) || ['', '.png'])[0].toLowerCase();
+      const path = src.replace(/\.(png|jpe?g|webp)$/i, ext); // 保持原文件名风格
+      const reader = new FileReader();
+      reader.onload = async () => {
+        try {
+          const r = await fetch('/api/upload', {
+            method: 'POST', headers: { 'content-type': 'application/json' },
+            body: JSON.stringify({ path, data: reader.result }),
+          });
+          const d = await r.json();
+          if (!d.ok) throw new Error(d.error || 'upload fail');
+          img.src = path + '?v=' + Date.now();
+          veMsg('✓ 图片已替换（本地）。点击 🚀 发布上线即可更新线上');
+        } catch (err) { veMsg('替换失败: ' + err.message, false); }
+      };
+      reader.readAsDataURL(f);
+      fileInput.value = '';
+    };
+    fileInput.click();
+  }
+  function bindImgs() { imgs().forEach((im) => im.addEventListener('click', onImgPick)); }
+  function unbindImgs() { imgs().forEach((im) => im.removeEventListener('click', onImgPick)); }
+  const IMG_CSS = '[data-i18n], main img { outline: 0; } ';
 
   const btn = document.createElement('button');
   btn.className = 've-btn';
@@ -70,7 +110,9 @@
   async function start() {
     on = true;
     snap = await (await fetch('/api/content')).json(); // 撤销快照(含双语)
+    document.body.classList.add('ve-on');
     els().forEach((el) => el.setAttribute('contenteditable', 'true'));
+    bindImgs();
     btn.style.display = 'none';
     panel.style.display = 'flex';
     $('.ve-save').textContent = '💾 保存';
@@ -81,7 +123,9 @@
   }
   function end() {
     on = false;
+    document.body.classList.remove('ve-on');
     els().forEach((el) => el.removeAttribute('contenteditable'));
+    unbindImgs();
     panel.style.display = 'none';
     btn.style.display = '';
   }

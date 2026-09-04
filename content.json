@@ -1,6 +1,6 @@
 {
  "nav_research": {
-  "en": "Research",
+  "en": "研究（测试）",
   "zh": "研究"
  },
  "nav_education": {
@@ -105,7 +105,7 @@
  },
  "p1_flow": {
   "en": "<div class=\"flow-box\"><b>Zone establishment</b></div>\n          <div class=\"arrow\">→</div>\n          <div class=\"flow-box mid\">Firm output growth ↑ <b>+7%***</b><br></div>\n          <div class=\"arrow\">→</div>\n          <div class=\"flow-box bad\"><b>Household income −1.68%***</b></div>\n          <div class=\"flow-note\"><b>Why the mediator hurts households:</b> because attraction runs through tax preferences rather than market agglomeration (see above), the output expansion carries no wage spillover — within treated counties, faster output growth goes together with slower income growth — so output growth <em>partially mediates</em> the negative household effect.</div>",
-  "zh": "<div class=\"flow-box\"><b>开发区设立</b></div><div class=\"arrow\">→</div><div class=\"flow-box mid\">规上企业产出增长 ↑ <b>+7%***</b><br><small>中介变量</small></div><div class=\"arrow\">→</div><div class=\"flow-box bad\"><b>家庭收入 −1.68%***</b></div><div class=\"flow-note\"><b>为何中介伤害家庭：</b>因为吸引靠的是税收优惠而非市场集聚（见上），产出扩张不带来工资外溢——处理组县域内产出增长越快、收入增长越慢——故产出扩张<em>部分中介</em>了家庭的负向效应。</div>"
+  "zh": "<div class=\"flow-box\"><b>开发区设立</b></div><div class=\"arrow\">→</div><div class=\"flow-box mid\">规上企业产出增长 ↑ <b>+7%***</b></div><div class=\"arrow\">→</div><div class=\"flow-box bad\"><b>家庭收入 −1.68%***</b></div><div class=\"flow-note\"><b>为何中介伤害家庭：</b>因为吸引靠的是税收优惠而非市场集聚（见上），产出扩张不带来工资外溢——处理组县域内产出增长越快、收入增长越慢——故产出扩张<em>部分中介</em>了家庭的负向效应。</div>"
  },
  "p1_key": {
   "en": "<li><b>−1.68%***</b> decline in county per-capita disposable income after zone establishment; robust in CSDID (−1.96%) and PSM (−1.96%).</li>\n          <li><b>Mediator — firm output growth:</b> zones raise above-scale enterprise output growth by <b>+7%***</b>; because attraction is tax-preference-led, faster output growth predicts <em>slower</em> income growth within treated counties — output expansion partially mediates the negative effect.</li>\n          <li><b>Heterogeneity:</b> fiscal pressure amplifies the loss (high-pressure −8.64%*** vs low-pressure −1.18%*, ≈7×; none in capital cities); the effect concentrates in 2004–06 cleanup cohorts and high-growth counties, and is not a migrant-composition artifact.</li>",

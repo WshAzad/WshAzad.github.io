@@ -8,7 +8,7 @@
 //   · 发布（git commit + push → GitHub Pages 自动部署）
 // ============================================================
 import { createServer } from 'node:http';
-import { readFileSync, writeFileSync } from 'node:fs';
+import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { execFileSync, execFile } from 'node:child_process';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -38,6 +38,17 @@ const server = createServer(async (req, res) => {
   const url = new URL(req.url, `http://127.0.0.1:${PORT}`);
   const send = (r) => { res.writeHead(r.code, r.headers); res.end(r.body); };
   try {
+    const STATIC = new Set(['/css/', '/js/', '/assets/', '/tools/']);
+    if (req.method === 'GET' && STATIC.has(url.pathname.slice(0, 1) + url.pathname.split('/').slice(1, 2).join('/') + '/') && !url.pathname.includes('..')) {
+      const rel = url.pathname.slice(1);
+      const file = join(ROOT, rel);
+      if (existsSync(file) && file.startsWith(ROOT + '/')) {
+        const map = { '.html':'text/html; charset=utf-8', '.css':'text/css; charset=utf-8', '.js':'text/javascript; charset=utf-8', '.png':'image/png', '.jpg':'image/jpeg', '.jpeg':'image/jpeg', '.webp':'image/webp', '.pdf':'application/pdf', '.svg':'image/svg+xml', '.ico':'image/x-icon' };
+        const ext = file.slice(file.lastIndexOf('.')).toLowerCase();
+        res.writeHead(200, { 'content-type': map[ext] || 'application/octet-stream' });
+        return res.end(readFileSync(file));
+      }
+    }
     if (req.method === 'GET' && (url.pathname === '/' || url.pathname === '/site')) {
       let html = readFileSync(join(ROOT, 'index.html'), 'utf8');
       html = html.replace('</body>', '<script src="/edit.js"></script></body>');
@@ -75,6 +86,17 @@ const server = createServer(async (req, res) => {
         send(j({ ok: true, commit: msg }));
       });
       return; // 异步 push 由回调 send
+    }
+    if (req.method === 'POST' && url.pathname === '/api/upload') {
+      let b = ''; for await (const x of req) b += x;
+      const { path: pth, data } = JSON.parse(b || '{}');
+      if (!/^\/assets\/[\w\-./]+$/.test(pth || '') || pth.includes('..')) return send(j({ error: 'bad path' }, 400));
+      const m = data.match(/^data:([\w/+.-]+);base64,(.+)$/s);
+      if (!m) return send(j({ error: 'bad data' }, 400));
+      const file = join(ROOT, pth.slice(1));
+      if (!file.startsWith(join(ROOT, 'assets') + '/')) return send(j({ error: 'bad path' }, 400));
+      writeFileSync(file, Buffer.from(m[2], 'base64'));
+      return send(j({ ok: true, path: pth }));
     }
     if (req.method === 'GET' && url.pathname === '/api/status') {
       try {
