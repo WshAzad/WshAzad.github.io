@@ -40,6 +40,7 @@
 <div class="top">
   <h1>📝 个人主页编辑台</h1>
   <span class="status" id="status">…</span>
+  <button class="btn gray" id="visual">✎ 可视化编辑</button>
   <button class="btn gray" id="preview">预览当前页</button>
   <button class="btn primary" id="publish">🚀 保存并发布到 GitHub</button>
 </div>
@@ -125,6 +126,7 @@
     $('msg').textContent = d.ok ? `已发布 ✓ ${d.commit || ''}` : '失败: ' + (d.error||'');
     refresh();
   };
+  $('visual').onclick = () => window.open('/site', '_blank');
   $('preview').onclick = () => window.open('../index.html', '_blank');
   load();
 </script>

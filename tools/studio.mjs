@@ -42,6 +42,16 @@ const server = createServer(async (req, res) => {
       res.writeHead(200, { 'content-type': 'text/html; charset=utf-8' });
       return res.end(readFileSync(join(dirname(fileURLToPath(import.meta.url)), 'editor.html')));
     }
+    if (req.method === 'GET' && url.pathname === '/site') {
+      let html = readFileSync(join(ROOT, 'index.html'), 'utf8');
+      html = html.replace('</body>', '<script src="/edit.js"></script></body>');
+      res.writeHead(200, { 'content-type': 'text/html; charset=utf-8' });
+      return res.end(html);
+    }
+    if (req.method === 'GET' && url.pathname === '/edit.js') {
+      res.writeHead(200, { 'content-type': 'text/javascript; charset=utf-8' });
+      return res.end(readFileSync(join(dirname(fileURLToPath(import.meta.url)), 'edit.js')));
+    }
     if (req.method === 'GET' && url.pathname === '/api/content') {
       const c = load();
       const list = Object.keys(c).map(k => ({
