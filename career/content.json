@@ -60,7 +60,7 @@
   "zh": "<p style=\"margin-top:0\">我兼具经济学的分析训练与产业研究的交付经验：曾在新华社旗下中国经济信息社和信通院华东分院AI事业部进行底层数据搜集整理、产业动态信息更新、<span>产业研究报告撰写</span><span>等研究工作，并用 AI 辅助完成产品页面开发。</span></p>"
  },
  "s1": {
-  "en": "<b>Quantitative &amp; causal analysis</b>\n        <p class=\"desc\">Stata (DID / IV / event study / PSM / CSDID)</p><p class=\"desc\">Python</p>",
+  "en": "<b>Quantitative &amp; causal analysis</b>\n        <p class=\"desc\">Stata (DID / IV / event study / PSM / CSDID) · Python</p>",
   "zh": "<b>量化与因果分析</b><p class=\"desc\">Stata（DID / IV / 事件研究 / PSM / CSDID）、Python。</p>"
  },
  "s2": {
@@ -100,7 +100,7 @@
   "zh": "<strong>数据产品实习生 —— 中国经济信息社（新华社）</strong><span class=\"when\">2026.06 – 至今</span>"
  },
  "e1_b": {
-  "en": "<li><p class=\"p1\" style=\"margin: 0px; font-style: normal; font-variant: normal; font-size-adjust: none; font-language-override: normal; font-kerning: auto; font-optical-sizing: auto; font-feature-settings: normal; font-variation-settings: normal; font-stretch: normal; font-size: 16px; line-height: normal; font-family: &quot;Helvetica Neue&quot;; color: rgb(0, 0, 0);\">Wrote multidimensional country <b>industry research reports</b></p></li><li><b><p class=\"p1\" style=\"margin: 0px; font: 400 16px &quot;Helvetica Neue&quot;; color: rgb(0, 0, 0);\">Built a <b>foundational database for country-specific risk assessment products</b></p></b></li><li><p class=\"p1\" style=\"margin: 0px; font: 400 16px &quot;Helvetica Neue&quot;; color: rgb(0, 0, 0);\">Retrieved and summarized country-specific industry trends to support data product updates</p></li><li><p class=\"p1\" style=\"margin: 0px; font: 400 16px &quot;Helvetica Neue&quot;; color: rgb(0, 0, 0);\">Generated HTML samples of data products (AI tool assistance)</p></li>",
+  "en": "<li>Wrote multidimensional country <b>industry research reports</b></li><li>Built a <b>foundational database for country-specific risk assessment products</b></li><li>Retrieved and summarized country-specific industry trends to support data product updates</li><li>Generated HTML samples of data products (AI tool assistance)</li>",
   "zh": "<li>撰写多维<b>国别产业研究报告</b></li><li>构建<b>国别风险评估产品底层数据库</b></li><li>检索汇总国别产业动态，支撑数据产品更新</li><li>产出数据产品 HTML 样例 （AI 工具辅助搭建）</li>"
  },
  "e2_head": {
@@ -124,7 +124,7 @@
   "zh": "研究"
  },
  "res_intro": {
-  "en": "<p style=\"margin-top:0\"><span>Under the guidance of my supervisor, I completed the research process from data collection and model construction to thesis writing, producing two academic papers, which are now in the revision and re submission stage; and I independently conducted a working paper about Gen AI now.</span></p>",
+  "en": "<p style=\"margin-top:0\"><span>Under the guidance of my supervisor, I completed the research process from data collection and model construction to thesis writing, producing two academic papers, which are now in the revision and resubmission stage; and I independently conducted a working paper about Gen AI now.</span></p>",
   "zh": "<p style=\"margin-top:0\">在导师的指导下，个人完成了从数据搜集，模型构建到论文撰写的研究过程，并产出两篇学术论文，目前已进入修改再审阶段；独立开展了一篇工作论文。</p>"
  },
  "p1_t": {
@@ -168,7 +168,7 @@
   "zh": "<b>市场集聚</b><span>0.032（不显著）</span><small>无效应 —— 政策租金，而非市场集聚</small>"
  },
  "p1_flow": {
-  "en": "<div class=\"flow-box\"><b>Zone establishment</b></div>\n          <div class=\"arrow\">→</div>\n          <div class=\"flow-box mid\">Firm output growth ↑ <b>+7%***</b></div>\n          <div class=\"arrow\">→</div>\n          <div class=\"flow-box bad\"><b>Household income −1.68%***</b></div>\n          <div class=\"flow-note\"><b>Why the Firm Output Growth hurts Household Income:</b> because attraction runs through tax preferences rather than market agglomeration (see above), the firm output expansion may account for fiscal spending on livlihood services — the faster output growth in the treatment counties is, the lower the household income is — there is a negative correlation between firm output expansion and per capita disposable income<span style=\"background-color: rgb(246, 248, 251);\">.</span></div>",
+  "en": "<div class=\"flow-box\"><b>Zone establishment</b></div>\n          <div class=\"arrow\">→</div>\n          <div class=\"flow-box mid\">Firm output growth ↑ <b>+7%***</b></div>\n          <div class=\"arrow\">→</div>\n          <div class=\"flow-box bad\"><b>Household income −1.68%***</b></div>\n          <div class=\"flow-note\"><b>Why the Firm Output Growth hurts Household Income:</b> because attraction runs through tax preferences rather than market agglomeration (see above), the firm output expansion may account for fiscal spending on livelihood services — the faster output growth in the treatment counties is, the lower the household income is — there is a negative correlation between firm output expansion and per capita disposable income.</div>",
   "zh": "<div class=\"flow-box\"><b>开发区设立</b></div><div class=\"arrow\">→</div><div class=\"flow-box mid\">规上企业产出增长率 ↑ <b>+7%***</b></div><div class=\"arrow\">→</div><div class=\"flow-box bad\"><b>居民人均可支配收入 −1.68%***</b></div><div class=\"flow-note\"><b>为何企业产出增长伤害家庭：</b>因为吸引靠的是税收优惠而非市场集聚，企业产出扩张可能占据用于民生服务的财政支出——处理组县域内产出增长越快、收入增长越慢——企业产出扩张与居民人均可支配收入具有负相关联。</div>"
  },
  "p1_key": {
@@ -268,11 +268,11 @@
   "zh": "技能"
  },
  "sk1": {
-  "en": "<b>Data &amp; econometrics</b><p class=\"desc\">Stata (causal inference: staggered DID, PSM-DID, IV, event study, Honest-DID) · Python (pandas, analysis, visualization)&nbsp;</p>",
+  "en": "<b>Data &amp; econometrics</b><p class=\"desc\">Stata (causal inference: staggered DID, PSM-DID, IV, event study, Honest-DID) · Python (pandas, analysis, visualization)</p>",
   "zh": "<b>数据与计量</b><p class=\"desc\">Stata（因果推断：交错 DID、PSM-DID、IV、事件研究、Honest-DID）· Python（分析与可视化）· 长面板数据与数据库构建</p>"
  },
  "sk2": {
-  "en": "<b>Industry research</b><p class=\"desc\">Multi-country industry reports ·&nbsp; policy review &amp; white papers · data sourcing from official statistics</p>",
+  "en": "<b>Industry research</b><p class=\"desc\">Multi-country industry reports · policy review &amp; white papers · data sourcing from official statistics</p>",
   "zh": "<b>产业研究</b><p class=\"desc\">多国产业报告 · 政策梳理与白皮书写作 · 官方统计数据库检索（世界银行、欧盟统计局、IMF）</p>"
  },
  "sk3": {

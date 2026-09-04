@@ -72,7 +72,7 @@
   "zh": "当地方政府用税收优惠、而非真实的市场集聚把企业“请”进开发区时，为产业扩张买单的，会不会是居民家庭？本文的答案是：会。"
  },
  "p1_meta": {
-  "en": "<span class=\"lab\">Data：</span> 2000–2017 county panel · 2,598 provincial+ zones · 4,455 county-year observations<span class=\"lab\">Design：</span> Staggered DID → CSDID · PSM · event study · Oster δ",
+  "en": "<span class=\"lab\">Data：</span> 2000–2017 county panel · 2,598 provincial+ zones · 4,455 county-year observations<div><span class=\"lab\">Design：</span> Staggered DID → CSDID · PSM · event study · Oster δ</div>",
   "zh": "<span class=\"lab\">数据：</span> 2000–2017 年县域面板 · 2,598 个省级及以上开发区 · 4,455 县-年观测值<div><span class=\"lab\">方法：</span> 交错 DID → CSDID · PSM · 事件研究 · Oster δ</div>"
  },
  "p1_abs": {
@@ -124,7 +124,7 @@
   "zh": "密度是生产的引擎，却未必是消费的引擎：城市把移民接入了“生产”，却把他们挡在将城市区位转化为“消费”的制度安排之外。"
  },
  "p2_meta": {
-  "en": "<span class=\"lab\">Data</span> 226 cities south of the Hu Line, 2003–2022 (3,131 obs) + CHFS 2017/2019 (19,417 households)<span class=\"lab\">Design</span> TWFE · IV (1820 historical density) · quadratic · 4 hukou-group regressions",
+  "en": "<span class=\"lab\">Data</span> 226 cities south of the Hu Line, 2003–2022 (3,131 obs) + CHFS 2017/2019 (19,417 households)<div><span class=\"lab\">Design</span> TWFE · IV (1820 historical density) · quadratic · 4 hukou-group regressions</div>",
   "zh": "<span class=\"lab\">数据：</span> 胡焕庸线以南 226 城，2003–2022（3,131 观测）+ CHFS 2017/2019（19,417 户）<div><span class=\"lab\">方法：</span> 双向固定效应 · IV（1820 历史密度）· 二次项 · 四类户籍组回归</div>"
  },
  "p2_abs": {
@@ -172,8 +172,8 @@
   "zh": "生成式AI是拉平者，还是新的不平等制造者？从技能多样性的视角看，两者皆是：<b>职业内收敛、职业间分化、工资“选择性均等化”</b>。"
  },
  "p3_meta": {
-  "en": "<span class=\"lab\">Data：</span> 170 cities × 99 occupations × month, 2021.01–2024.12 (~120,000 obs, online job postings)<span class=\"lab\">Design：</span> Continuous-treatment DID (ChatGPT, Dec 2022) · mediation · quantile regression<span class=\"lab\">Exposure：</span> GPT-4 occupation-level AI exposure index (PKU × Zhaopin)",
-  "zh": "<span class=\"lab\">数据：</span> 170 城 × 99 职业 × 月，2021.01–2024.12（约 12 万观测，在线招聘）<span class=\"lab\">方法：</span> 连续处理 DID（ChatGPT，2022.12 为准自然实验）· 中介 · 分位数回归<span class=\"lab\">暴露度：</span> GPT-4 职业级 AI 暴露指数（北大国发院 × 智联）"
+  "en": "<span class=\"lab\">Data：</span> 170 cities × 99 occupations × month, 2021.01–2024.12 (~120,000 obs, online job postings)<div><span class=\"lab\">Design：</span> Continuous-treatment DID (ChatGPT, Dec 2022) · mediation · quantile regression</div><div><span class=\"lab\">Exposure：</span> GPT-4 occupation-level AI exposure index (PKU × Zhaopin)</div>",
+  "zh": "<span class=\"lab\">数据：</span> 170 城 × 99 职业 × 月，2021.01–2024.12（约 12 万观测，在线招聘）<div><span class=\"lab\">方法：</span> 连续处理 DID（ChatGPT，2022.12 为准自然实验）· 中介 · 分位数回归</div><div><span class=\"lab\">暴露度：</span> GPT-4 职业级 AI 暴露指数（北大国发院 × 智联）</div>"
  },
  "p3_abs": {
   "en": "<strong>Abstract —</strong> The public release of ChatGPT in December 2022 marked the transition of generative AI from a niche technology to a widely deployable general-purpose tool. Exploiting this quasi-natural experiment, we construct a city × occupation × month panel from January 2021 to December 2024 using job postings from China's major online recruitment platforms, and employ a continuous-treatment difference-in-differences framework to identify the causal effects of generative AI exposure on skill diversity and wage inequality. We find: (1) AI exposure significantly reduces within-occupation skill diversity (β₂ = −0.054, p &lt; 0.001) but increases between-occupation skill diversity (β₂ = 0.172, p &lt; 0.001) after ChatGPT's release, revealing a \"convergence-within, divergence-between\" dual pattern; (2) the wage Gini coefficient declines with AI exposure (β₂ = −0.041, p = 0.017), but quantile regression reveals this equalizing effect concentrates at lower quantiles while vanishing at higher quantiles, confirming a \"selective equalization\" hypothesis; (3) mediation analysis shows that general auxiliary skill displacement mediates within-occupation diversity decline, while occupation-specific auxiliary skill expansion mediates between-occupation diversity divergence; (4) spatial heterogeneity indicates effects are most pronounced in high-GDP cities and medium-exposure industries.",
