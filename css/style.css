@@ -254,3 +254,4 @@ footer { margin-top: 2.4rem; color: var(--muted); font-size: .85rem; border-top:
   .figs.two { grid-template-columns: 1fr; }
   .flow-box { min-width: 90px; }
 }
+.flow-box.mid { border-color: var(--accent); border-style: dashed; }
