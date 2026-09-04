@@ -116,6 +116,16 @@ function md5(file) {
 function need(cond, msg) {
   if (!cond) die(msg);
 }
+function headBlob(path) {
+  // 从 HEAD 里取一个文件的原始字节（判断“提交里真的包含新文件”）
+  const r = spawnSync("git", ["-C", SITE, "show", `HEAD:${path}`], {
+    maxBuffer: 1 << 26,
+  });
+  return r.status === 0 ? r.stdout : null;
+}
+function bufMd5(buf) {
+  return createHash("md5").update(buf).digest("hex");
+}
 async function ask(q) {
   if (!process.stdin.isTTY) return null; // 非交互环境：不猜，交回控制
   const rl = createInterface({ input: process.stdin, output: process.stdout });
@@ -357,7 +367,13 @@ if (touchedContent && !DRY) {
 
 // ---------------- 5. 站点仓库提交 + 推送 ----------------
 step(5, "提交并推送到 GitHub");
-const retired = JOBS.flatMap((j) => (j.site ? [] : j.retire || []));
+// 只保留「确实还需要从仓库里拿掉」的路径：工作区里还在、或索引/HEAD 里还跟踪着。
+// 已经删干净的文件不能出现在 git add 的 pathspec 里，否则 fatal: pathspec did not match（以前在这里崩过）
+const trackedPaths = new Set(git(["ls-files"]).split("\n").filter(Boolean));
+const retiredAll = JOBS.flatMap((j) => (j.site ? [] : j.retire || []));
+const retired = retiredAll.filter(
+  (p) => existsSync(join(SITE, p)) || trackedPaths.has(p),
+);
 const sitePaths = [
   ...JOBS.filter((j) => j.site).map((j) => j.site),
   ...retired,
@@ -399,7 +415,7 @@ const sitePaths = [
             )
             .filter(
               (l) =>
-                !/^[-+]\s*[{}\[\],"']*(en|zh)"?:\s*"?<a href="assets\/resumes/.test(
+                !/^[-+]\s*[{}[\],"']*(en|zh)"?:\s*"?<a href="assets\/resumes/.test(
                   l,
                 ),
             )
@@ -461,6 +477,24 @@ const sitePaths = [
   } else {
     ok("站点仓库简历相关文件无变化，跳过提交");
   }
+  // ③ 推之前先证实仓库里真的是最新版：“拷了但没提交”是静默失败，必须当场拦住
+  for (const j of JOBS) {
+    if (!j.site || DRY) continue;
+    const blob = headBlob(j.site);
+    need(
+      blob && bufMd5(blob) === md5(join(CV, j.pdf)),
+      `${j.site} 在仓库里的内容还不是最新编译结果（${blob ? "字节不一致" : "仓库里根本没这个文件"}）——本次**不能**算发布成功`,
+    );
+  }
+  for (const p of retiredAll) {
+    if (DRY) continue;
+    need(
+      !headBlob(p),
+      `${p} 仍留在仓库里（下架没提交上去）——本次**不能**算发布成功`,
+    );
+  }
+  ok("仓库内容已核对：上传的字节 = 编译结果，该下架的已下架");
+
   if (!opts.push || DRY) {
     warn("--no-push / dry-run：未推送，线上还是旧版");
     opts.verify = false;
@@ -501,7 +535,8 @@ if (!opts.verify || DRY) {
   const want = Object.fromEntries(
     JOBS.filter((j) => j.site).map((j) => [j.site, md5(join(CV, j.pdf))]),
   );
-  const deadline = Date.now() + 300_000;
+  // Pages 走 Actions 部署（build + deploy）后，1.5~3 分钟属正常，放宽到 11 分钟
+  const deadline = Date.now() + 660_000;
   const pending = new Set(Object.keys(want));
   while (pending.size && Date.now() < deadline) {
     for (const sitePath of [...pending]) {
@@ -530,7 +565,7 @@ if (!opts.verify || DRY) {
       }
     }
     if (pending.size) {
-      process.stdout.write("  …等 GitHub Pages 部署（约 30–90 秒）\r");
+      process.stdout.write("  …等 Actions 构建 + Pages 部署（约 1–3 分钟）\r");
       await sleep(15_000);
     }
     if (Date.now() > deadline) break;

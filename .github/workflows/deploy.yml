@@ -1,0 +1,75 @@
+# ============================================================
+# deploy.yml — 在 GitHub 上改内容就能上线（无需本地 build / push）
+#
+# 依赖一次性的手动设置：
+#   Settings → Pages → Build and deployment → Source = GitHub Actions
+# 在切换之前，本 workflow 的 deploy 步骤会报错（Pages 源还不是 Actions），
+# 站点仍按旧方式从分支发布，不会中断。
+#
+# 单一内容源约定（改这些，别改 index.html）：
+#   文字/文案        → content.json、career/content.json
+#   页面结构/标签    → tools/template.html、career/tools/template.html
+#   字号/字体/配色   → css/style.css、career/css/style.css
+#   图片/简历 PDF    → assets/、career/assets/
+# index.html 与 js/zh-i18n.js 是生成物，手改会被这次构建覆盖。
+# ============================================================
+name: Deploy site
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# 同一时间只跑一次部署；新的 push 取消还在排队/运行的旧部署
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      # 根站（学术研究主页）+ career 站（求职站），各自 build
+      - name: Build sites
+        run: |
+          node tools/build.mjs build
+          PI_SITE=career node tools/build.mjs build
+
+      - name: Pack static site
+        run: bash tools/pack-site.sh _site
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
+
+      # 部署完成后核对线上内容（失败只告警，不把成功部署标成失败）
+      - name: Verify live
+        run: |
+          sleep 20
+          for u in "https://wshazad.github.io/" \
+                   "https://wshazad.github.io/career/"; do
+            code=$(curl -s -o /dev/null -w "%{http_code}" "$u")
+            echo "$u -> $code"
+          done
+        continue-on-error: true
