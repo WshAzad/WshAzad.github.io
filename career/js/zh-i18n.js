@@ -71,7 +71,7 @@ window.I18N_ZH = {
   "sk3": "<b>AI 应用</b><p class=\"desc\">生成式AI与提示词工程 · Agent/Skill 工作流 · AI 辅助页面开发（HTML）· 快速上手新工具</p>",
   "sk4": "<b>写作与沟通</b><p class=\"desc\">中英双语研究写作 · 2 篇论文修改再审中 · 1篇工作论文进行中</p>",
   "sec_docs": "简历与联系",
-  "doc_a": "<a href=\"assets/resumes/Resume_EN.pdf?v=d980f240\" download=\"\">英文简历</a>",
+  "doc_a": "<a href=\"assets/resumes/Resume_EN.pdf?v=f570797e\" download=\"\">英文简历</a>",
   "doc_b": "<a href=\"assets/resumes/Cover_Letter_EN.pdf\" download=\"\">求职信（英文）</a>",
   "doc_c": "联系方式：<a href=\"mailto:20003003@mail.ecust.edu.cn\">20003003@mail.ecust.edu.cn</a> · +86 132 5889 5111",
   "note": "<p style=\"margin:0\">2027 年春季起可入职全职产业研究 / 数据产品岗位，实习亦可。</p>",
