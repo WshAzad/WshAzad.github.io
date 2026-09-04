@@ -1,0 +1,10 @@
+{
+ "fs_root_pct": 100,
+ "lh_body": 1.55,
+ "lh_h1": 1.15,
+ "scale_h1": 1,
+ "scale_h2": 1,
+ "wrap_max_px": 880,
+ "font_body": "sans",
+ "font_display": "georgia"
+}

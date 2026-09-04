@@ -12,7 +12,18 @@ import { readFileSync, writeFileSync, existsSync } from "node:fs";
 import { execFileSync, execFile } from "node:child_process";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
-import { render } from "./build.mjs";
+import {
+  readTheme,
+  render,
+  resetTheme,
+  writeTheme,
+} from "./build.mjs";
+import {
+  FONT_PRESETS,
+  THEME_DEFAULTS,
+  THEME_FIELDS,
+  VAR_NAMES,
+} from "./theme.mjs";
 
 const REPO = join(dirname(fileURLToPath(import.meta.url)), ".."); // 仓库根：/assets 是全站共享的
 const ROOT = process.env.PI_SITE ? join(REPO, process.env.PI_SITE) : REPO;
@@ -102,7 +113,13 @@ function groupOf(k) {
 }
 
 function load() {
-  return JSON.parse(readFileSync(CONTENT, "utf8"));
+  try {
+    return JSON.parse(readFileSync(CONTENT, "utf8"));
+  } catch (e) {
+    throw new Error(
+      `content.json 不是合法 JSON（${e.message}）—— 先用 git checkout -- ${CONTENT} 恢复`,
+    );
+  }
 }
 function save(data) {
   writeFileSync(CONTENT, JSON.stringify(data, null, 1) + "\n");
@@ -194,6 +211,31 @@ const server = createServer(async (req, res) => {
       }));
       return send(j({ groups: GROUP.map(([g]) => g), list }));
     }
+    if (req.method === "GET" && url.pathname === "/api/theme") {
+      // 控件元数据（range/min/max）+ 变量名映射都仍在这里 → edit.js 不写两遂
+      return send(
+        j({
+          theme: readTheme(),
+          fields: THEME_FIELDS,
+          fonts: FONT_PRESETS,
+          varNames: VAR_NAMES,
+          defaults: THEME_DEFAULTS,
+        }),
+      );
+    }
+    if (req.method === "POST" && url.pathname === "/api/theme") {
+      let b = "";
+      for await (const x of req) b += x;
+      let patch = {};
+      try {
+        patch = JSON.parse(b || "{}");
+      } catch {
+        return send(j({ error: "theme 不是合法 JSON" }, 400));
+      }
+      const theme = patch.reset ? resetTheme() : writeTheme(patch.values);
+      render(); // 同步 css/theme.css（顺带重建 index.html）
+      return send(j({ ok: true, theme, varNames: VAR_NAMES }));
+    }
     if (req.method === "POST" && url.pathname === "/api/save") {
       let b = "";
       for await (const x of req) b += x;
@@ -210,12 +252,24 @@ const server = createServer(async (req, res) => {
       const msg =
         "content update @ " +
         new Date().toISOString().slice(0, 16).replace("T", " ");
-      execFileSync("git", ["add", "-A"], { cwd: ROOT });
-      execFileSync("git", ["commit", "-m", msg], { cwd: ROOT, stdio: "pipe" });
-      execFile("git", ["push", "-q", "origin", "main"], { cwd: ROOT }, (e) => {
+      // 只提本站 + 仓库根共享图：/api/upload 会把 career 里引用的共享研究图写到 REPO/assets，
+      // 以前只 add ROOT 子树 → 图没上去但 UI 说「已发布」（静默假成功）
+      const rel = (p) =>
+        p === REPO ? "." : p.startsWith(REPO + "/") ? p.slice(REPO.length + 1) : p;
+      const stage = [...new Set([rel(ROOT), "assets"])];
+      try {
+        execFileSync("git", ["add", "-A", "--", ...stage], { cwd: REPO });
+        execFileSync("git", ["commit", "-m", msg], { cwd: REPO, stdio: "pipe" });
+      } catch (e) {
+        const out = String(e.stdout || "") + String(e.stderr || "");
+        if (/nothing to commit|no changes added/.test(out))
+          return send(j({ ok: true, commit: msg, note: "没有需要提交的改动（已是最新）" }));
+        return send(j({ ok: false, error: "commit failed: " + (out || e.message) }));
+      }
+      execFile("git", ["push", "-q", "origin", "main"], { cwd: REPO }, (e) => {
         if (e)
           return send(j({ ok: false, error: "push failed: " + e.message }));
-        send(j({ ok: true, commit: msg }));
+        send(j({ ok: true, commit: msg, staged: stage }));
       });
       return; // 异步 push 由回调 send
     }

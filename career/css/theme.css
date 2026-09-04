@@ -1,0 +1,11 @@
+/* AUTO-GENERATED 由 tools/build.mjs 从 theme.json 生成 — 请勿手改，改 theme.json 或用编辑台 */
+:root {
+  --fs-root: 100%;
+  --lh-body: 1.55;
+  --lh-h1: 1.15;
+  --scale-h1: 1;
+  --scale-h2: 1;
+  --wrap-max: 880px;
+  --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, "PingFang SC", "Microsoft YaHei", sans-serif;
+  --font-display: Georgia, "Times New Roman", "Songti SC", "SimSun", serif;
+}
