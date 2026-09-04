@@ -257,19 +257,60 @@ const server = createServer(async (req, res) => {
       const rel = (p) =>
         p === REPO ? "." : p.startsWith(REPO + "/") ? p.slice(REPO.length + 1) : p;
       const stage = [...new Set([rel(ROOT), "assets"])];
+      const dirtyCount = execFileSync(
+        "git",
+        ["status", "--porcelain", "--", ...stage],
+        { cwd: REPO },
+      )
+        .toString()
+        .split("\n").filter(Boolean).length;
+      let ahead = 0;
       try {
-        execFileSync("git", ["add", "-A", "--", ...stage], { cwd: REPO });
-        execFileSync("git", ["commit", "-m", msg], { cwd: REPO, stdio: "pipe" });
-      } catch (e) {
-        const out = String(e.stdout || "") + String(e.stderr || "");
-        if (/nothing to commit|no changes added/.test(out))
-          return send(j({ ok: true, commit: msg, note: "没有需要提交的改动（已是最新）" }));
-        return send(j({ ok: false, error: "commit failed: " + (out || e.message) }));
+        ahead =
+          Number(
+            execFileSync(
+              "git",
+              ["rev-list", "--count", "origin/main..HEAD"],
+              { cwd: REPO },
+            ).toString().trim(),
+          ) || 0;
+      } catch {
+        ahead = 0; // 还没有 origin/main 引用 → 当作有东西要推
       }
+      let committed = false;
+      if (dirtyCount) {
+        try {
+          execFileSync("git", ["add", "-A", "--", ...stage], { cwd: REPO });
+          execFileSync("git", ["commit", "-m", msg], { cwd: REPO, stdio: "pipe" });
+          committed = true;
+        } catch (e) {
+          const out = String(e.stdout || "") + String(e.stderr || "");
+          return send(
+            j({ ok: false, error: "commit failed: " + (out || e.message) }),
+          );
+        }
+      }
+      // 没东西可发 → 老实说 no，以前这里回 ok:true，UI 就跟着说「已发布」
+      if (!committed && !ahead)
+        return send(
+          j({
+            ok: false,
+            nothing: true,
+            commit: msg,
+            note: "没有需要提交的改动（已是最新）",
+          }),
+        );
       execFile("git", ["push", "-q", "origin", "main"], { cwd: REPO }, (e) => {
         if (e)
           return send(j({ ok: false, error: "push failed: " + e.message }));
-        send(j({ ok: true, commit: msg, staged: stage }));
+        send(
+          j({
+            ok: true,
+            committed,
+            files: dirtyCount,
+            note: committed ? "" : "只推了之前未推送的提交",
+          }),
+        );
       });
       return; // 异步 push 由回调 send
     }

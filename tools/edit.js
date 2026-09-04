@@ -214,15 +214,41 @@
 	$(".ve-pub").onclick = () => publish($(".ve-pub"), (t, ok) => veMsg(t, ok));
 
 	/* ============ Aa 版式：字号 / 字体 / 行距 / 版心（写 theme.json）============ */
+	// 只把「跟打开时不一样」的 key 写回 content.json（未 ✘ 保存的文字也算进去）
+	async function saveChanged(lg) {
+		const cur = lg === "zh" ? "zh" : "en";
+		const byKey = Object.fromEntries((snap?.list || []).map((it) => [it.key, it]));
+		let n = 0;
+		for (const el of els()) {
+			const html = el.innerHTML.trim();
+			const was = String(byKey[el.dataset.i18n]?.[cur] ?? "").trim();
+			if (html === was) continue;
+			await saveOne(el.dataset.i18n, html, lg);
+			n++;
+		}
+		return n;
+	}
 	async function publish(b, say) {
 		const prev = b.textContent;
 		b.disabled = true;
 		b.textContent = "发布中…";
 		try {
+			let saved = 0;
+			// 关键：✎ 模式里改了字但没点 💾 就点 🚀 → 以前会“已发布”但其实什么都没提
+			if (on) saved = await saveChanged(lang());
 			const r = await fetch("/api/publish", { method: "POST" });
 			const d = await r.json();
-			if (d.ok) say("✓ 已发布，约 1–3 分钟后线上生效（GitHub Actions 部署）", true);
-			else say("发布失败: " + (d.error || ""), false);
+			if (d.ok) {
+				say(
+					`✓ 已发布${saved ? `（自动保存了 ${saved} 处文字改动）` : ""}，约 1–3 分钟后线上生效`,
+					true,
+				);
+				if (saved) setTimeout(() => location.reload(), 1800);
+			} else if (d.nothing) {
+				say("✕ 未发布：本地没有待上线的改动（先在 ✎ 里改完保存再发）", false);
+			} else {
+				say("发布失败: " + (d.error || ""), false);
+			}
 		} catch (e) {
 			say("发布失败: " + e.message, false);
 		}
@@ -381,8 +407,13 @@
 					b.disabled = false;
 				}
 			};
-			ty.querySelector(".ve-ty-pub").onclick = (e) =>
+			ty.querySelector(".ve-ty-pub").onclick = (e) => {
+				if (dirty) {
+					tySay("版式改动还未保存 → 先点 💾 保存版式，再点 🚀 发布", false);
+					return;
+				}
 				publish(e.currentTarget, (t, ok) => tySay(t, ok));
+			};
 		}
 		applyAll(TY.theme);
 		ty.hidden = false;
