@@ -1,0 +1,142 @@
+{
+ "nav_about": {
+  "en": "About",
+  "zh": "关于我"
+ },
+ "nav_exp": {
+  "en": "Experience",
+  "zh": "实践经历"
+ },
+ "nav_skills": {
+  "en": "Skills",
+  "zh": "技能"
+ },
+ "nav_docs": {
+  "en": "CV &amp; Contact",
+  "zh": "简历与联系"
+ },
+ "h1": {
+  "en": "Shuhan WANG",
+  "zh": "Shuhan WANG"
+ },
+ "hero_role": {
+  "en": "M.A. in Applied Economics (ECUST, exp. Feb 2027) · Job-seeking: Data Analyst · Industry Research · AI-assisted delivery",
+  "zh": "应用经济学硕士（华东理工，2027.02 毕业）· 求职方向：数据分析 · 产业研究 · AI 应用交付"
+ },
+ "hero_int": {
+  "en": "Economic analysis meets applied AI — causal inference in Stata/Python · multi-country industry reports · AI-assisted product delivery · bilingual research writing",
+  "zh": "经济学分析 × 应用 AI —— Stata/Python 因果推断 · 多国产业报告 · AI 辅助产品交付 · 中英双语研究写作"
+ },
+ "contact_email": {
+  "en": "✉ 20003003@mail.ecust.edu.cn",
+  "zh": "✉ 20003003@mail.ecust.edu.cn"
+ },
+ "dl_en": {
+  "en": "⬇ Resume (English)",
+  "zh": "⬇ 简历（英文）"
+ },
+ "dl_cn": {
+  "en": "⬇ 中文简历",
+  "zh": "⬇ 中文简历"
+ },
+ "dl_cl": {
+  "en": "Cover Letter",
+  "zh": "求职信（英文）"
+ },
+ "sec_about": {
+  "en": "About",
+  "zh": "关于我"
+ },
+ "about_1": {
+  "en": "\n      <p style=\"margin-top:0\">I pair an economist's analytical training with hands-on industry delivery. At Xinhua News Agency's data arm I independently produced country-industry research, built the underlying database of a country risk product, and developed product pages with AI assistance — learning to move between a dataset, a client-facing deliverable, and a code pipeline.</p>\n    ",
+  "zh": "<p style=\"margin-top:0\">我兼具经济学的分析训练与产业一线的交付经验：在新华社旗下机构独立完成国别产业研究、按既定指标体系搭建国别风险评估产品底层数据库，并用 AI 辅助完成产品页面开发——习惯在数据集、面向客户的交付物与代码管线之间快速切换。</p>"
+ },
+ "s1": {
+  "en": "\n        <b>Quantitative &amp; causal analysis</b>\n        <p class=\"desc\">Stata (DID / IV / event study / PSM / CSDID), Python; two papers under major revision at international journals (development zones → household income; agglomeration &amp; hukou → consumption).</p>\n      ",
+  "zh": "<b>量化与因果分析</b><p class=\"desc\">Stata（DID / IV / 事件研究 / PSM / CSDID）、Python；两篇论文在期刊修改再审（开发区→居民收入；集聚与户籍→消费）。</p>"
+ },
+ "s2": {
+  "en": "\n        <b>Industry &amp; policy research</b>\n        <p class=\"desc\">17 country-industry reports benchmarked against World Bank / Eurostat / IMF; co-authored a Huawei–CAICT white-paper chapter; city- and county-level panel construction.</p>\n      ",
+  "zh": "<b>产业与政策研究</b><p class=\"desc\">17 篇国别产业报告（对标世界银行/欧盟统计局/IMF）；合著华为—信通院白皮书章节；县市面板构建。</p>"
+ },
+ "s3": {
+  "en": "\n        <b>AI-assisted delivery</b>\n        <p class=\"desc\">Generative AI &amp; prompt engineering, Agent/Skill workflows; AI-assisted product-page development (HTML samples); bilingual research writing under deadlines.</p>\n      ",
+  "zh": "<b>AI 辅助交付</b><p class=\"desc\">生成式AI与提示词工程、Agent/Skill 工作流；AI 辅助产品页面开发（HTML 样例）；中英双语限时研究与写作。</p>"
+ },
+ "sec_exp": {
+  "en": "Experience",
+  "zh": "实践经历"
+ },
+ "e1_head": {
+  "en": "<strong>Data Product Intern — China Economic Information Service (Xinhua News Agency)</strong><span class=\"when\">2026.06 – Present</span>",
+  "zh": "<strong>数据产品实习生 —— 中国经济信息社（新华社）</strong><span class=\"when\">2026.06 – 至今</span>"
+ },
+ "e1_b": {
+  "en": "\n        <li>Independently handled data collection, writing and proofreading of <b>17 country-industry reports</b> (Poland, Ireland, Luxembourg, Hungary), benchmarked against World Bank / Eurostat / IMF data</li>\n        <li>Built the underlying <b>database of a country risk assessment product</b> against an established indicator framework; continuous retrieval &amp; synthesis of industrial developments to support data-product updates</li>\n        <li><b>AI-assisted product development</b> — built product pages with AI tooling, delivering working HTML samples</li>\n      ",
+  "zh": "<li>独立负责<b>17 篇国别产业报告</b>（波兰、爱尔兰、卢森堡、匈牙利）的数据收集、撰写与校对，对标世界银行/欧盟统计局/IMF</li><li>按既定指标体系构建<b>国别风险评估产品底层数据库</b>；持续检索汇总产业动态，支撑数据产品更新</li><li><b>AI 辅助产品开发</b>——用 AI 工具开发产品页面，产出可用 HTML 样例</li>"
+ },
+ "e2_head": {
+  "en": "<strong>Industry Research Intern — AI Department, CAICT East China Branch</strong><span class=\"when\">2024.03 – 2024.08</span>",
+  "zh": "<strong>产业研究实习生 —— 中国信通院华东分院·人工智能部</strong><span class=\"when\">2024.03 – 2024.08</span>"
+ },
+ "e2_b": {
+  "en": "\n        <li>Co-authored the intelligent-computing talent chapter of the <em>Huawei–CAICT White Paper</em> (tracking AI / large-model industry &amp; talent trends)</li>\n        <li>Drafted the data-infrastructure terminology of the <em>Shanghai New Infrastructure Handbook</em>; consolidated the Yangtze River Delta Digital Economy Work Plan (2023) outcomes report</li>\n      ",
+  "zh": "<li>合著<em>华为—信通院《智算与大模型人才白皮书》</em>智算人才章节（跟踪 AI/大模型产业与人才趋势）</li><li>编写<em>《上海市新型基础设施建设释义手册》</em>数据基础设施名词；汇总《长三角数字经济工作要点(2023)》成果报告</li>"
+ },
+ "e3_head": {
+  "en": "<strong>Research Assistant — Public Economic Governance Research Center, ECUST</strong><span class=\"when\">2024.09 – Present</span>",
+  "zh": "<strong>研究助理 —— 华东理工大学公共经济治理研究中心</strong><span class=\"when\">2024.09 – 至今</span>"
+ },
+ "e3_b": {
+  "en": "\n        <li>Coordinated an academic forum on Chinese modernization; independently built and maintain the center's official website</li>\n      ",
+  "zh": "<li>统筹协办中国式现代化学术论坛；独立建设并维护中心官方网站</li>"
+ },
+ "sec_skills": {
+  "en": "Skills",
+  "zh": "技能"
+ },
+ "sk1": {
+  "en": "<b>Data &amp; econometrics</b><p class=\"desc\">Stata (causal inference: staggered DID, PSM-DID, IV, event study, Honest-DID) · Python (pandas, analysis, visualization) · long-panel data &amp; database construction</p>",
+  "zh": "<b>数据与计量</b><p class=\"desc\">Stata（因果推断：交错 DID、PSM-DID、IV、事件研究、Honest-DID）· Python（pandas、分析与可视化）· 长面板数据与数据库构建</p>"
+ },
+ "sk2": {
+  "en": "<b>Industry research</b><p class=\"desc\">Multi-country industry reports · competitive benchmarking · policy review &amp; white papers · data sourcing from official statistics (World Bank, Eurostat, IMF)</p>",
+  "zh": "<b>产业研究</b><p class=\"desc\">多国产业报告 · 竞争对标 · 政策梳理与白皮书写作 · 官方统计数据库取数（世界银行、欧盟统计局、IMF）</p>"
+ },
+ "sk3": {
+  "en": "<b>AI application</b><p class=\"desc\">Generative AI &amp; prompt engineering · Agent/Skill workflows · AI-assisted page development (HTML) · fast learning of new tooling</p>",
+  "zh": "<b>AI 应用</b><p class=\"desc\">生成式AI与提示词工程 · Agent/Skill 工作流 · AI 辅助页面开发（HTML）· 快速上手新工具</p>"
+ },
+ "sk4": {
+  "en": "<b>Writing &amp; communication</b><p class=\"desc\">Bilingual (EN/CN) research writing · 2 papers under revision · report drafting for internal &amp; client-facing use</p>",
+  "zh": "<b>写作与沟通</b><p class=\"desc\">中英双语研究写作 · 2 篇论文修改再审中 · 内外部报告撰写</p>"
+ },
+ "edu_h": {
+  "en": "Education: ECUST — M.A. Applied Economics (3.91/4.00); B.A. Economics (3.79/4.00, Outstanding Thesis)",
+  "zh": "教育背景：华东理工大学 —— 应用经济学硕士（绩点 3.91/4.00）；经济学学士（3.79/4.00，优秀毕业论文）"
+ },
+ "sec_docs": {
+  "en": "CV &amp; Contact",
+  "zh": "简历与联系"
+ },
+ "doc_a": {
+  "en": "📄 <a href=\"assets/resumes/Resume_EN.pdf\" download>Download resume (English)</a> · <a href=\"assets/resumes/Resume_CN.pdf\" download>中文简历</a>",
+  "zh": "📄 <a href=\"assets/resumes/Resume_EN.pdf\" download>下载英文简历</a> · <a href=\"assets/resumes/Resume_CN.pdf\" download>中文简历</a>"
+ },
+ "doc_b": {
+  "en": "💌 <a href=\"assets/resumes/Cover_Letter_EN.pdf\" download>Download cover letter (English)</a>",
+  "zh": "💌 <a href=\"assets/resumes/Cover_Letter_EN.pdf\" download>下载求职信（英文）</a>"
+ },
+ "doc_c": {
+  "en": "✉ Contact: <a href=\"mailto:20003003@mail.ecust.edu.cn\">20003003@mail.ecust.edu.cn</a> · +86 132 5889 5111",
+  "zh": "✉ 联系方式：<a href=\"mailto:20003003@mail.ecust.edu.cn\">20003003@mail.ecust.edu.cn</a> · +86 132 5889 5111"
+ },
+ "note": {
+  "en": "Open to full-time analyst / industry-research / data-product roles from spring 2027; internships welcome. Happy to share code samples, replication materials, or discuss how my toolkit fits your team.",
+  "zh": "<p style=\"margin:0\">2027 年春季起可入职全职数据分析 / 产业研究 / 数据产品岗位，实习亦可；欢迎索要代码样例、复现材料，或沟通我的技能如何适配贵团队。</p>"
+ },
+ "footer": {
+  "en": "\n    © <span id=\"year\">2026</span> Shuhan Wang · Job profile · <a href=\"#top\">Back to top ↑</a>\n  ",
+  "zh": "© <span id=\"year\">2026</span> Shuhan Wang · 求职主页 · <a href=\"#top\">回到顶部 ↑</a>"
+ }
+}

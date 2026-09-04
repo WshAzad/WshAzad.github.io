@@ -10,7 +10,7 @@ import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import vm from 'node:vm';
 
-const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
+const ROOT = process.env.PI_SITE ? join(dirname(fileURLToPath(import.meta.url)), '..', process.env.PI_SITE) : join(dirname(fileURLToPath(import.meta.url)), '..');
 const IDX = join(ROOT, 'index.html');
 const ZH  = join(ROOT, 'js', 'zh-i18n.js');
 const CONTENT = join(ROOT, 'content.json');
@@ -54,11 +54,13 @@ export function keysIn(html) {
 }
 
 function loadZh() {
-  const code = readFileSync(ZH, 'utf8');
-  const ctx = { window: {} };
-  vm.createContext(ctx);
-  vm.runInContext(code, ctx);
-  return ctx.window.I18N_ZH || {};
+  try {
+    const code = readFileSync(ZH, 'utf8');
+    const ctx = { window: {} };
+    vm.createContext(ctx);
+    vm.runInContext(code, ctx);
+    return ctx.window.I18N_ZH || {};
+  } catch { return {}; }
 }
 
 function sentinel(k) { return `<!--__I18N_${k}__-->`; }
@@ -105,7 +107,7 @@ export function render() {
 }
 
 const cmd = process.argv[2];
-const isMain = process.argv[1] && join(process.cwd(), process.argv[1]) === fileURLToPath(import.meta.url);
+const isMain = !!process.argv[1] && process.argv[1].endsWith('build.mjs');
 if (isMain) {
   if (cmd === 'seed') buildContentFile();
   else if (cmd === 'build') render();

@@ -14,7 +14,7 @@ import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { render } from './build.mjs';
 
-const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
+const ROOT = process.env.PI_SITE ? join(dirname(fileURLToPath(import.meta.url)), '..', process.env.PI_SITE) : join(dirname(fileURLToPath(import.meta.url)), '..');
 const CONTENT = join(ROOT, 'content.json');
 const pi = process.argv.indexOf('--port');
 const PORT = Number(pi > -1 ? process.argv[pi + 1] : process.env.PORT || 3838);
