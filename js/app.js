@@ -1,15 +1,14 @@
 /* =====================================================================
-   Shuhan WANG — 个人主页交互脚本
-   功能清单：
-   1. 主题切换（浅色/深色，记忆在 localStorage，跟随系统初始值）
-   2. 顶部阅读进度条 + 导航高亮当前区块
-   3. 滚动显现动画（IntersectionObserver）
-   4. 论文筛选（All / R&R / Working Papers / Competition）
-   5. 点击标题展开/收起摘要
-   6. 复制邮箱（带 toast 提示）
-   7. 数据计数动画（GPA、论文数等）
-   8. 回到顶部按钮
-   9. 移动端菜单
+   Shuhan WANG — personal homepage interactions
+   1. Theme toggle (light/dark; persisted in localStorage; follows system by default)
+   2. Reading progress bar + active-section nav highlight
+   3. Scroll-reveal animations (IntersectionObserver)
+   4. Paper filtering (All / R&R / Working Paper / Competition)
+   5. Click title to expand/collapse a study panel or abstract
+   6. Copy email to clipboard (with toast)
+   7. Animated counters (GPA, paper counts, …)
+   8. Back-to-top button
+   9. Mobile menu
    ===================================================================== */
 
 (function () {
@@ -30,7 +29,7 @@
     theme = t;
     root.setAttribute("data-theme", t);
     themeBtn.textContent = t === "dark" ? "☀️" : "🌙";
-    themeBtn.title = t === "dark" ? "切换到浅色" : "切换到深色";
+    themeBtn.title = t === "dark" ? "Switch to light mode" : "Switch to dark mode";
     localStorage.setItem("theme", t);
   }
   applyTheme(theme);
@@ -83,7 +82,7 @@
     revealEls.forEach((el) => el.classList.add("in"));
   }
 
-  /* ---------- 4. 论文筛选 ---------- */
+  /* ---------- 4. Paper filtering ---------- */
   const papers = $$(".paper");
   const filterBtns = $$(".filter");
   filterBtns.forEach((btn) =>
@@ -99,7 +98,7 @@
     })
   );
 
-  /* ---------- 5. 研究卡：展开/收起（正文或摘要） ---------- */
+  /* ---------- 5. Study cards: expand/collapse body or abstract ---------- */
   $$(".title[data-expand]").forEach((title) =>
     on(title, "click", (e) => {
       const paper = title.closest(".paper");
@@ -117,7 +116,7 @@
     })
   );
 
-  /* ---------- 6. 复制邮箱 ---------- */
+  /* ---------- 6. Copy email ---------- */
   const emailChip = $("#emailChip");
   const toast = $("#toast");
   let toastTimer = null;
@@ -140,7 +139,7 @@
     });
   }
 
-  /* ---------- 7. 计数动画 ---------- */
+  /* ---------- 7. Count-up animation ---------- */
   const nums = $$(".num[data-count]");
   const countObs = new IntersectionObserver(
     (entries) => {
@@ -166,10 +165,10 @@
   );
   nums.forEach((n) => countObs.observe(n));
 
-  /* ---------- 8. 回到顶部 ---------- */
+  /* ---------- 8. Back to top ---------- */
   on($("#toTop"), "click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
 
-  /* ---------- 9. 移动端菜单 ---------- */
+  /* ---------- 9. Mobile menu ---------- */
   const navLinks = $("#navLinks");
   const menuBtn = $("#menuToggle");
   on(menuBtn, "click", () => navLinks.classList.toggle("open"));
@@ -180,7 +179,7 @@
     if (e.key === "Escape") navLinks.classList.remove("open");
   });
 
-  /* ---------- 页脚年份 ---------- */
+  /* ---------- Footer year ---------- */
   const yr = $("#year");
   if (yr) yr.textContent = new Date().getFullYear();
 })();
