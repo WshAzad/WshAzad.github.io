@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Shuhan WANG | 王姝涵</title>
-<meta name="description" content="Shuhan Wang — M.A. candidate in Applied Economics at ECUST. Research on technological change and labor markets, computational social science, and social stratification in China.">
+<title>Shuhan WANG | 王姝涵 — Research</title>
+<meta name="description" content="Shuhan Wang — M.A. candidate in Applied Economics at ECUST. Research on agglomeration, hukou segmentation and consumption; place-based industrial policy and household income; generative AI, skill diversity and wage inequality.">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -37,7 +37,7 @@
     <div class="hero-main">
       <h1 data-reveal>Shuhan WANG <span class="cn">王姝涵</span></h1>
       <p class="role" data-reveal>M.A. Candidate in Applied Economics (Year 2)<br>East China University of Science and Technology, Shanghai</p>
-      <p class="interests" data-reveal>Technological change &amp; labor markets · computational social science · economic sociology · social stratification &amp; inequality · quasi-experimental methods</p>
+      <p class="interests" data-reveal>Agglomeration &amp; household welfare · place-based industrial policy · generative AI &amp; labour markets · hukou segmentation · computational social science · quasi-experimental methods</p>
       <div class="contact" data-reveal>
         <a class="chip" id="emailChip" href="mailto:20003003@mail.ecust.edu.cn">✉ 20003003@mail.ecust.edu.cn</a>
         <a class="chip" href="https://github.com/WshAzad" target="_blank" rel="noopener">GitHub</a>
@@ -46,84 +46,225 @@
       <div class="stats" data-reveal>
         <div class="stat"><span class="num" data-count="2" data-decimals="0">0</span><span class="lbl">R&amp;R Papers</span></div>
         <div class="stat"><span class="num" data-count="1">0</span><span class="lbl">Working Paper</span></div>
-        <div class="stat"><span class="num" data-count="1">0</span><span class="lbl">Modeling Award</span></div>
+        <div class="stat"><span class="num" data-count="300" data-suffix="M+">0</span><span class="lbl">Migrants Studied</span></div>
         <div class="stat"><span class="num" data-count="3.91" data-decimals="2">0</span><span class="lbl">M.A. GPA</span></div>
       </div>
     </div>
   </section>
 
-  <!-- ============ 论文（可筛选 / 可展开） ============ -->
+  <!-- ============ 研究（三篇论文深度可视化） ============ -->
   <section id="research">
     <h2 class="sec-title" data-reveal>Research</h2>
 
     <div class="filters" data-reveal>
       <button class="chip filter active" data-filter="all">All</button>
       <button class="chip filter" data-filter="rr">Under Revision</button>
-      <button class="chip filter" data-filter="wp">Working Papers</button>
+      <button class="chip filter" data-filter="wp">Working Paper</button>
       <button class="chip filter" data-filter="award">Competition</button>
     </div>
 
-    <article class="paper card" data-tags="rr" data-reveal>
+    <!-- ═══════════ 论文 ① 开发区政策 ═══════════ -->
+    <article class="paper card study" data-tags="rr" data-reveal>
       <div class="p-top">
         <span class="title" data-expand>Development Zone Policies, Industrial Agglomeration, and Household Income: Evidence from China</span>
         <span class="badge rr">R&amp;R · JRS</span>
       </div>
-      <p class="desc">
-        Examines how China's development zone policies interact with the <em>hukou</em> system to produce stratified distributional outcomes. Staggered DID, PSM-DID, event study, and Honest-DID sensitivity analysis on 2000–2017 county-level panel data.
-      </p>
-      <p class="abstract" hidden>
-        <strong>Abstract:</strong> Development zones are a hallmark of China's place-based industrial policy. This paper studies their distributional consequences: using county-level panel data and staggered difference-in-differences designs, it documents that tax-incentive-driven attraction crowds out residents' disposable income, and interprets the result through institutional stratification — development policy reproduces inequality along the <em>hukou</em> divide (Tilly, 1998).
-      </p>
-      <div class="p-meta"><span class="open-hint">点击标题展开摘要</span></div>
+
+      <div class="study-body">
+        <p class="question">
+          When local governments attract firms into development zones with tax preferences rather than genuine market agglomeration,
+          do <em>households</em> end up paying for the expansion of industry? This paper says yes.
+        </p>
+
+        <div class="s-meta">
+          <span class="lab">Data</span> 2000–2017 county panel · 2,598 provincial+ zones · 4,455 county-years
+          <span class="lab">Design</span> Staggered DID → CSDID · PSM · event study · Oster δ
+          <span class="lab">Status</span> Major revision, JRS
+        </div>
+
+        <div class="figs two">
+          <figure>
+            <a href="assets/research/kfq_event_study_income.png" target="_blank" rel="noopener"><img loading="lazy" src="assets/research/kfq_event_study_income.png" alt="Event study: dynamic effects of development zones on per capita disposable income"></a>
+            <figcaption>设立开发区的动态效应：政策前无优势，政策后负效应<strong>持续且逐年加深</strong>（论文 Fig. 3）</figcaption>
+          </figure>
+          <figure>
+            <a href="assets/research/kfq_mechanism_partial.png" target="_blank" rel="noopener"><img loading="lazy" src="assets/research/kfq_mechanism_partial.png" alt="Partial correlation: firm output growth vs household income growth in treated counties"></a>
+            <figcaption>机制证据：处理组内企业产出扩张越快，居民收入增长越慢（论文 Fig. 6）</figcaption>
+          </figure>
+        </div>
+
+        <div class="flow">
+          <div class="flow-box"><b>开发区设立</b></div>
+          <div class="arrow">→</div>
+          <div class="flow-box dim">集聚效应 <span>0.032 <small>(n.s.)</small></span></div>
+          <div class="arrow">→</div>
+          <div class="flow-box dim">财政让利、民生支出被挤占</div>
+          <div class="arrow">→</div>
+          <div class="flow-box bad"><b>家庭人均收入 −1.68%***</b></div>
+          <div class="flow-note">吸引企业靠"政策租"（税收优惠 −0.051***）而非市场集聚 —— 企业+13.8%、产出+7%，代价由家庭承担</div>
+        </div>
+
+        <ul class="s-key">
+          <li><b>−1.68%***</b> 设立开发区使县域人均可支配收入显著下降；CSDID −1.96%、PSM −1.96% 稳健</li>
+          <li><b>政策租 vs 集聚：</b>标准化比较税收优惠通道显著 (−0.051***)、集聚通道不显著 (0.032)，政府主导而非市场驱动</li>
+          <li><b>财政压力是放大器：</b>高财政压力县 −8.64%*** vs 低压力县 −1.18%*（≈7 倍）；省会城市不显著</li>
+          <li><b>异质性：</b>负效应集中于清理期（2004–06）设区县；高增长县更强；非迁移机械构成所致</li>
+        </ul>
+
+        <p class="abstract">
+          <strong>Abstract —</strong> China's development zones, established to expand industrial capacity, have been a central policy tool of local governments, but their impact on household income remains poorly understood. We construct a three-sector conceptual framework of households, government, and enterprises to examine how development zones affect the growth of per capita disposable income. Using county-level panel data from 2000 to 2017, we find that development zones significantly reduce per capita disposable income by approximately 1.68%. Zones attract firms primarily through policy-induced tax-preference effects rather than market agglomeration. The expansion of above-scale enterprise output partially mediates the negative effects on households. The adverse effect is larger in fiscally pressured counties. These findings highlight the distributional consequences of place-based industrial policies.
+        </p>
+      </div>
     </article>
 
-    <article class="paper card" data-tags="rr" data-reveal>
+    <!-- ═══════════ 论文 ② 集聚与户籍 ═══════════ -->
+    <article class="paper card study" data-tags="rr" data-reveal>
       <div class="p-top">
-        <a class="title link" data-expand href="https://www.researchsquare.com/article/rs-9354774/v1" target="_blank" rel="noopener">Agglomeration Dividend or Cost? A Perspective from the Hukou Restrictions on Migrant Population ↗</a>
+        <a class="title link" data-expand href="https://www.researchsquare.com/article/rs-9354774/v1" target="_blank" rel="noopener">Population Agglomeration and the Missing Consumption Dividend: Exclusionary Urbanization and Hukou Segmentation in Chinese Cities ↗</a>
         <span class="badge rr">R&amp;R · HSSC</span>
       </div>
-      <p class="desc">
-        Identifies the net effect of population density on household consumption and shows that <em>hukou</em> restrictions systematically amplify its negative impact. Two-way fixed effects and IV estimation on 2003–2022 prefecture-level panel data.
-      </p>
-      <p class="abstract" hidden>
-        <strong>Abstract:</strong> Does urban density help or hurt households? This paper estimates the net consumption effect of population density across Chinese prefectures and finds that administrative exclusion — embodied in the <em>hukou</em> system — converts agglomeration dividends into costs for migrant households, widening spatial inequality.
-      </p>
-      <div class="p-meta"><a class="open-hint" href="https://www.researchsquare.com/article/rs-9354774/v1" target="_blank" rel="noopener">Preprint ↗</a></div>
+
+      <div class="study-body">
+        <p class="question">
+          Density is a production engine but not automatically a consumption engine: cities have integrated migrants into <em>production</em>
+          while leaving them outside the arrangements that turn urban location into <em>consumption</em>.
+        </p>
+
+        <div class="s-meta">
+          <span class="lab">Data</span> 226 cities south of Hu Line, 2003–2022 (3,131 obs) + CHFS 2017/2019 (19,417 households)
+          <span class="lab">Design</span> TWFE · IV (1820 historical density) · quadratic · 4 hukou-group regressions
+          <span class="lab">Status</span> Major revision, HSSC · <a href="https://www.researchsquare.com/article/rs-9354774/v1" target="_blank" rel="noopener">Preprint ↗</a>
+        </div>
+
+        <div class="figs two">
+          <figure>
+            <a href="assets/research/hssc_fig1_tradeoff.png" target="_blank" rel="noopener"><img loading="lazy" src="assets/research/hssc_fig1_tradeoff.png" alt="Trade-off between agglomeration benefits and costs (conceptual)"></a>
+            <figcaption>倒 U 型机制：集聚收益递减 vs 成本递增（论文 Fig. 1）；实证拐点 ≈ <strong>256 人/km²</strong>，74.2% 城市-年已处下行段</figcaption>
+          </figure>
+          <div class="fig-bars">
+            <p class="fig-title">城市等级 → 各户籍组的响应系数（据论文 Table 8–10）</p>
+            <div class="bars">
+              <div class="bars-label">非住房消费</div>
+              <div class="bar"><span style="width:96%">本地非农 0.071***</span></div>
+              <div class="bar"><span style="width:100%">本地农业 0.074***</span></div>
+              <div class="bar"><span style="width:78%">外地非农 0.058**</span></div>
+              <div class="bar miss"><span style="width:34%">外地农业 0.025 <small>不显著</small></span></div>
+              <div class="bars-label">收入</div>
+              <div class="bar"><span style="width:91%">本地 0.073–0.080***</span></div>
+              <div class="bar miss"><span style="width:44%">外地非农 0.035 n.s.</span></div>
+              <div class="bar miss"><span style="width:0%">外地农业 −0.043 n.s.</span></div>
+              <div class="bars-label">住房消费</div>
+              <div class="bar"><span style="width:62%">本地 0.079–0.091***</span></div>
+              <div class="bar"><span style="width:100%">外地非农 0.128***</span></div>
+              <div class="bar"><span style="width:46%">外地农业 0.059 n.s.</span></div>
+            </div>
+            <p class="fig-title miss-note">红色 = 红利缺失：收入溢价只归本地（p&lt;0.01），住房成本人人上涨 —— 外地农业户"付全价、无溢价"</p>
+          </div>
+        </div>
+
+        <div class="flow">
+          <div class="flow-box"><b>人口密度↑</b></div>
+          <div class="arrow">→</div>
+          <div class="flow-box ok">本地户籍户<br><small>收入溢价 + 消费转化 ✓</small></div>
+          <div class="arrow">↛</div>
+          <div class="flow-box bad">外地农业户籍户<br><small>无收入溢价 · 住房成本同涨 · 预防性储蓄↑</small></div>
+          <div class="arrow">→</div>
+          <div class="flow-box bad"><b>"缺失的消费红利"</b></div>
+          <div class="flow-note">移民越集中的城市，密度的负效应被放大（密度×净流入占比交互 −0.075***）</div>
+        </div>
+
+        <ul class="s-key">
+          <li><b>密度–消费倒 U：</b>拐点 ≈256 人/km²；线性估计 −0.120%（1% 密度 → 消费 −0.120%）</li>
+          <li><b>因果放大：</b>以 1820 年历史密度为 IV，负效应由 −0.120 放大至 <b>−0.694***</b>（反向因果被纠正；F=35.8）</li>
+          <li><b>谁承担成本：</b>非住房消费对城市等级的响应 —— 本地两户显著为正，<b>外地农业户不显著</b>（对比 p=0.068–0.092）</li>
+          <li><b>不对称机制：</b>收入溢价只归本地（外地农业 vs 本地，p=0.009/0.008）；住房成本四组同涨且无组间差异</li>
+        </ul>
+
+        <p class="abstract">
+          <strong>Abstract —</strong> Population agglomeration is widely regarded as an engine of growth, yet in China it has coexisted with a persistently low household consumption share. This paper documents a missing consumption dividend of density and traces it to exclusionary urbanization: cities have integrated migrants into production while leaving them partially outside the arrangements that convert urban income and location into consumption. Using a panel of 226 Chinese cities over 2003–2022, the net effect of population density on per-capita consumption follows an inverted U with a turning point near 256 people per km²; roughly three-quarters of city-years lie on the downward-sloping segment, and instrumenting density with historical (1820) density amplifies the negative effect. Household evidence from the CHFS shows the non-housing consumption response to city tier is positive for local-hukou households, weaker for non-local non-agricultural households, and absent for non-local agricultural households — who bear housing costs that rise for everyone while being denied the wage premium that agglomeration generates.
+        </p>
+      </div>
     </article>
 
-    <article class="paper card" data-tags="wp" data-reveal>
+    <!-- ═══════════ 论文 ③ 生成式AI ═══════════ -->
+    <article class="paper card study" data-tags="wp" data-reveal>
       <div class="p-top">
-        <span class="title" data-expand>Generative AI and Skill Diversity in the Labour Market</span>
+        <span class="title" data-expand>The Impact of Generative AI Exposure on Skill Diversity and Wage Inequality: Evidence from China's City–Occupation Labor Market</span>
         <span class="badge wp">Working Paper</span>
       </div>
-      <p class="desc">
-        Uses ChatGPT's 2022 launch as a quasi-natural experiment to study how generative AI reshapes skill composition across Chinese urban labor markets, with PPMI-based skill co-occurrence measures and a city × occupation × month panel.
-      </p>
-      <p class="abstract" hidden>
-        <strong>Abstract (in progress):</strong> Exploiting the staggered diffusion of generative AI tools across occupations, this project constructs novel PPMI-based measures of within- and between-occupation skill diversity for ~170 Chinese cities. Preliminary designs combine continuous-treatment difference-in-differences, mediation analysis, and quantile regressions (~120,000 city × occupation × month observations).
-      </p>
-      <div class="p-meta"><span class="open-hint">点击标题展开摘要</span></div>
+
+      <div class="study-body">
+        <p class="question">
+          Is generative AI an equalizer or a new maker of inequality? Through the lens of <em>skill diversity</em>, the answer is both:
+          <b>convergence within occupations, divergence between occupations, and selective equalization of wages</b>.
+        </p>
+
+        <div class="s-meta">
+          <span class="lab">Data</span> 170 cities × 99 occupations × month, 2021.01–2024.12 (~120,000 obs, online job postings)
+          <span class="lab">Design</span> Continuous-treatment DID (ChatGPT, Dec 2022) · mediation · quantile regression
+          <span class="lab">Exposure</span> GPT-4 occupation-level AI exposure index (PKU × Zhaopin)
+        </div>
+
+        <div class="figs two">
+          <figure>
+            <a href="assets/research/rp_event_study_panel.png" target="_blank" rel="noopener"><img loading="lazy" src="assets/research/rp_event_study_panel.png" alt="Event study: dynamic effects on within- and between-occupation diversity and wage Gini"></a>
+            <figcaption>事件研究（平行趋势 + 动态效应）：职业内↓、职业间↑、工资基尼↓ 随时间加深</figcaption>
+          </figure>
+          <figure>
+            <a href="assets/research/rp_quantile.png" target="_blank" rel="noopener"><img loading="lazy" src="assets/research/rp_quantile.png" alt="Quantile regression: AI x Post coefficient across wage quantiles"></a>
+            <figcaption>分位数回归：低位工资显著抬升 (+0.116*** @p10)，高位消失转负 (−0.040* @p90) —— <b>"选择性均等化"</b></figcaption>
+          </figure>
+        </div>
+
+        <div class="flow">
+          <div class="flow-box"><b>GenAI 暴露↑<br><small>(ChatGPT 2022.12)</small></b></div>
+          <div class="arrow">→</div>
+          <div class="flow-box">通用辅助技能被替代 <small>α₂ −0.009***</small></div>
+          <div class="arrow">→</div>
+          <div class="flow-box bad"><b>职业内多样性 ↓ −0.054***</b></div>
+          <div class="arrow">∥</div>
+          <div class="flow-box">职业专属辅助技能重组</div>
+          <div class="arrow">→</div>
+          <div class="flow-box ok"><b>职业间多样性 ↑ +0.172***</b></div>
+          <div class="flow-note">"收敛-分化"双模式 + 选择性均等化：基尼 ↓ −0.041**，但压缩来自低端抬升而非高端下压（p90–p10 差距 −0.800**）</div>
+        </div>
+
+        <ul class="s-key">
+          <li><b>收敛-分化：</b>职业内技能多样性 ↓ −0.054***，职业间 ↑ +0.172***（AI 不是简单去技能或升技能）</li>
+          <li><b>选择性均等化：</b>工资基尼 ↓ −0.041**；分位数上 p10 +0.116*** → p50 +0.055*** → p90 −0.040*</li>
+          <li><b>机制：</b>通用辅助技能替代 → 职业内收敛；职业专属辅助技能扩张 → 职业间分化（间接效应 CI 排除 0）</li>
+          <li><b>异质性：</b>高 GDP 城市职业间分化最强（Q4: 0.337***）；工资均等在中等 GDP 城市最明显</li>
+        </ul>
+
+        <p class="abstract">
+          <strong>Abstract —</strong> The public release of ChatGPT in December 2022 marked the transition of generative AI from a niche technology to a widely deployable general-purpose tool. Exploiting this quasi-natural experiment, we construct a city × occupation × month panel from January 2021 to December 2024 using job postings from China's major online recruitment platforms, and employ a continuous-treatment difference-in-differences framework to identify the causal effects of generative AI exposure on skill diversity and wage inequality. We find: (1) AI exposure significantly reduces within-occupation skill diversity (β₂ = −0.054, p &lt; 0.001) but increases between-occupation skill diversity (β₂ = 0.172, p &lt; 0.001) after ChatGPT's release, revealing a "convergence-within, divergence-between" dual pattern; (2) the wage Gini coefficient declines with AI exposure (β₂ = −0.041, p = 0.017), but quantile regression reveals this equalizing effect concentrates at lower quantiles while vanishing at higher quantiles, confirming a "selective equalization" hypothesis; (3) mediation analysis shows that general auxiliary skill displacement mediates within-occupation diversity decline, while occupation-specific auxiliary skill expansion mediates between-occupation diversity divergence; (4) spatial heterogeneity indicates effects are most pronounced in high-GDP cities and medium-exposure industries.
+        </p>
+      </div>
     </article>
 
-    <article class="paper card" data-tags="award" data-reveal>
+    <!-- ═══════════ ICM 竞赛论文 ═══════════ -->
+    <article class="paper card study" data-tags="award" data-reveal>
       <div class="p-top">
         <span class="title" data-expand>Regional Development: Both the Creator and Acceptor of Light Pollution</span>
-        <span class="badge award">ICM 2023 · Meritorious (Top 13%)</span>
+        <span class="badge award">ICM 2023 · Meritorious Winner (Top 13%)</span>
       </div>
       <p class="desc">
-        Modeled the regional creation and absorption of light pollution on 2011–2019 city-level panel data; responsible for framework design, variable construction, and English writing.
+        Modeling competition paper: who creates and who absorbs light pollution in regional development. Responsible for framework design, variable construction, and English writing; 2011–2019 city panel.
       </p>
-      <p class="abstract" hidden>
-        <strong>Abstract:</strong> Light pollution is simultaneously produced and suffered by regional development. Building on city-level panel data, this modeling paper quantifies how economically developed regions generate light pollution that spills onto neighboring areas, and received Meritorious Winner recognition in the 2023 ICM.
-      </p>
-      <div class="p-meta"><span class="open-hint">点击标题展开摘要</span></div>
+      <div class="study-body" hidden>
+        <ul class="s-key">
+          <li><b>问题：</b>区域发展既是光污染的制造者也是承受者 —— 发达地区的光污染向邻近地区溢出</li>
+          <li><b>工作：</b>2011–2019 地级市面板建模与测度；负责研究框架、变量测算、结果解释与英文论文撰写</li>
+          <li><b>成绩：</b>2023 ICM/MCM Meritorious Winner（前 13%）</li>
+        </ul>
+      </div>
     </article>
 
     <h2 class="sec-title" data-reveal>Proposed PhD Research</h2>
     <div class="card phd" data-reveal>
       <p style="margin-top:0;">
         <strong>Generative AI, Skill Diversity, and Wage Inequality: A Computational Sociological Study of China's Urban Labor Markets.</strong>
-        Exploits ChatGPT's 2022 launch as a quasi-natural experiment to investigate how generative AI restructures skill composition and wage inequality across 170 Chinese cities. Constructs novel PPMI-based skill co-occurrence measures of within- and between-occupation skill diversity, integrating economic task models with sociological theories of occupational closure and the labor process. Empirical strategy: continuous-treatment DID, mediation analysis, and quantile regression on a city × occupation × month panel (~120,000 observations; Python pipeline complete).
+        The PhD proposal scales the working-paper agenda into sociology: exploiting ChatGPT's 2022 launch as a quasi-natural experiment to investigate how generative AI restructures skill composition and wage inequality across 170 Chinese cities, with PPMI-based skill co-occurrence measures of within- and between-occupation diversity, integrating economic task models (Autor et al., 2003) with sociological theories of occupational closure (Weeden &amp; Grusky, 2005; Abbott, 1988) and the labor process (Braverman, 1974). Empirical strategy: continuous-treatment DID, mediation analysis, and quantile regression on a city × occupation × month panel (~120,000 observations; Python pipeline complete).
       </p>
     </div>
   </section>

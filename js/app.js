@@ -99,20 +99,20 @@
     })
   );
 
-  /* ---------- 5. 摘要展开/收起 ---------- */
+  /* ---------- 5. 研究卡：展开/收起（正文或摘要） ---------- */
   $$(".title[data-expand]").forEach((title) =>
     on(title, "click", (e) => {
       const paper = title.closest(".paper");
-      const abs = paper && paper.querySelector(".abstract");
-      if (!abs) return;
-      if (abs.hidden) {
-        abs.hidden = false;
+      const target = paper && (paper.querySelector(".study-body") || paper.querySelector(".abstract"));
+      if (!target) return;
+      if (target.hidden) {
+        target.hidden = false;
         paper.classList.add("open");
       } else {
-        abs.hidden = true;
+        target.hidden = true;
         paper.classList.remove("open");
       }
-      // 标题若是外链（preprint），展开时不跳转；跳转走 p-meta 里的链接
+      // 标题若是外链（preprint），展开时不跳转；跳转走 p-meta / s-meta 里的链接
       if (title.tagName === "A") e.preventDefault();
     })
   );
@@ -150,14 +150,15 @@
         const el = e.target;
         const target = parseFloat(el.dataset.count);
         const dec = parseInt(el.dataset.decimals || "0", 10);
+        const suffix = el.dataset.suffix || "";
         const dur = 900;
         const t0 = performance.now();
         (function tick(t) {
           const p = Math.min(1, (t - t0) / dur);
           const eased = 1 - Math.pow(1 - p, 3); // easeOutCubic
-          el.textContent = (target * eased).toFixed(dec);
+          el.textContent = (target * eased).toFixed(dec) + suffix;
           if (p < 1) requestAnimationFrame(tick);
-          else el.textContent = target.toFixed(dec);
+          else el.textContent = target.toFixed(dec) + suffix;
         })(t0);
       });
     },

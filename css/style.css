@@ -198,3 +198,59 @@ footer { margin-top: 2.4rem; color: var(--muted); font-size: .85rem; border-top:
   .contact, .stats { justify-content: center; }
   .item .head { flex-direction: column; gap: .15rem; }
 }
+
+/* ============ 论文研究可视化版式 ============ */
+.study-body { margin-top: .6rem; }
+.question {
+  font-size: 1.02rem; color: var(--muted); font-style: italic;
+  border-left: 3px solid var(--rule); padding: .1rem 0 .1rem .9rem; margin: .5rem 0 .8rem;
+}
+.s-meta { display: flex; flex-wrap: wrap; gap: .35rem .8rem; align-items: baseline;
+  font-size: .86rem; color: var(--muted); margin-bottom: .9rem; }
+.s-meta .lab {
+  font-weight: 700; color: var(--text); font-size: .72rem; letter-spacing: .05em;
+  background: var(--chip-bg); border-radius: 4px; padding: .05rem .45rem;
+}
+.s-meta a { font-size: .86rem; }
+.figs { display: grid; gap: .9rem; margin: .9rem 0; }
+.figs.two { grid-template-columns: 1fr 1fr; }
+.figs figure { margin: 0; }
+.figs img { width: 100%; border: 1px solid var(--rule); border-radius: 10px; background:#fff;
+  display: block; transition: transform .2s, box-shadow .2s; }
+.figs img:hover { transform: scale(1.015); box-shadow: var(--shadow-lg); }
+.figs figcaption { font-size: .82rem; color: var(--muted); margin-top: .35rem; line-height: 1.45; }
+.fig-bars { border: 1px dashed var(--rule); border-radius: 12px; padding: .8rem 1rem; background: var(--surface-2); }
+.fig-title { font-size: .84rem; font-weight: 600; margin: 0 0 .45rem; }
+.bars-label { font-size: .74rem; font-weight: 700; color: var(--muted); margin: .5rem 0 .2rem; letter-spacing: .04em; }
+.bar { height: 1.45rem; margin-bottom: .2rem; position: relative; }
+.bar span {
+  display: flex; align-items: center; padding: 0 .6rem; height: 100%; font-size: .74rem;
+  background: linear-gradient(90deg, var(--accent), color-mix(in srgb, var(--accent) 60%, #22d3ee));
+  color: #fff; border-radius: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 40px;
+}
+.bar.miss span { background: linear-gradient(90deg, #dc2626, #f59e0b); }
+.miss-note { color: #b91c1c; }
+[data-theme="dark"] .miss-note { color: #f59e0b; }
+.s-key { margin: .5rem 0 0; padding-left: 1.2rem; font-size: .94rem; }
+.s-key li { margin-bottom: .3rem; }
+
+/* ============ 机制流程图 ============ */
+.flow { display: flex; flex-wrap: wrap; align-items: stretch; gap: .3rem;
+  margin: 1rem 0 .5rem; padding: .8rem; border: 1px solid var(--rule); border-radius: 12px; background: var(--surface-2); }
+.flow-box {
+  flex: 0 1 auto; min-width: 110px; max-width: 200px; text-align: center; font-size: .85rem;
+  border: 1px solid var(--rule); border-radius: 8px; padding: .45rem .55rem; background: var(--surface);
+  display: flex; flex-direction: column; justify-content: center; align-items: center; gap: .15rem;
+}
+.flow-box small { color: var(--muted); font-size: .74rem; }
+.flow-box span { color: var(--muted); font-size: .78rem; }
+.flow-box.ok { border-color: #16a34a; }
+.flow-box.bad { border-color: #dc2626; }
+.flow-box.dim { opacity: .7; }
+.arrow { align-self: center; color: var(--muted); font-size: 1.05rem; padding: 0 .1rem; }
+.flow-note { width: 100%; font-size: .8rem; color: var(--muted); margin-top: .35rem; }
+
+@media (max-width: 720px) {
+  .figs.two { grid-template-columns: 1fr; }
+  .flow-box { min-width: 90px; }
+}
