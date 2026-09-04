@@ -1,146 +1,150 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Shuhan WANG | 王姝涵</title>
 <meta name="description" content="Shuhan Wang — M.A. candidate in Applied Economics at ECUST. Research on technological change and labor markets, computational social science, and social stratification in China.">
-<style>
-  :root {
-    --text: #1c1e21;
-    --muted: #5a6270;
-    --accent: #0a58ca;
-    --rule: #c9ccd1;
-    --bg: #ffffff;
-  }
-  * { box-sizing: border-box; }
-  body {
-    margin: 0;
-    color: var(--text);
-    background: var(--bg);
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
-    font-size: 16px;
-    line-height: 1.55;
-  }
-  .wrap { max-width: 860px; margin: 0 auto; padding: 2.4rem 1.2rem 3rem; }
-  a { color: var(--accent); text-decoration: none; }
-  a:hover { text-decoration: underline; }
-
-  /* ---------- header ---------- */
-  .bio { display: flex; gap: 1.6rem; align-items: flex-start; margin-bottom: .6rem; }
-  .photo {
-    width: 148px; height: 190px; object-fit: cover; object-position: top;
-    border-radius: 6px; border: 1px solid var(--rule); flex-shrink: 0;
-  }
-  h1 { font-family: Georgia, "Times New Roman", serif; font-size: 1.9rem; margin: 0 0 .2rem; }
-  h1 .cn { font-weight: normal; color: var(--muted); font-size: 1.15rem; margin-left: .5rem; }
-  .role { margin: 0 0 .5rem; font-size: 1.02rem; }
-  .interests { margin: .4rem 0 .8rem; color: var(--muted); font-size: .95rem; }
-  .contact { font-size: .95rem; margin: 0; }
-  .contact .dot { color: var(--rule); margin: 0 .45rem; }
-  .btn {
-    display: inline-block; margin-top: .7rem; padding: .32rem .85rem;
-    border: 1px solid var(--accent); border-radius: 4px; font-size: .9rem;
-  }
-  .btn:hover { background: var(--accent); color: #fff; text-decoration: none; }
-
-  /* ---------- sections ---------- */
-  h2 {
-    font-family: Georgia, "Times New Roman", serif;
-    font-size: 1.18rem; font-variant: small-caps; letter-spacing: .04em;
-    border-bottom: 1.5px solid var(--text); padding-bottom: .28rem;
-    margin: 2.1rem 0 1rem;
-  }
-  .paper { margin-bottom: 1.05rem; }
-  .paper .title { font-weight: 600; }
-  .paper .venue { color: var(--muted); font-size: .93rem; }
-  .badge {
-    display: inline-block; font-size: .74rem; font-weight: 600; color: #7a4b00;
-    background: #fdf1dc; border: 1px solid #ecd3a0; border-radius: 999px;
-    padding: .06rem .55rem; margin-left: .45rem; vertical-align: 1px; white-space: nowrap;
-  }
-  .badge.working { color: #14532d; background: #e8f5ec; border-color: #bcdcc4; }
-  .badge.award { color: #1e3a8a; background: #e7eefd; border-color: #b9c9ee; }
-  .paper .desc { margin: .18rem 0 0; font-size: .95rem; }
-  .item { margin-bottom: .85rem; }
-  .item .head { display: flex; justify-content: space-between; gap: 1rem; }
-  .item .when { color: var(--muted); font-size: .9rem; white-space: nowrap; }
-  .item .sub { color: var(--muted); font-size: .93rem; margin: .05rem 0 .15rem; }
-  .item ul { margin: .15rem 0 0; padding-left: 1.1rem; }
-  .item li { margin-bottom: .15rem; font-size: .95rem; }
-  footer { margin-top: 2.6rem; color: var(--muted); font-size: .84rem; border-top: 1px solid var(--rule); padding-top: .8rem; }
-  @media (max-width: 620px) {
-    .bio { flex-direction: column; align-items: center; text-align: center; }
-    .contact .dot { margin: 0 .3rem; }
-    .item .head { flex-direction: column; gap: 0; }
-  }
-</style>
+<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<main class="wrap">
 
-  <header class="bio">
-    <img class="photo" src="assets/photo.png" alt="Photo of Shuhan Wang">
-    <div>
-      <h1>Shuhan WANG<span class="cn">王姝涵</span></h1>
-      <p class="role">M.A. Candidate in Applied Economics (Year 2)<br>East China University of Science and Technology, Shanghai</p>
-      <p class="interests">Technological change &amp; labor markets · computational social science · economic sociology · social stratification &amp; inequality · quasi-experimental methods</p>
-      <p class="contact">
-        <a href="mailto:20003003@mail.ecust.edu.cn">20003003@mail.ecust.edu.cn</a><span class="dot">|</span><a href="https://github.com/WshAzad">GitHub</a>
-      </p>
-      <a class="btn" href="assets/CV_Wang_Shuhan.pdf">Download CV (PDF)</a>
+<!-- ============ 顶部导航 ============ -->
+<header class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#top" class="brand">Shuhan&nbsp;WANG</a>
+    <nav class="nav-links" id="navLinks">
+      <a href="#research" data-nav="research">Research</a>
+      <a href="#education" data-nav="education">Education</a>
+      <a href="#experience" data-nav="experience">Experience</a>
+      <a href="#honors" data-nav="honors">Honors</a>
+    </nav>
+    <div class="nav-actions">
+      <button id="themeToggle" class="icon-btn" title="切换主题" aria-label="切换主题">🌙</button>
+      <button id="menuToggle" class="icon-btn menu-btn" title="菜单" aria-label="菜单">☰</button>
     </div>
-  </header>
+  </div>
+  <div class="progress" id="progressBar"></div>
+</header>
 
-  <section>
-    <h2>Research</h2>
+<main class="wrap" id="top">
 
-    <div class="paper">
-      <span class="title">Development Zone Policies, Industrial Agglomeration, and Household Income: Evidence from China</span>
-      <span class="badge">Revised &amp; Resubmit · JRS</span>
-      <p class="desc">Examines how China's development zone policies interact with the <em>hukou</em> system to produce stratified distributional outcomes. Staggered DID, PSM-DID, event study, and Honest-DID sensitivity analysis on 2000–2017 county-level panel data.</p>
+  <!-- ============ Hero ============ -->
+  <section class="hero">
+    <div class="hero-photo" data-reveal>
+      <img src="assets/photo.png" alt="Photo of Shuhan Wang" class="photo">
     </div>
-
-    <div class="paper">
-      <span class="title"><a href="https://www.researchsquare.com/article/rs-9354774/v1">Agglomeration Dividend or Cost? A Perspective from the Hukou Restrictions on Migrant Population</a></span>
-      <span class="badge">Revised &amp; Resubmit · HSSC</span>
-      <p class="desc">Identifies the net effect of population density on household consumption and shows that <em>hukou</em> restrictions systematically amplify its negative impact. Two-way fixed effects and IV estimation on 2003–2022 prefecture-level panel data. <a href="https://www.researchsquare.com/article/rs-9354774/v1">[Preprint]</a></p>
+    <div class="hero-main">
+      <h1 data-reveal>Shuhan WANG <span class="cn">王姝涵</span></h1>
+      <p class="role" data-reveal>M.A. Candidate in Applied Economics (Year 2)<br>East China University of Science and Technology, Shanghai</p>
+      <p class="interests" data-reveal>Technological change &amp; labor markets · computational social science · economic sociology · social stratification &amp; inequality · quasi-experimental methods</p>
+      <div class="contact" data-reveal>
+        <a class="chip" id="emailChip" href="mailto:20003003@mail.ecust.edu.cn">✉ 20003003@mail.ecust.edu.cn</a>
+        <a class="chip" href="https://github.com/WshAzad" target="_blank" rel="noopener">GitHub</a>
+        <a class="chip" href="assets/CV_Wang_Shuhan.pdf" download>⬇ CV (PDF)</a>
+      </div>
+      <div class="stats" data-reveal>
+        <div class="stat"><span class="num" data-count="2" data-decimals="0">0</span><span class="lbl">R&amp;R Papers</span></div>
+        <div class="stat"><span class="num" data-count="1">0</span><span class="lbl">Working Paper</span></div>
+        <div class="stat"><span class="num" data-count="1">0</span><span class="lbl">Modeling Award</span></div>
+        <div class="stat"><span class="num" data-count="3.91" data-decimals="2">0</span><span class="lbl">M.A. GPA</span></div>
+      </div>
     </div>
-
-    <div class="paper">
-      <span class="title">Generative AI and Skill Diversity in the Labour Market</span>
-      <span class="badge working">Working Paper</span>
-      <p class="desc">Uses ChatGPT's 2022 launch as a quasi-natural experiment to study how generative AI reshapes skill composition across Chinese urban labor markets, with PPMI-based skill co-occurrence measures and a city × occupation × month panel.</p>
-    </div>
-
-    <div class="paper">
-      <span class="title">Regional Development: Both the Creator and Acceptor of Light Pollution</span>
-      <span class="badge award">ICM 2023 · Meritorious Winner (Top 13%)</span>
-      <p class="desc">Modeled the regional creation and absorption of light pollution on 2011–2019 city-level panel data; responsible for framework design, variable construction, and English writing.</p>
-    </div>
-
-    <h2>Proposed PhD Research</h2>
-    <p style="font-size:.98rem; margin-top:0;">
-      <strong>Generative AI, Skill Diversity, and Wage Inequality: A Computational Sociological Study of China's Urban Labor Markets.</strong>
-      Exploits ChatGPT's 2022 launch as a quasi-natural experiment to investigate how generative AI restructures skill composition and wage inequality across 170 Chinese cities. Constructs novel PPMI-based skill co-occurrence measures of within- and between-occupation skill diversity, integrating economic task models with sociological theories of occupational closure and the labor process. Empirical strategy: continuous-treatment DID, mediation analysis, and quantile regression on a city × occupation × month panel (~120,000 observations; Python pipeline complete).
-    </p>
   </section>
 
-  <section>
-    <h2>Education</h2>
-    <div class="item">
+  <!-- ============ 论文（可筛选 / 可展开） ============ -->
+  <section id="research">
+    <h2 class="sec-title" data-reveal>Research</h2>
+
+    <div class="filters" data-reveal>
+      <button class="chip filter active" data-filter="all">All</button>
+      <button class="chip filter" data-filter="rr">Under Revision</button>
+      <button class="chip filter" data-filter="wp">Working Papers</button>
+      <button class="chip filter" data-filter="award">Competition</button>
+    </div>
+
+    <article class="paper card" data-tags="rr" data-reveal>
+      <div class="p-top">
+        <span class="title" data-expand>Development Zone Policies, Industrial Agglomeration, and Household Income: Evidence from China</span>
+        <span class="badge rr">R&amp;R · JRS</span>
+      </div>
+      <p class="desc">
+        Examines how China's development zone policies interact with the <em>hukou</em> system to produce stratified distributional outcomes. Staggered DID, PSM-DID, event study, and Honest-DID sensitivity analysis on 2000–2017 county-level panel data.
+      </p>
+      <p class="abstract" hidden>
+        <strong>Abstract:</strong> Development zones are a hallmark of China's place-based industrial policy. This paper studies their distributional consequences: using county-level panel data and staggered difference-in-differences designs, it documents that tax-incentive-driven attraction crowds out residents' disposable income, and interprets the result through institutional stratification — development policy reproduces inequality along the <em>hukou</em> divide (Tilly, 1998).
+      </p>
+      <div class="p-meta"><span class="open-hint">点击标题展开摘要</span></div>
+    </article>
+
+    <article class="paper card" data-tags="rr" data-reveal>
+      <div class="p-top">
+        <a class="title link" data-expand href="https://www.researchsquare.com/article/rs-9354774/v1" target="_blank" rel="noopener">Agglomeration Dividend or Cost? A Perspective from the Hukou Restrictions on Migrant Population ↗</a>
+        <span class="badge rr">R&amp;R · HSSC</span>
+      </div>
+      <p class="desc">
+        Identifies the net effect of population density on household consumption and shows that <em>hukou</em> restrictions systematically amplify its negative impact. Two-way fixed effects and IV estimation on 2003–2022 prefecture-level panel data.
+      </p>
+      <p class="abstract" hidden>
+        <strong>Abstract:</strong> Does urban density help or hurt households? This paper estimates the net consumption effect of population density across Chinese prefectures and finds that administrative exclusion — embodied in the <em>hukou</em> system — converts agglomeration dividends into costs for migrant households, widening spatial inequality.
+      </p>
+      <div class="p-meta"><a class="open-hint" href="https://www.researchsquare.com/article/rs-9354774/v1" target="_blank" rel="noopener">Preprint ↗</a></div>
+    </article>
+
+    <article class="paper card" data-tags="wp" data-reveal>
+      <div class="p-top">
+        <span class="title" data-expand>Generative AI and Skill Diversity in the Labour Market</span>
+        <span class="badge wp">Working Paper</span>
+      </div>
+      <p class="desc">
+        Uses ChatGPT's 2022 launch as a quasi-natural experiment to study how generative AI reshapes skill composition across Chinese urban labor markets, with PPMI-based skill co-occurrence measures and a city × occupation × month panel.
+      </p>
+      <p class="abstract" hidden>
+        <strong>Abstract (in progress):</strong> Exploiting the staggered diffusion of generative AI tools across occupations, this project constructs novel PPMI-based measures of within- and between-occupation skill diversity for ~170 Chinese cities. Preliminary designs combine continuous-treatment difference-in-differences, mediation analysis, and quantile regressions (~120,000 city × occupation × month observations).
+      </p>
+      <div class="p-meta"><span class="open-hint">点击标题展开摘要</span></div>
+    </article>
+
+    <article class="paper card" data-tags="award" data-reveal>
+      <div class="p-top">
+        <span class="title" data-expand>Regional Development: Both the Creator and Acceptor of Light Pollution</span>
+        <span class="badge award">ICM 2023 · Meritorious (Top 13%)</span>
+      </div>
+      <p class="desc">
+        Modeled the regional creation and absorption of light pollution on 2011–2019 city-level panel data; responsible for framework design, variable construction, and English writing.
+      </p>
+      <p class="abstract" hidden>
+        <strong>Abstract:</strong> Light pollution is simultaneously produced and suffered by regional development. Building on city-level panel data, this modeling paper quantifies how economically developed regions generate light pollution that spills onto neighboring areas, and received Meritorious Winner recognition in the 2023 ICM.
+      </p>
+      <div class="p-meta"><span class="open-hint">点击标题展开摘要</span></div>
+    </article>
+
+    <h2 class="sec-title" data-reveal>Proposed PhD Research</h2>
+    <div class="card phd" data-reveal>
+      <p style="margin-top:0;">
+        <strong>Generative AI, Skill Diversity, and Wage Inequality: A Computational Sociological Study of China's Urban Labor Markets.</strong>
+        Exploits ChatGPT's 2022 launch as a quasi-natural experiment to investigate how generative AI restructures skill composition and wage inequality across 170 Chinese cities. Constructs novel PPMI-based skill co-occurrence measures of within- and between-occupation skill diversity, integrating economic task models with sociological theories of occupational closure and the labor process. Empirical strategy: continuous-treatment DID, mediation analysis, and quantile regression on a city × occupation × month panel (~120,000 observations; Python pipeline complete).
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ Education ============ -->
+  <section id="education">
+    <h2 class="sec-title" data-reveal>Education</h2>
+    <div class="item card" data-reveal>
       <div class="head"><strong>East China University of Science and Technology — M.A. in Applied Economics</strong><span class="when">2024.09 – 2027.02 (expected)</span></div>
       <div class="sub">GPA 3.91/4.00 · Advanced Econometrics (94), Advanced Macro/Microeconomics (91), Urban Economics (94)</div>
     </div>
-    <div class="item">
+    <div class="item card" data-reveal>
       <div class="head"><strong>East China University of Science and Technology — B.A. in Economics</strong><span class="when">2020.09 – 2024.07</span></div>
       <div class="sub">GPA 3.79/4.00 · Outstanding Undergraduate Thesis: <em>The Impact of National or Industry Standard Setter Identity on Firm Innovation</em></div>
     </div>
   </section>
 
-  <section>
-    <h2>Experience</h2>
-    <div class="item">
+  <!-- ============ Experience ============ -->
+  <section id="experience">
+    <h2 class="sec-title" data-reveal>Experience</h2>
+    <div class="item card" data-reveal>
       <div class="head"><strong>Data Product Intern — China Economic Information Service (Xinhua News Agency)</strong><span class="when">2026.06 – Present</span></div>
       <ul>
         <li>Independent data collection, writing, and proofreading of 17 country-industry reports (Poland, Ireland, Luxembourg, Hungary), benchmarked against World Bank, Eurostat, and IMF data</li>
@@ -148,25 +152,24 @@
         <li>AI-assisted development of product pages (HTML samples)</li>
       </ul>
     </div>
-    <div class="item">
+    <div class="item card" data-reveal>
       <div class="head"><strong>Industry Research Intern — AI Department, CAICT East China Branch</strong><span class="when">2024.03 – 2024.08</span></div>
       <ul>
         <li>Co-authored the intelligent-computing talent chapter of the Huawei–CAICT <em>White Paper on Intelligent Computing and Large Model Talent</em></li>
         <li>Assisted in drafting the data infrastructure section of the Shanghai New Infrastructure Handbook; consolidated the Yangtze River Delta Digital Economy Work Plan (2023) outcomes report</li>
       </ul>
     </div>
-    <div class="item">
+    <div class="item card" data-reveal>
       <div class="head"><strong>Research Assistant — Public Economic Governance Research Center, ECUST</strong><span class="when">2024.09 – Present</span></div>
-      <ul>
-        <li>Coordinated the Chinese-Style Modernization Academic Forum; built and maintain the center's official website</li>
-      </ul>
+      <ul><li>Coordinated the Chinese-Style Modernization Academic Forum; built and maintain the center's official website</li></ul>
     </div>
   </section>
 
-  <section>
-    <h2>Honors</h2>
-    <div class="item">
-      <ul style="margin-top:0">
+  <!-- ============ Honors ============ -->
+  <section id="honors">
+    <h2 class="sec-title" data-reveal>Honors</h2>
+    <div class="item card" data-reveal>
+      <ul>
         <li>Third Prize, 5th National College Student Development Economics Paper Competition (2025)</li>
         <li>First-Class Graduate Academic Scholarship; Outstanding Scholarship (Special Prize), ECUST (2024)</li>
         <li>Outstanding Graduate of Shanghai Municipality (2024)</li>
@@ -176,9 +179,13 @@
   </section>
 
   <footer>
-    © 2026 Shuhan Wang · Last updated September 2026 · Built with plain HTML, hosted on GitHub Pages
+    © <span id="year">2026</span> Shuhan Wang · Built with plain HTML/CSS/JS · <a href="#top">Back to top ↑</a>
   </footer>
-
 </main>
+
+<button id="toTop" class="to-top" title="回到顶部" aria-label="回到顶部">↑</button>
+<div id="toast" class="toast" hidden></div>
+
+<script src="js/app.js"></script>
 </body>
 </html>
