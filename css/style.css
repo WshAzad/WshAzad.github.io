@@ -227,9 +227,8 @@ footer { margin-top: 2.4rem; color: var(--muted); font-size: .85rem; border-top:
   display: flex; align-items: center; padding: 0 .6rem; height: 100%; font-size: .74rem;
   background: linear-gradient(90deg, color-mix(in srgb, var(--accent) 45%, #fff), color-mix(in srgb, var(--accent) 60%, #22d3ee));
   color: #111; font-weight: 600; border-radius: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 40px;
-  text-shadow: 0 0 3px rgba(255,255,255,.65), 0 0 1px rgba(255,255,255,.9);
 }
-.bar.miss span { background: linear-gradient(90deg, #e04a3f, #f7b955); color:#111; font-weight:600; text-shadow: 0 0 3px rgba(255,255,255,.65); }
+.bar.miss span { background: linear-gradient(90deg, #e04a3f, #f7b955); color:#111; font-weight:600; }
 .miss-note { color: #b91c1c; }
 [data-theme="dark"] .miss-note { color: #f59e0b; }
 .s-key { margin: .5rem 0 0; padding-left: 1.2rem; font-size: .94rem; }
@@ -290,3 +289,11 @@ footer { margin-top: 2.4rem; color: var(--muted); font-size: .85rem; border-top:
   .mech-arrow { transform: rotate(90deg); text-align: center; }
 }
 .lang-btn { width: auto; padding: 0 .55rem; font-size: .8rem; font-weight: 700; }
+
+/* ≈0 的负值行：占位条，整行显示文字 */
+.bar.zero span {
+  width: 100% !important; min-width: 0;
+  background: transparent; color: var(--muted);
+  border: 1.5px dashed var(--rule); border-radius: 4px;
+  font-weight: 600; overflow: visible; text-overflow: clip; white-space: normal;
+}
