@@ -87,5 +87,8 @@ const server = createServer(async (req, res) => {
   } catch (e) { send(j({ error: String(e) }, 500)); }
 });
 
-server.listen(PORT, () => console.log(`\n✎ 主页可视化编辑台: http://127.0.0.1:${PORT}/
-   点页面右下角 “✎ 编辑本页” → 直接改文字 → 💾保存 / 🚀发布 (Ctrl+C 退出)\n`));
+server.listen(PORT, () => {
+  const url = `http://127.0.0.1:${PORT}/`;
+  console.log(`\n✎ 主页可视化编辑台: ${url}\n   点页面右下角 “✎ 编辑本页” → 直接改文字 → 💾保存 / 🚀发布 (Ctrl+C 退出)\n`);
+  if (process.platform === 'darwin' && !process.env.NO_OPEN) execFile('open', [url]);
+});
