@@ -22,6 +22,8 @@
 //     node tools/publish-resume.mjs --no-verify     # 推完就走，不等部署
 //
 //   只碰简历相关文件；站点里其他未提交改动一律不动（会提示你有几个）。
+//   中文简历：site: null → 本地照常编译提交，但**不上传**；已传上去的按 retire 删掉。
+//   要恢复发布：把那条 job 的 site 填回 career/assets/resumes/Resume_CN.pdf、删掉 retire。
 //   ⚠ content.json / index.html 是整体生成物：改简历链接和改文案在同一个文件里，
 //     拆不开。所以 step 5 会问你「文案改动要不要一起上线」（--yes / --pdf-only 免提问）。
 // ============================================================
@@ -32,6 +34,7 @@ import {
   writeFileSync,
   copyFileSync,
   statSync,
+  rmSync,
 } from "node:fs";
 import { createHash } from "node:crypto";
 import { dirname, join } from "node:path";
@@ -53,10 +56,12 @@ const JOBS = [
     site: "career/assets/resumes/Resume_EN.pdf",
   },
   {
-    label: "中文简历",
+    // site: null = 只在本地编译+提交留痕，**不发布**；retire 里的路径一旦出现会被删掉
+    label: "中文简历（仅本地，2026-09-04 停止发布）",
     tex: "Resume_General_CN_Wang_Shuhan.tex",
     pdf: "Resume_General_CN_Wang_Shuhan.pdf",
-    site: "career/assets/resumes/Resume_CN.pdf",
+    site: null,
+    retire: ["career/assets/resumes/Resume_CN.pdf"],
   },
 ];
 
@@ -236,7 +241,7 @@ const cvPaths = JOBS.flatMap((j) => [j.tex, j.pdf]);
   } else {
     const msg =
       opts.msg ||
-      `发布简历：更新中英文通用简历 ${new Date().toISOString().slice(0, 10)}`;
+      `发布简历：更新通用简历（中英文，本地留痕） ${new Date().toISOString().slice(0, 10)}`;
     git(["add", "--", ...cvPaths], CV); // pdf 首次纳入跟踪时也不会漏
     git(["commit", "-m", msg, "--", ...cvPaths], CV);
     ok(`已提交 ${git(["rev-parse", "--short", "HEAD"], CV)} — ${msg}`);
@@ -251,6 +256,20 @@ const cvPaths = JOBS.flatMap((j) => [j.tex, j.pdf]);
 step(3, "同步最新 PDF 到站点仓库");
 const tags = {};
 for (const j of JOBS) {
+  if (!j.site) {
+    ok(`${j.label}：不上传`);
+    for (const p of j.retire || []) {
+      const abs = join(SITE, p);
+      if (existsSync(abs)) {
+        if (DRY) warn(`dry-run：将删除已发布的 ${p}`);
+        else {
+          rmSync(abs);
+          ok(`已撤回不再发布的 ${p}`);
+        }
+      }
+    }
+    continue;
+  }
   const dst = join(SITE, j.site);
   const same = existsSync(dst) && md5(dst) === md5(join(CV, j.pdf));
   tags[j.site] = md5(join(CV, j.pdf)).slice(0, 8);
@@ -272,6 +291,7 @@ for (const f of [CAREER.content, CAREER.template]) {
   let after = before;
   if (opts.bust) {
     for (const j of JOBS) {
+      if (!j.site) continue;
       const tag = tags[j.site];
       // assets/resumes/Resume_EN.pdf  /  带旧 ?v= 的  →  统一改成新 ?v=
       const re = new RegExp(
@@ -302,6 +322,19 @@ for (const f of [CAREER.content, CAREER.template]) {
     ? readFileSync(join(SITE, CAREER.content), "utf8")
     : "";
   for (const j of JOBS) {
+    if (!j.site) {
+      for (const p of j.retire || []) {
+        const name = p.split("/").pop();
+        const still = cont.includes(name) || tpl.includes(name);
+        if (still)
+          warn(
+            `${name} 已不再生成，但页面里还留着指向它的链接（点了会 404）。` +
+              `在 ${CAREER.content} 和 ${CAREER.template} 里删掉对应按钮/key 后重跑`,
+          );
+        else ok(`${name} 已下架，页面无残留入口`);
+      }
+      continue;
+    }
     const name = j.site.split("/").pop();
     const linked = cont.includes(name) || tpl.includes(name);
     if (linked) ok(`${name} 有下载入口`);
@@ -324,13 +357,18 @@ if (touchedContent && !DRY) {
 
 // ---------------- 5. 站点仓库提交 + 推送 ----------------
 step(5, "提交并推送到 GitHub");
+const retired = JOBS.flatMap((j) => (j.site ? [] : j.retire || []));
 const sitePaths = [
-  ...JOBS.map((j) => j.site),
+  ...JOBS.filter((j) => j.site).map((j) => j.site),
+  ...retired,
   CAREER.content,
   CAREER.index,
   CAREER.zh,
   CAREER.template,
-].filter((f, i, a) => existsSync(join(SITE, f)) && a.indexOf(f) === i);
+].filter(
+  (f, i, a) =>
+    (retired.includes(f) || existsSync(join(SITE, f))) && a.indexOf(f) === i,
+);
 {
   const dirty = git(["status", "--porcelain", "--", ...sitePaths]);
   if (dirty) {
@@ -339,9 +377,12 @@ const sitePaths = [
       opts.push = false;
     } else {
       // ① 只看简历相关的文件
-      const pdfPaths = JOBS.map((j) => j.site).filter((f) =>
-        existsSync(join(SITE, f)),
-      );
+      const pdfPaths = [
+        ...JOBS.filter((j) => j.site)
+          .map((j) => j.site)
+          .filter((f) => existsSync(join(SITE, f))),
+        ...retired, // 下架的 PDF 也要进提交，否则删除不会上线
+      ];
       const textPaths = [
         CAREER.content,
         CAREER.index,
@@ -397,13 +438,12 @@ const sitePaths = [
         includeText = a !== "p";
       }
 
-      const commitPaths = includeText
-        ? sitePaths.filter((f) => existsSync(join(SITE, f)))
-        : pdfPaths;
+      const commitPaths = includeText ? sitePaths : pdfPaths; // ⚠ 不能按 existsSync 过滤：已撤回的文件就是要提交它的**删除**
+      const pubLabels = JOBS.filter((j) => j.site).map((j) => j.label);
       const msg =
         opts.msg ||
-        `发布中英文简历 ${new Date().toISOString().slice(0, 10)}${includeText ? "（含待发布页面文案）" : ""}`;
-      git(["add", "--", ...commitPaths]);
+        `发布简历（${pubLabels.join("、") || "仅撤回"}） ${new Date().toISOString().slice(0, 10)}${includeText ? "（含待发布页面文案）" : ""}`;
+      git(["add", "-A", "--", ...commitPaths]); // -A 才会把删除入索引
       git(["commit", "-m", msg, "--", ...commitPaths]);
       ok(`已提交 ${git(["rev-parse", "--short", "HEAD"])} — ${msg}`);
       if (!includeText)
@@ -449,14 +489,17 @@ const sitePaths = [
 
 // ---------------- 6. 线上核对 ----------------
 step(6, "核对线上是否已是新版");
-const urls = JOBS.map((j) => `${PAGES}/${j.site}?v=${tags[j.site]}`);
+const urls = JOBS.filter((j) => j.site).map(
+  (j) => `${PAGES}/${j.site}?v=${tags[j.site]}`,
+);
 log(`  页面：${PAGES}/career/`);
 for (const u of urls) log(`  文件：${u}`);
+for (const p of retired) log(`  已下架：${PAGES}/${p}（应返回 404）`);
 if (!opts.verify || DRY) {
   warn(opts.verify ? "dry-run：跳过核对" : "未核对（--no-verify / --no-push）");
 } else {
   const want = Object.fromEntries(
-    JOBS.map((j) => [j.site, md5(join(CV, j.pdf))]),
+    JOBS.filter((j) => j.site).map((j) => [j.site, md5(join(CV, j.pdf))]),
   );
   const deadline = Date.now() + 300_000;
   const pending = new Set(Object.keys(want));
