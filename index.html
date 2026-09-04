@@ -57,7 +57,7 @@
 
     <div class="filters" data-reveal>
       <button class="chip filter active" data-filter="all" data-i18n="f_all">All</button>
-      <button class="chip filter" data-filter="rr" data-i18n="f_rr">Under Revision</button>
+      <button class="chip filter" data-filter="rr" data-i18n="f_rr">Peer Revision</button>
       <button class="chip filter" data-filter="wp" data-i18n="f_wp">Working Paper</button>
       <button class="chip filter" data-filter="award" data-i18n="f_award">Competition</button>
     </div>
@@ -73,7 +73,7 @@
         <p class="question" data-i18n="p1_q">When local governments attract firms into development zones with tax preferences rather than genuine market agglomeration,
           do <em>households</em> end up paying for the expansion of industry? This paper says yes.</p>
 
-        <div class="s-meta" data-i18n="p1_meta"><span class="lab">Data&nbsp;&nbsp;<span style="background-color: rgba(245, 158, 11, 0.05); color: rgb(90, 98, 112); font-size: 0.86rem; font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">2000–2017 county panel · 2,598 provincial+ zones · 4,455 county-years</span></span><span class="lab">Design&nbsp;&nbsp;<span style="background-color: rgba(245, 158, 11, 0.05); color: rgb(90, 98, 112); font-size: 0.86rem; font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">Staggered DID → CSDID · PSM · event study · Oster δ</span></span></div>
+        <div class="s-meta" data-i18n="p1_meta"><span class="lab">Data：</span> 2000–2017 county panel · 2,598 provincial+ zones · 4,455 county-year observations<span class="lab">Design：</span> Staggered DID → CSDID · PSM · event study · Oster δ</div>
 
         
 
@@ -123,7 +123,7 @@
         <p class="question" data-i18n="p2_q">Density is a production engine but not automatically a consumption engine: cities have integrated migrants into <em>production</em>
           while leaving them outside the arrangements that turn urban location into <em>consumption</em>.</p>
 
-        <div class="s-meta" data-i18n="p2_meta"><span class="lab">Data&nbsp;&nbsp;<span style="background-color: rgba(245, 158, 11, 0.05); color: rgb(90, 98, 112); font-size: 0.86rem; font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">226 cities south of the Hu Line, 2003–2022 (3,131 obs) + CHFS 2017/2019 (19,417 households)</span></span><span class="lab">Design&nbsp;&nbsp;<span style="background-color: rgba(245, 158, 11, 0.05); color: rgb(90, 98, 112); font-size: 0.86rem; font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">TWFE · IV (1820 historical density) · quadratic · 4 hukou-group regressions</span></span></div>
+        <div class="s-meta" data-i18n="p2_meta"><span class="lab">Data</span> 226 cities south of the Hu Line, 2003–2022 (3,131 obs) + CHFS 2017/2019 (19,417 households)<span class="lab">Design</span> TWFE · IV (1820 historical density) · quadratic · 4 hukou-group regressions</div>
 
         
 
@@ -140,44 +140,39 @@
           </figure>
         </div>
 
-        <div class="fig-bars" data-i18n="p2_bars"><p class="fig-title">Supporting micro evidence — response to city tier, by hukou group</p>
-            <div class="bars">
-              <div class="bars-label">Non-housing consumption</div>
+        <div class="fig-bars" data-i18n="p2_bars"><p class="fig-title">Micro evidence (income · housing) and the outcome (non-housing consumption) — response to city tier, by hukou group</p>
+            <div class="bars"><div class="bars-label">Evidence ① Income</div>
+              <div class="bar"><span style="width:91%">Local 0.073–0.080***</span></div>
+              <div class="bar miss"><span style="width:44%">Non-local non-agric. 0.035 (n.s.)</span></div>
+              <div class="bar zero"><span>Non-local agric. −0.043 (n.s.) — no income gain</span></div>
+              <div class="bars-label">Evidence ② Housing consumption</div>
+              <div class="bar"><span style="width:62%">Local 0.079–0.091***</span></div>
+              <div class="bar"><span style="width:100%">Non-local non-agric. 0.128***</span></div>
+              <div class="bar"><span style="width:46%">Non-local agric. 0.059 (n.s.)</span></div>
+            <div class="bars-label">Outcome: Non-housing consumption</div>
               <div class="bar"><span style="width:96%">Local non-agric. 0.071***</span></div>
               <div class="bar"><span style="width:100%">Local agric. 0.074***</span></div>
               <div class="bar"><span style="width:78%">Non-local non-agric. 0.058**</span></div>
               <div class="bar miss"><span style="width:34%">Non-local agric. 0.025 <small>(n.s.)</small></span></div>
-              <div class="bars-label">Income</div>
-              <div class="bar"><span style="width:91%">Local 0.073–0.080***</span></div>
-              <div class="bar miss"><span style="width:44%">Non-local non-agric. 0.035 (n.s.)</span></div>
-              <div class="bar zero"><span>Non-local agric. −0.043 (n.s.) — no income gain</span></div>
-              <div class="bars-label">Housing consumption</div>
-              <div class="bar"><span style="width:62%">Local 0.079–0.091***</span></div>
-              <div class="bar"><span style="width:100%">Non-local non-agric. 0.128***</span></div>
-              <div class="bar"><span style="width:46%">Non-local agric. 0.059 (n.s.)</span></div>
-            </div>
+              </div>
             <p class="fig-title miss-note">Red = the missing dividend: income premiums accrue to local households only (p&lt;0.01) while housing costs rise for everyone — non-local agricultural households pay full price without the premium.</p></div>
 
-        <div class="flow" data-i18n="p2_flow"><div class="flow-box"><b>Population density ↑</b></div>
-          <div class="arrow">→</div>
-          <div class="flow-box mid"><b>Incomplete urbanization</b><br><small>integrated into production, excluded from consumption</small></div>
-          <div class="arrow">→</div>
-          <div class="flow-box bad"><b>Missing consumption dividend</b></div></div>
+        <div class="flow" data-i18n="p2_flow"><div class="flow-box"><b>Population density ↑</b></div> <div class="arrow">→</div> <div class="flow-box mid"><b>Incomplete urbanization</b><br><small>in production, but without its rewards: no wage premium, while housing costs are still paid in full</small></div> <div class="arrow">→</div><div class="flow-box bad"><b>Missing consumption dividend</b><br><small>outcome: non-housing consumption</small></div></div>
 
-        <p class="fig-title" data-i18n="p2_mid">Incomplete urbanization — three channels, each matched with its empirical result</p>
+        <p class="fig-title" data-i18n="p2_mid">Incomplete urbanization — two pieces of evidence (income · housing), one outcome (non-housing consumption)</p>
         <div class="mech" data-i18n="p2_mech"><div class="mech-row">
-            <div class="mech-channel"><b>① Income — labour-market segmentation</b><small>blocks the agglomeration wage premium</small></div>
+            <div class="mech-channel"><b>Evidence ①&nbsp;&nbsp;Income — labour-market segmentation</b><small>blocks the agglomeration wage premium</small></div>
             <div class="mech-arrow">↔</div>
             <div class="mech-evidence">Income rises with city tier for local households only; non-local agricultural households gain nothing (−0.043, n.s.; contrast p = 0.009)</div>
           </div>
           <div class="mech-row">
-            <div class="mech-channel"><b>② Housing — full market exposure</b><small>no public housing or provident-fund access</small></div>
+            <div class="mech-channel"><b>Evidence ②&nbsp;&nbsp;Housing — full market exposure</b><small>no public housing or provident-fund access</small></div>
             <div class="mech-arrow">↔</div>
             <div class="mech-evidence">Housing consumption rises with city tier for every group, including non-local agricultural households (0.059)</div>
           </div>
           <div class="mech-row">
-            <div class="mech-channel"><b>③ Social security — non-portable benefits</b><small>drives precautionary saving</small></div>
-            <div class="mech-arrow">↔</div>
+            <div class="mech-channel"><b>Outcome&nbsp;&nbsp;Non-housing consumption — cannot gain the agglomeration consumption dividend</b><small>dependent variable: consumption has not risen in tandem with population agglomeration</small></div>
+            <div class="mech-arrow">⇒</div>
             <div class="mech-evidence">Non-housing consumption stops responding to city tier for non-local agricultural households (0.025, n.s.)</div>
           </div></div>
 
@@ -199,9 +194,7 @@
         <p class="question" data-i18n="p3_q">Is generative AI an equalizer or a new maker of inequality? Through the lens of <em>skill diversity</em>, the answer is both:
           <b>convergence within occupations, divergence between occupations, and selective equalization of wages</b>.</p>
 
-        <div class="s-meta" data-i18n="p3_meta"><span class="lab">Data</span> 170 cities × 99 occupations × month, 2021.01–2024.12 (~120,000 obs, online job postings)
-          <span class="lab">Design</span> Continuous-treatment DID (ChatGPT, Dec 2022) · mediation · quantile regression
-          <span class="lab">Exposure</span> GPT-4 occupation-level AI exposure index (PKU × Zhaopin)</div>
+        <div class="s-meta" data-i18n="p3_meta"><span class="lab">Data：</span> 170 cities × 99 occupations × month, 2021.01–2024.12 (~120,000 obs, online job postings)<span class="lab">Design：</span> Continuous-treatment DID (ChatGPT, Dec 2022) · mediation · quantile regression<span class="lab">Exposure：</span> GPT-4 occupation-level AI exposure index (PKU × Zhaopin)</div>
 
         
 

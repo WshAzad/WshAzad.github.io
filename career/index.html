@@ -14,7 +14,9 @@
     <a href="#top" class="brand">Shuhan&nbsp;WANG</a>
     <nav class="nav-links" id="navLinks">
       <a href="#about" data-nav="about" data-i18n="nav_about">About</a>
+      <a href="#education" data-nav="education" data-i18n="nav_education">Education</a>
       <a href="#experience" data-nav="experience" data-i18n="nav_exp">Experience</a>
+      <a href="#research" data-nav="research" data-i18n="nav_research">Research</a>
       <a href="#skills" data-nav="skills" data-i18n="nav_skills">Skills</a>
       <a href="#docs" data-nav="docs" data-i18n="nav_docs">CV &amp; Contact</a>
     </nav>
@@ -31,13 +33,16 @@
 
   <!-- ============ Hero ============ -->
   <section class="hero">
-    <div class="hero-main" style="flex:1">
+    <div class="hero-photo" data-reveal>
+      <img src="../assets/photo.png" alt="Photo of Shuhan Wang" class="photo">
+    </div>
+    <div class="hero-main">
       <h1 data-reveal data-i18n="h1">Shuhan WANG</h1>
       <p class="role" data-reveal data-i18n="hero_role">M.A. in Applied Economics (ECUST, exp. Feb 2027) · Job-seeking: Data Analyst · Industry Research · AI-assisted delivery</p>
-      <p class="interests" data-reveal data-i18n="hero_int">Economic analysis meets applied AI — causal inference in Stata/Python · multi-country industry reports · AI-assisted product delivery · bilingual research writing</p>
+      <p class="interests" data-reveal data-i18n="hero_int">Economic analysis meets applied AI — causal inference in Stata/Python · multi-country industry reports · AI-assisted product delivery</p>
       <div class="contact" data-reveal>
         <a class="chip" id="emailChip" href="mailto:20003003@mail.ecust.edu.cn" data-i18n="contact_email">✉ 20003003@mail.ecust.edu.cn</a>
-        <a class="chip" href="assets/resumes/Resume_EN.pdf" download data-i18n="dl_en">⬇ Resume (English)</a>
+        <a class="chip" href="assets/resumes/Resume_EN.pdf" download data-i18n="dl_en">⬇ Resume</a>
         <a class="chip" href="assets/resumes/Resume_CN.pdf" download data-i18n="dl_cn">⬇ 中文简历</a>
         <a class="chip" href="assets/resumes/Cover_Letter_EN.pdf" download data-i18n="dl_cl">Cover Letter</a>
       </div>
@@ -47,22 +52,25 @@
   <!-- ============ About / strengths ============ -->
   <section id="about">
     <h2 class="sec-title" data-reveal data-i18n="sec_about">About</h2>
-    <div class="item card" data-reveal data-i18n="about_1">
-      <p style="margin-top:0">I pair an economist's analytical training with hands-on industry delivery. At Xinhua News Agency's data arm I independently produced country-industry research, built the underlying database of a country risk product, and developed product pages with AI assistance — learning to move between a dataset, a client-facing deliverable, and a code pipeline.</p>
-    </div>
+    <div class="item card" data-reveal data-i18n="about_1"><p style="margin-top:0"><span>I have experience in economic analysis training and industry research delivery: I have worked at the AI Division of the China Economic Information Service under Xinhua News Agency and the East China Branch of the China Academy of Information and Communications Technology (CAICT) on low-level data collection and organization, updating industry dynamic information, and writing </span><span>industry research reports</span><span>, using AI to assist in product page development.</span></p></div>
         <div class="strengths">
-      <div class="card" data-reveal data-i18n="s1">
-        <b>Quantitative &amp; causal analysis</b>
-        <p class="desc">Stata (DID / IV / event study / PSM / CSDID), Python; two papers under major revision at international journals (development zones → household income; agglomeration &amp; hukou → consumption).</p>
-      </div>
-      <div class="card" data-reveal data-i18n="s2">
-        <b>Industry &amp; policy research</b>
-        <p class="desc">17 country-industry reports benchmarked against World Bank / Eurostat / IMF; co-authored a Huawei–CAICT white-paper chapter; city- and county-level panel construction.</p>
-      </div>
-      <div class="card" data-reveal data-i18n="s3">
-        <b>AI-assisted delivery</b>
-        <p class="desc">Generative AI &amp; prompt engineering, Agent/Skill workflows; AI-assisted product-page development (HTML samples); bilingual research writing under deadlines.</p>
-      </div>
+      <div class="card" data-reveal data-i18n="s1"><b>Quantitative &amp; causal analysis</b>
+        <p class="desc">Stata (DID / IV / event study / PSM / CSDID)</p><p class="desc">Python</p></div>
+      <div class="card" data-reveal data-i18n="s2"><b>Industry &amp; policy research<br></b><p class="desc"><span>Organization of m</span>ulti-dimensional country-specific industry information</p><p class="desc">Data collection for indicator systems</p><p class="desc">Writing government special reports and white papers</p></div>
+      <div class="card" data-reveal data-i18n="s3"><b>AI-assisted delivery</b><p class="desc">Generative AI and prompt engineering</p><p class="desc">Agent/Skill workflows</p><p class="desc">AI-assisted product page development (HTML samples)</p></div>
+    </div>
+  </section>
+
+  <!-- ============ Education ============ -->
+  <section id="education">
+    <h2 class="sec-title" data-reveal data-i18n="sec_edu">Education</h2>
+    <div class="item card" data-reveal>
+      <div class="head" data-i18n="edu_h1"><strong>East China University of Science and Technology — M.A. in Applied Economics</strong><span class="when">2024.09 – 2027.02 (expected)</span></div>
+      <div class="sub" data-i18n="edu_m">GPA 3.91/4.00 · Advanced Econometrics (94), Advanced Macro/Microeconomics (91), Urban Economics (94)</div>
+    </div>
+    <div class="item card" data-reveal>
+      <div class="head" data-i18n="edu_h2"><strong>East China University of Science and Technology — B.A. in Economics</strong><span class="when">2020.09 – 2024.07</span></div>
+      <div class="sub" data-i18n="edu_b">GPA 3.79/4.00 · Outstanding Undergraduate Thesis: <em>The Impact of National or Industry Standard Setter Identity on Firm Innovation</em></div>
     </div>
   </section>
 
@@ -72,40 +80,177 @@
 
     <div class="item card" data-reveal>
       <div class="head" data-i18n="e1_head"><strong>Data Product Intern — China Economic Information Service (Xinhua News Agency)</strong><span class="when">2026.06 – Present</span></div>
-      <ul data-i18n="e1_b">
-        <li>Independently handled data collection, writing and proofreading of <b>17 country-industry reports</b> (Poland, Ireland, Luxembourg, Hungary), benchmarked against World Bank / Eurostat / IMF data</li>
-        <li>Built the underlying <b>database of a country risk assessment product</b> against an established indicator framework; continuous retrieval &amp; synthesis of industrial developments to support data-product updates</li>
-        <li><b>AI-assisted product development</b> — built product pages with AI tooling, delivering working HTML samples</li>
-      </ul>
+      <ul data-i18n="e1_b"><li><p class="p1" style="margin: 0px; font-style: normal; font-variant: normal; font-size-adjust: none; font-language-override: normal; font-kerning: auto; font-optical-sizing: auto; font-feature-settings: normal; font-variation-settings: normal; font-stretch: normal; font-size: 16px; line-height: normal; font-family: &quot;Helvetica Neue&quot;; color: rgb(0, 0, 0);">Wrote multidimensional country <b>industry research reports</b></p></li><li><b><p class="p1" style="margin: 0px; font: 400 16px &quot;Helvetica Neue&quot;; color: rgb(0, 0, 0);">Built a <b>foundational database for country-specific risk assessment products</b></p></b></li><li><p class="p1" style="margin: 0px; font: 400 16px &quot;Helvetica Neue&quot;; color: rgb(0, 0, 0);">Retrieved and summarized country-specific industry trends to support data product updates</p></li><li><p class="p1" style="margin: 0px; font: 400 16px &quot;Helvetica Neue&quot;; color: rgb(0, 0, 0);">Generated HTML samples of data products (AI tool assistance)</p></li></ul>
     </div>
 
     <div class="item card" data-reveal>
       <div class="head" data-i18n="e2_head"><strong>Industry Research Intern — AI Department, CAICT East China Branch</strong><span class="when">2024.03 – 2024.08</span></div>
-      <ul data-i18n="e2_b">
-        <li>Co-authored the intelligent-computing talent chapter of the <em>Huawei–CAICT White Paper</em> (tracking AI / large-model industry &amp; talent trends)</li>
-        <li>Drafted the data-infrastructure terminology of the <em>Shanghai New Infrastructure Handbook</em>; consolidated the Yangtze River Delta Digital Economy Work Plan (2023) outcomes report</li>
-      </ul>
+      <ul data-i18n="e2_b"><li>Co-authored the intelligent-computing talent chapter of the <em>Huawei–CAICT White Paper</em> (tracking AI / large-model industry &amp; talent trends)</li>
+        <li>Drafted the data-infrastructure terminology of the <em>Shanghai New Infrastructure Handbook</em>; consolidated the Yangtze River Delta Digital Economy Work Plan (2023) outcomes report</li></ul>
     </div>
 
     <div class="item card" data-reveal>
       <div class="head" data-i18n="e3_head"><strong>Research Assistant — Public Economic Governance Research Center, ECUST</strong><span class="when">2024.09 – Present</span></div>
-      <ul data-i18n="e3_b">
-        <li>Coordinated an academic forum on Chinese modernization; independently built and maintain the center's official website</li>
-      </ul>
+      <ul data-i18n="e3_b"><li>Coordinated an academic forum on Chinese modernization</li><li>Built and maintained the center's official website</li></ul>
     </div>
+  </section>
+
+  <!-- ============ Research ============ -->
+  <section id="research">
+    <h2 class="sec-title" data-reveal data-i18n="sec_research">Research</h2>
+    <div class="item card" data-reveal data-i18n="res_intro"><p style="margin-top:0"><span>Under the guidance of my supervisor, I completed the research process from data collection and model construction to thesis writing, producing two academic papers, which are now in the revision and re submission stage; and I independently conducted a working paper about Gen AI now.</span></p></div>
+
+    <!-- ===== Paper 1: Development zones ===== -->
+    <article class="paper card study" data-tags="award" data-reveal>
+      <div class="p-top">
+        <span class="title" data-expand data-i18n="p1_t">Development Zone Policies, Industrial Agglomeration, and Household Income: Evidence from China</span>
+        <span class="badge rr" data-i18n="b_jrs">R&amp;R · JRS</span>
+      </div>
+
+      <div class="study-body">
+        <p class="question" data-i18n="p1_q">When local governments attract firms into development zones with tax preferences rather than genuine market agglomeration,
+          do <em>households</em> end up paying for the expansion of industry? This paper says yes.</p>
+        <div class="s-meta" data-i18n="p1_meta"><span class="lab">Data：</span> 2000–2017 county panel · 2,598 provincial+ zones · 4,455 county-year observations<div><span class="lab">Design：</span> Staggered DID → CSDID · PSM · event study · Oster δ</div></div>
+        <div class="figs two">
+          <figure>
+            <a href="../assets/research/kfq_event_study_income.png" target="_blank" rel="noopener"><img loading="lazy" src="../assets/research/kfq_event_study_income.png" alt="Event study: dynamic effects of development zones on per capita disposable income"></a>
+            <figcaption data-i18n="p1_cap1">Dynamic effects of zone establishment: no pre-treatment advantage, then a negative effect that sets in from year 0 and <strong>deepens over time</strong>.</figcaption>
+          </figure>
+          <figure>
+            <a href="../assets/research/kfq_mechanism_partial.png" target="_blank" rel="noopener"><img loading="lazy" src="../assets/research/kfq_mechanism_partial.png" alt="Partial correlation: firm output growth vs household income growth in treated counties"></a>
+            <figcaption data-i18n="p1_cap2">Mediation in action: within treated counties, faster firm output growth goes together with <strong>slower household income growth</strong>.</figcaption>
+          </figure>
+        </div>
+        <div class="chan">
+          <div class="chan-title" data-i18n="p1_chant">Attraction mode — <em>how</em> zones pull firms</div>
+          <div class="chan-box ok" data-i18n="p1_chanok"><b>Policy tax preferences</b><span>−0.051***</span><small>significant — the dominant channel</small></div>
+          <div class="chan-vs" data-i18n="p1_chanvs">vs</div>
+          <div class="chan-box dim" data-i18n="p1_chandim"><b>Market agglomeration</b><span>0.032 (n.s.)</span><small>no effect — policy rent, not market clustering</small></div>
+        </div>
+        <div class="flow" data-i18n="p1_flow"><div class="flow-box"><b>Zone establishment</b></div>
+          <div class="arrow">→</div>
+          <div class="flow-box mid">Firm output growth ↑ <b>+7%***</b></div>
+          <div class="arrow">→</div>
+          <div class="flow-box bad"><b>Household income −1.68%***</b></div>
+          <div class="flow-note"><b>Why the Firm Output Growth hurts Household Income:</b> because attraction runs through tax preferences rather than market agglomeration (see above), the firm output expansion may account for fiscal spending on livlihood services — the faster output growth in the treatment counties is, the lower the household income is — there is a negative correlation between firm output expansion and per capita disposable income<span style="background-color: rgb(246, 248, 251);">.</span></div></div>
+        <ul class="s-key" data-i18n="p1_key"><li><b>−1.68%***</b> decline in county per-capita disposable income after zone establishment; robust in CSDID (−1.96%) and PSM (−1.96%).</li>
+          <li><b>Mediator — firm output growth:</b> zones raise above-scale enterprise output growth by <b>+7%***</b>;&nbsp;because attraction is tax-preference-led, fiscal spending flows more toward tax incentives targeting firms, compressing livelihood expenditures that benefit residents — the faster firm output grows, the lower residents' disposable income actually becomes.</li>
+          <li><b>Heterogeneity:</b> fiscal pressure amplifies the loss (high-pressure −8.64%*** vs low-pressure −1.18%*, ≈7×; none in capital cities); the effect concentrates in 2004–06 cleanup cohorts and high-growth counties, and is not a migrant-composition artifact.</li></ul>
+      </div>
+    </article>
+
+    <!-- ===== Paper 2: Agglomeration & hukou ===== -->
+    <article class="paper card study" data-tags="award" data-reveal>
+      <div class="p-top">
+        <a class="title link" data-expand href="https://www.researchsquare.com/article/rs-9354774/v1" target="_blank" rel="noopener" data-i18n="p2_t">Population Agglomeration and the Missing Consumption Dividend: Exclusionary Urbanization and Hukou Segmentation in Chinese Cities ↗</a>
+        <span class="badge rr" data-i18n="b_hssc">R&amp;R · HSSC</span>
+      </div>
+
+      <div class="study-body">
+        <p class="question" data-i18n="p2_q">Density is a production engine but not automatically a consumption engine: cities have integrated migrants into <em>production</em>
+          while leaving them outside the arrangements that turn urban location into <em>consumption</em>.</p>
+        <div class="s-meta" data-i18n="p2_meta"><span class="lab">Data:</span> 226 cities south of the Hu Line, 2003–2022 (3,131 obs) + CHFS 2017/2019 (19,417 households)<div><span class="lab">Design:</span> TWFE · IV (1820 historical density) · quadratic · 4 hukou-group regressions</div></div>
+        <div class="figs two">
+          <figure>
+            <a href="../assets/research/hssc_fig1_tradeoff.png" target="_blank" rel="noopener"><img loading="lazy" src="../assets/research/hssc_fig1_tradeoff.png" alt="Trade-off between agglomeration benefits and costs (conceptual)"></a>
+            <figcaption data-i18n="p2_cap1">Inverted-U logic: diminishing agglomeration benefits vs escalating costs. Estimated turning point ≈ <strong>256 people/km²</strong> — 74.2% of city-year observations lie on the downward segment.</figcaption>
+          </figure>
+          <figure>
+            <a href="../assets/research/hssc_fig2_moderation.png" target="_blank" rel="noopener"><img loading="lazy" src="../assets/research/hssc_fig2_moderation.png" alt="Institutional moderation: in-migrant share shifts the marginal net effect curve"></a>
+            <figcaption data-i18n="p2_cap2">Institutional moderation: where in-migrant shares are higher, the density threshold falls and the net consumption loss widens — exclusion shifts the density–consumption curve.</figcaption>
+          </figure>
+        </div>
+        <div class="fig-bars" data-i18n="p2_bars"><p class="fig-title">Micro evidence (income · housing) and the outcome (non-housing consumption) — response to city tier, by hukou group</p>
+            <div class="bars"><div class="bars-label">Evidence ① Income</div>
+              <div class="bar"><span style="width:91%">Local 0.073–0.080***</span></div>
+              <div class="bar miss"><span style="width:44%">Non-local non-agric. 0.035 (n.s.)</span></div>
+              <div class="bar zero"><span>Non-local agric. −0.043 (n.s.) — no income gain</span></div>
+              <div class="bars-label">Evidence ② Housing consumption</div>
+              <div class="bar"><span style="width:62%">Local 0.079–0.091***</span></div>
+              <div class="bar"><span style="width:100%">Non-local non-agric. 0.128***</span></div>
+              <div class="bar"><span style="width:46%">Non-local agric. 0.059 (n.s.)</span></div>
+            <div class="bars-label">Outcome: Non-housing consumption</div>
+              <div class="bar"><span style="width:96%">Local non-agric. 0.071***</span></div>
+              <div class="bar"><span style="width:100%">Local agric. 0.074***</span></div>
+              <div class="bar"><span style="width:78%">Non-local non-agric. 0.058**</span></div>
+              <div class="bar miss"><span style="width:34%">Non-local agric. 0.025 <small>(n.s.)</small></span></div>
+              </div>
+            <p class="fig-title miss-note">Red = the missing dividend: income premiums accrue to local households only (p&lt;0.01) while housing costs rise for everyone — non-local agricultural households pay full price without the premium.</p></div>
+        <div class="flow" data-i18n="p2_flow"><div class="flow-box"><b>Population density ↑</b></div> <div class="arrow">→</div> <div class="flow-box mid"><b>Incomplete urbanization</b><br><small>in production, but without its rewards: no wage premium, while housing costs are still paid in full</small></div> <div class="arrow">→</div><div class="flow-box bad"><b>Missing consumption dividend</b><br><small>outcome: non-housing consumption</small></div></div>
+        <p class="fig-title" data-i18n="p2_mid">Incomplete urbanization — two pieces of evidence (income · housing), one outcome (non-housing consumption)</p>
+        <div class="mech" data-i18n="p2_mech"><div class="mech-row">
+            <div class="mech-channel"><b>Evidence ①&nbsp;&nbsp;Income — labour-market segmentation</b><small>blocks the agglomeration wage premium</small></div>
+            <div class="mech-arrow">↔</div>
+            <div class="mech-evidence">Income rises with city tier for local households only; non-local agricultural households gain nothing (−0.043, n.s.; contrast p = 0.009)</div>
+          </div>
+          <div class="mech-row">
+            <div class="mech-channel"><b>Evidence ②&nbsp;&nbsp;Housing — full market exposure</b><small>no public housing or provident-fund access</small></div>
+            <div class="mech-arrow">↔</div>
+            <div class="mech-evidence">Housing consumption rises with city tier for every group, including non-local agricultural households (0.059)</div>
+          </div>
+          <div class="mech-row">
+            <div class="mech-channel"><b>Outcome&nbsp;&nbsp;Non-housing consumption — cannot gain the agglomeration consumption dividend</b><small>dependent variable: consumption has not risen in tandem with population agglomeration</small></div>
+            <div class="mech-arrow">⇒</div>
+            <div class="mech-evidence">Non-housing consumption stops responding to city tier for non-local agricultural households (0.025, n.s.)</div>
+          </div></div>
+        <ul class="s-key" data-i18n="p2_key"><li><b>Macro pattern:</b> density–consumption is an inverted U (turning point ≈ 256 people/km²; 74.2% of city-years on the downward segment); linear estimate −0.120%, amplified to <b>−0.694***</b> when density is instrumented by 1820 historical density.</li>
+          <li><b>City-level moderation:</b> the negative density effect strengthens where net in-migrant shares are higher (density × in-migrant share −0.075***) — the institutional imprint of exclusion.</li></ul>
+      </div>
+    </article>
+
+    <!-- ===== Paper 3: Generative AI ===== -->
+    <article class="paper card study" data-tags="award" data-reveal>
+      <div class="p-top">
+        <span class="title" data-expand data-i18n="p3_t">The Impact of Generative AI Exposure on Skill Diversity and Wage Inequality: Evidence from China's City–Occupation Labor Market</span>
+        <span class="badge wp" data-i18n="b_wp">Working Paper</span>
+      </div>
+
+      <div class="study-body">
+        <p class="question" data-i18n="p3_q">Is generative AI an equalizer or a new maker of inequality? Through the lens of <em>skill diversity</em>, the answer is both:
+          <b>convergence within occupations, divergence between occupations, and selective equalization of wages</b>.</p>
+        <div class="s-meta" data-i18n="p3_meta"><span class="lab">Data：</span> 170 cities × 99 occupations × month, 2021.01–2024.12 (~120,000 obs, online job postings)<div><span class="lab">Design：</span> Continuous-treatment DID (ChatGPT, Dec 2022) · mediation · quantile regression</div><div><span class="lab">Exposure：</span> GPT-4 occupation-level AI exposure index (PKU × Zhaopin)</div></div>
+        <div class="flow" data-i18n="p3_flow"><div class="flow-box"><b>GenAI exposure ↑<br><small>(ChatGPT, 12/2022)</small></b></div>
+          <div class="arrow">→</div>
+          <div class="flow-box">General auxiliary skills displaced <small>α₂ −0.009***</small></div>
+          <div class="arrow">→</div>
+          <div class="flow-box bad"><b>Within-occupation diversity ↓ −0.054***</b></div>
+          <div class="arrow">∥</div>
+          <div class="flow-box">Occupation-specific auxiliary skills reshaped</div>
+          <div class="arrow">→</div>
+          <div class="flow-box ok"><b>Between-occupation diversity ↑ +0.172***</b></div>
+          <div class="flow-note">"Convergence within, divergence between" plus selective equalization: the Gini falls −0.041**, with compression driven by lower-end wage gains (p90–p10 gap −0.800**).</div></div>
+        <ul class="s-key" data-i18n="p3_key"><li><b>Convergence-within, divergence-between:</b> within-occupation skill diversity ↓ −0.054*** while between-occupation diversity ↑ +0.172*** after ChatGPT's release.</li>
+          <li><b>Selective equalization:</b> wage Gini ↓ −0.041**; by quantile, +0.116*** (p10) → +0.055*** (p50) → −0.040* (p90).</li>
+          <li><b>Mechanisms:</b> general auxiliary-skill displacement mediates within-occupation convergence; occupation-specific auxiliary-skill expansion mediates between-occupation divergence (bootstrap CIs exclude zero).</li>
+          <li><b>Heterogeneity:</b> between-occupation divergence is strongest in high-GDP cities (Q4: 0.337***); wage equalization is most visible in medium-GDP cities.</li></ul>
+      </div>
+    </article>
+
+    <!-- ===== ICM competition paper ===== -->
+    <article class="paper card study" data-tags="award" data-reveal>
+      <div class="p-top">
+        <span class="title" data-expand data-i18n="icm_t">Regional Development: Both the Creator and Acceptor of Light Pollution</span>
+        <span class="badge award" data-i18n="b_icm">ICM 2023 · Meritorious Winner (Top 13%)</span>
+      </div>
+      <p class="desc" data-i18n="icm_desc">Modeling-competition paper on who creates and who absorbs light pollution in regional development; responsible for framework design, variable construction, and English writing (2011–2019 city panel).</p>
+      <div class="study-body" hidden data-i18n="icm_body"><ul class="s-key">
+          <li><b>Question:</b> regional development is simultaneously the creator and the acceptor of light pollution — the light pollution of developed regions spills over to their neighbors.</li>
+          <li><b>Work:</b> modeling and measurement on a 2011–2019 Chinese prefecture-level panel; framework, variable construction, result interpretation, and English paper writing.</li>
+          <li><b>Recognition:</b> Meritorious Winner (Top 13%), 2023 ICM / MCM.</li>
+        </ul></div>
+    </article>
+
+    <div class="item card" data-reveal data-i18n="res_note"><p style="margin:0"><b>What research contributes to my industry work:</b> the discipline to build a usable dataset out of messy sources, the habit of checking whether a result survives a different identification strategy, and bilingual writing that ships to a deadline.</p></div>
   </section>
 
   <!-- ============ Skills ============ -->
   <section id="skills">
     <h2 class="sec-title" data-reveal data-i18n="sec_skills">Skills</h2>
     <div class="skill-grid">
-      <div class="card" data-reveal data-i18n="sk1"><b>Data &amp; econometrics</b><p class="desc">Stata (causal inference: staggered DID, PSM-DID, IV, event study, Honest-DID) · Python (pandas, analysis, visualization) · long-panel data &amp; database construction</p></div>
-      <div class="card" data-reveal data-i18n="sk2"><b>Industry research</b><p class="desc">Multi-country industry reports · competitive benchmarking · policy review &amp; white papers · data sourcing from official statistics (World Bank, Eurostat, IMF)</p></div>
+      <div class="card" data-reveal data-i18n="sk1"><b>Data &amp; econometrics</b><p class="desc">Stata (causal inference: staggered DID, PSM-DID, IV, event study, Honest-DID) · Python (pandas, analysis, visualization)&nbsp;</p></div>
+      <div class="card" data-reveal data-i18n="sk2"><b>Industry research</b><p class="desc">Multi-country industry reports ·&nbsp; policy review &amp; white papers · data sourcing from official statistics</p></div>
       <div class="card" data-reveal data-i18n="sk3"><b>AI application</b><p class="desc">Generative AI &amp; prompt engineering · Agent/Skill workflows · AI-assisted page development (HTML) · fast learning of new tooling</p></div>
-      <div class="card" data-reveal data-i18n="sk4"><b>Writing &amp; communication</b><p class="desc">Bilingual (EN/CN) research writing · 2 papers under revision · report drafting for internal &amp; client-facing use</p></div>
-    </div>
-    <div class="item card" data-reveal>
-      <div class="head"><strong data-i18n="edu_h">Education: ECUST — M.A. Applied Economics (3.91/4.00); B.A. Economics (3.79/4.00, Outstanding Thesis)</strong></div>
+      <div class="card" data-reveal data-i18n="sk4"><b>Writing &amp; communication</b><p class="desc">Bilingual (EN/CN) research writing · 2 papers under revision · 1 working paper&nbsp;</p></div>
     </div>
   </section>
 
@@ -114,19 +259,17 @@
     <h2 class="sec-title" data-reveal data-i18n="sec_docs">CV &amp; Contact</h2>
     <div class="item card" data-reveal>
       <ul>
-        <li data-i18n="doc_a">📄 <a href="assets/resumes/Resume_EN.pdf" download>Download resume (English)</a> · <a href="assets/resumes/Resume_CN.pdf" download>中文简历</a></li>
-        <li data-i18n="doc_b">💌 <a href="assets/resumes/Cover_Letter_EN.pdf" download>Download cover letter (English)</a></li>
-        <li data-i18n="doc_c">✉ Contact: <a href="mailto:20003003@mail.ecust.edu.cn">20003003@mail.ecust.edu.cn</a> · +86 132 5889 5111</li>
+        <li data-i18n="doc_a"><a href="assets/resumes/Resume_EN.pdf" download="">resume (English)</a> · <a href="assets/resumes/Resume_CN.pdf" download="">中文简历</a></li>
+        <li data-i18n="doc_b"><a href="assets/resumes/Cover_Letter_EN.pdf" download="">cover letter (English)</a></li>
+        <li data-i18n="doc_c">Contact: <a href="mailto:20003003@mail.ecust.edu.cn">20003003@mail.ecust.edu.cn</a> · +86 132 5889 5111</li>
       </ul>
     </div>
     <div class="item card" data-reveal>
-      <p style="margin:0" data-i18n="note">Open to full-time analyst / industry-research / data-product roles from spring 2027; internships welcome. Happy to share code samples, replication materials, or discuss how my toolkit fits your team.</p>
+      <p style="margin:0" data-i18n="note">Open to full-time industry-research / data-product roles from spring 2027; internships welcome.</p>
     </div>
   </section>
 
-  <footer data-i18n="footer">
-    © <span id="year">2026</span> Shuhan Wang · Job profile · <a href="#top">Back to top ↑</a>
-  </footer>
+  <footer data-i18n="footer">© <span id="year">2026</span> Shuhan Wang · Job profile · <a href="#top">Back to top ↑</a></footer>
 </main>
 
 <button id="toTop" class="to-top" title="Back to top" aria-label="Back to top">↑</button>
