@@ -42,12 +42,19 @@
   panel.className = 've-panel';
   panel.style.display = 'none';
   panel.innerHTML = `
-    <span class="ve-hint">编辑模式：直接点击文字修改，保存作用于<span id="veLang"></span>版</span>
+    <span class="ve-hint">✎ 编辑模式：点击文字直接修改，保存作用于<span id="veLang"></span>版</span>
     <button class="ve-undo">撤销</button>
     <button class="ve-save">💾 保存</button>
-    <button class="ve-off">✕ 退出</button>`;
+    <button class="ve-pub">🚀 发布上线</button>
+    <button class="ve-off">✕ 退出</button>
+    <span id="veMsg"></span>`;
   document.body.appendChild(panel);
   const $ = (s) => panel.querySelector(s);
+  const MSG = $('#veMsg');
+  function veMsg(t, ok = true) {
+    MSG.textContent = t;
+    MSG.style.color = ok ? '#16a34a' : '#b91c1c';
+  }
 
   function els() { return [...document.querySelectorAll('[data-i18n]')]; }
   function lang() { return document.documentElement.lang === 'zh' ? 'zh' : 'en'; }
@@ -108,6 +115,16 @@
   $('.ve-save').onclick = saveAll;
   $('.ve-undo').onclick = undo;
   $('.ve-off').onclick = end;
+  $('.ve-pub').onclick = async () => {
+    const b = $('.ve-pub'); b.disabled = true; b.textContent = '发布中…';
+    try {
+      const r = await fetch('/api/publish', { method: 'POST' });
+      const d = await r.json();
+      if (d.ok) { veMsg('✓ 已发布，约 1 分钟后线上生效'); }
+      else { veMsg('发布失败: ' + (d.error || ''), false); }
+    } catch (e) { veMsg('发布失败: ' + e.message, false); }
+    b.disabled = false; b.textContent = '🚀 发布上线';
+  };
   // 语言切换时更新提示
   const lt = document.getElementById('langToggle');
   if (lt) lt.addEventListener('click', () => setTimeout(setHint, 50));

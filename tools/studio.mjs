@@ -38,11 +38,7 @@ const server = createServer(async (req, res) => {
   const url = new URL(req.url, `http://127.0.0.1:${PORT}`);
   const send = (r) => { res.writeHead(r.code, r.headers); res.end(r.body); };
   try {
-    if (req.method === 'GET' && url.pathname === '/') {
-      res.writeHead(200, { 'content-type': 'text/html; charset=utf-8' });
-      return res.end(readFileSync(join(dirname(fileURLToPath(import.meta.url)), 'editor.html')));
-    }
-    if (req.method === 'GET' && url.pathname === '/site') {
+    if (req.method === 'GET' && (url.pathname === '/' || url.pathname === '/site')) {
       let html = readFileSync(join(ROOT, 'index.html'), 'utf8');
       html = html.replace('</body>', '<script src="/edit.js"></script></body>');
       res.writeHead(200, { 'content-type': 'text/html; charset=utf-8' });
@@ -91,4 +87,5 @@ const server = createServer(async (req, res) => {
   } catch (e) { send(j({ error: String(e) }, 500)); }
 });
 
-server.listen(PORT, () => console.log(`\n📝 编辑台: http://127.0.0.1:${PORT}   (Ctrl+C 退出)\n   内容源: content.json（保存即自动重建 index.html 与中文版）\n   发布: 页面“发布到 GitHub”按钮或 git push\n`));
+server.listen(PORT, () => console.log(`\n✎ 主页可视化编辑台: http://127.0.0.1:${PORT}/
+   点页面右下角 “✎ 编辑本页” → 直接改文字 → 💾保存 / 🚀发布 (Ctrl+C 退出)\n`));
