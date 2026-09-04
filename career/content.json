@@ -288,8 +288,8 @@
   "zh": "简历与联系"
  },
  "doc_a": {
-  "en": "<a href=\"assets/resumes/Resume_EN.pdf\" download=\"\">resume (English)</a> · <a href=\"assets/resumes/Resume_CN.pdf\" download=\"\">中文简历</a>",
-  "zh": "<a href=\"assets/resumes/Resume_EN.pdf\" download=\"\">英文简历</a> · <a href=\"assets/resumes/Resume_CN.pdf\" download=\"\">中文简历</a>"
+  "en": "<a href=\"assets/resumes/Resume_EN.pdf?v=d980f240\" download=\"\">resume (English)</a> · <a href=\"assets/resumes/Resume_CN.pdf?v=559e04d1\" download=\"\">中文简历</a>",
+  "zh": "<a href=\"assets/resumes/Resume_EN.pdf?v=d980f240\" download=\"\">英文简历</a> · <a href=\"assets/resumes/Resume_CN.pdf?v=559e04d1\" download=\"\">中文简历</a>"
  },
  "doc_b": {
   "en": "<a href=\"assets/resumes/Cover_Letter_EN.pdf\" download=\"\">cover letter (English)</a>",
