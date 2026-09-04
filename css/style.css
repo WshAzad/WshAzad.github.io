@@ -288,3 +288,4 @@ footer { margin-top: 2.4rem; color: var(--muted); font-size: .85rem; border-top:
   .mech-channel { flex: 1; }
   .mech-arrow { transform: rotate(90deg); text-align: center; }
 }
+.lang-btn { width: auto; padding: 0 .55rem; font-size: .8rem; font-weight: 700; }

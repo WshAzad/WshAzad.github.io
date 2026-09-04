@@ -14,12 +14,13 @@
   <div class="nav-inner">
     <a href="#top" class="brand">Shuhan&nbsp;WANG</a>
     <nav class="nav-links" id="navLinks">
-      <a href="#research" data-nav="research">Research</a>
-      <a href="#education" data-nav="education">Education</a>
-      <a href="#experience" data-nav="experience">Experience</a>
-      <a href="#honors" data-nav="honors">Honors</a>
+      <a href="#research" data-nav="research" data-i18n="nav_research">Research</a>
+      <a href="#education" data-nav="education" data-i18n="nav_education">Education</a>
+      <a href="#experience" data-nav="experience" data-i18n="nav_experience">Experience</a>
+      <a href="#honors" data-nav="honors" data-i18n="nav_honors">Honors</a>
     </nav>
     <div class="nav-actions">
+      <button id="langToggle" class="icon-btn lang-btn" title="Switch language" aria-label="Language">中文</button>
       <button id="themeToggle" class="icon-btn" title="Toggle theme" aria-label="Toggle theme">🌙</button>
       <button id="menuToggle" class="icon-btn menu-btn" title="Menu" aria-label="Menu">☰</button>
     </div>
@@ -36,31 +37,31 @@
     </div>
     <div class="hero-main">
       <h1 data-reveal>Shuhan WANG <span class="cn">王姝涵</span></h1>
-      <p class="role" data-reveal>M.A. Candidate in Applied Economics (Year 2)<br>East China University of Science and Technology, Shanghai</p>
-      <p class="interests" data-reveal>Agglomeration &amp; household welfare · place-based industrial policy · generative AI &amp; labour markets · hukou segmentation · computational social science · quasi-experimental methods</p>
+      <p class="role" data-reveal data-i18n="hero_role">M.A. Candidate in Applied Economics (Year 2)<br>East China University of Science and Technology, Shanghai</p>
+      <p class="interests" data-reveal data-i18n="hero_int">Agglomeration &amp; household welfare · place-based industrial policy · generative AI &amp; labour markets · hukou segmentation · computational social science · quasi-experimental methods</p>
       <div class="contact" data-reveal>
         <a class="chip" id="emailChip" href="mailto:20003003@mail.ecust.edu.cn">✉ 20003003@mail.ecust.edu.cn</a>
         <a class="chip" href="https://github.com/WshAzad" target="_blank" rel="noopener">GitHub</a>
-        <a class="chip" href="assets/CV_Wang_Shuhan.pdf" download>⬇ CV (PDF)</a>
+        <a class="chip" href="assets/CV_Wang_Shuhan.pdf" download data-i18n="cv_chip">⬇ CV (PDF)</a>
       </div>
       <div class="stats" data-reveal>
-        <div class="stat"><span class="num" data-count="2" data-decimals="0">0</span><span class="lbl">R&amp;R Papers</span></div>
-        <div class="stat"><span class="num" data-count="1">0</span><span class="lbl">Working Paper</span></div>
-        <div class="stat"><span class="num" data-count="300" data-suffix="M+">0</span><span class="lbl">Migrants Studied</span></div>
-        <div class="stat"><span class="num" data-count="3.91" data-decimals="2">0</span><span class="lbl">M.A. GPA</span></div>
+        <div class="stat"><span class="num" data-count="2" data-decimals="0">0</span><span class="lbl" data-i18n="st_rr">R&amp;R Papers</span></div>
+        <div class="stat"><span class="num" data-count="1">0</span><span class="lbl" data-i18n="st_wp">Working Paper</span></div>
+        <div class="stat"><span class="num" data-count="300" data-suffix="M+">0</span><span class="lbl" data-i18n="st_mig">Migrants Studied</span></div>
+        <div class="stat"><span class="num" data-count="3.91" data-decimals="2">0</span><span class="lbl" data-i18n="st_gpa">M.A. GPA</span></div>
       </div>
     </div>
   </section>
 
   <!-- ============ Research (three papers, visualized) ============ -->
   <section id="research">
-    <h2 class="sec-title" data-reveal>Research</h2>
+    <h2 class="sec-title" data-reveal data-i18n="sec_research">Research</h2>
 
     <div class="filters" data-reveal>
-      <button class="chip filter active" data-filter="all">All</button>
-      <button class="chip filter" data-filter="rr">Under Revision</button>
-      <button class="chip filter" data-filter="wp">Working Paper</button>
-      <button class="chip filter" data-filter="award">Competition</button>
+      <button class="chip filter active" data-filter="all" data-i18n="f_all">All</button>
+      <button class="chip filter" data-filter="rr" data-i18n="f_rr">Under Revision</button>
+      <button class="chip filter" data-filter="wp" data-i18n="f_wp">Working Paper</button>
+      <button class="chip filter" data-filter="award" data-i18n="f_award">Competition</button>
     </div>
 
     <!-- ===== Paper 1: Development zones ===== -->
@@ -71,36 +72,42 @@
       </div>
 
       <div class="study-body">
-        <p class="question">
+        <p class="question" data-i18n="p1_q">
           When local governments attract firms into development zones with tax preferences rather than genuine market agglomeration,
           do <em>households</em> end up paying for the expansion of industry? This paper says yes.
         </p>
 
-        <div class="s-meta">
+        <div class="s-meta" data-i18n="p1_meta">
           <span class="lab">Data</span> 2000–2017 county panel · 2,598 provincial+ zones · 4,455 county-years
           <span class="lab">Design</span> Staggered DID → CSDID · PSM · event study · Oster δ
           <span class="lab">Status</span> Major revision, JRS
         </div>
 
-        <div class="figs two">
+        
+
+        <p class="abstract" data-i18n="p1_abs">
+          <strong>Abstract —</strong> China's development zones, established to expand industrial capacity, have been a central policy tool of local governments, but their impact on household income remains poorly understood. We construct a three-sector conceptual framework of households, government, and enterprises to examine how development zones affect the growth of per capita disposable income. Using county-level panel data from 2000 to 2017, we find that development zones significantly reduce per capita disposable income by approximately 1.68%. Zones attract firms primarily through policy-induced tax-preference effects rather than market agglomeration. The expansion of above-scale enterprise output partially mediates the negative effects on households. The adverse effect is larger in fiscally pressured counties. These findings highlight the distributional consequences of place-based industrial policies.
+        </p>
+
+<div class="figs two">
           <figure>
             <a href="assets/research/kfq_event_study_income.png" target="_blank" rel="noopener"><img loading="lazy" src="assets/research/kfq_event_study_income.png" alt="Event study: dynamic effects of development zones on per capita disposable income"></a>
-            <figcaption>Dynamic effects of zone establishment: no pre-treatment advantage, then a negative effect that sets in from year 0 and <strong>deepens over time</strong>.</figcaption>
+            <figcaption data-i18n="p1_cap1">Dynamic effects of zone establishment: no pre-treatment advantage, then a negative effect that sets in from year 0 and <strong>deepens over time</strong>.</figcaption>
           </figure>
           <figure>
             <a href="assets/research/kfq_mechanism_partial.png" target="_blank" rel="noopener"><img loading="lazy" src="assets/research/kfq_mechanism_partial.png" alt="Partial correlation: firm output growth vs household income growth in treated counties"></a>
-            <figcaption>Mediation in action: within treated counties, faster firm output growth goes together with <strong>slower household income growth</strong>.</figcaption>
+            <figcaption data-i18n="p1_cap2">Mediation in action: within treated counties, faster firm output growth goes together with <strong>slower household income growth</strong>.</figcaption>
           </figure>
         </div>
 
         <div class="chan">
-          <div class="chan-title">Attraction mode — <em>how</em> zones pull firms</div>
-          <div class="chan-box ok"><b>Policy tax preferences</b><span>−0.051***</span><small>significant — the dominant channel</small></div>
-          <div class="chan-vs">vs</div>
-          <div class="chan-box dim"><b>Market agglomeration</b><span>0.032 (n.s.)</span><small>no effect — policy rent, not market clustering</small></div>
+          <div class="chan-title" data-i18n="p1_chant">Attraction mode — <em>how</em> zones pull firms</div>
+          <div class="chan-box ok" data-i18n="p1_chanok"><b>Policy tax preferences</b><span>−0.051***</span><small>significant — the dominant channel</small></div>
+          <div class="chan-vs" data-i18n="p1_chanvs">vs</div>
+          <div class="chan-box dim" data-i18n="p1_chandim"><b>Market agglomeration</b><span>0.032 (n.s.)</span><small>no effect — policy rent, not market clustering</small></div>
         </div>
 
-        <div class="flow">
+        <div class="flow" data-i18n="p1_flow">
           <div class="flow-box"><b>Zone establishment</b></div>
           <div class="arrow">→</div>
           <div class="flow-box mid">Firm output growth ↑ <b>+7%***</b><br><small>the mediator</small></div>
@@ -109,15 +116,13 @@
           <div class="flow-note"><b>Why the mediator hurts households:</b> because attraction runs through tax preferences rather than market agglomeration (see above), the output expansion carries no wage spillover — within treated counties, faster output growth goes together with slower income growth — so output growth <em>partially mediates</em> the negative household effect.</div>
         </div>
 
-        <ul class="s-key">
+        <ul class="s-key" data-i18n="p1_key">
           <li><b>−1.68%***</b> decline in county per-capita disposable income after zone establishment; robust in CSDID (−1.96%) and PSM (−1.96%).</li>
           <li><b>Mediator — firm output growth:</b> zones raise above-scale enterprise output growth by <b>+7%***</b>; because attraction is tax-preference-led, faster output growth predicts <em>slower</em> income growth within treated counties — output expansion partially mediates the negative effect.</li>
           <li><b>Heterogeneity:</b> fiscal pressure amplifies the loss (high-pressure −8.64%*** vs low-pressure −1.18%*, ≈7×; none in capital cities); the effect concentrates in 2004–06 cleanup cohorts and high-growth counties, and is not a migrant-composition artifact.</li>
         </ul>
 
-        <p class="abstract">
-          <strong>Abstract —</strong> China's development zones, established to expand industrial capacity, have been a central policy tool of local governments, but their impact on household income remains poorly understood. We construct a three-sector conceptual framework of households, government, and enterprises to examine how development zones affect the growth of per capita disposable income. Using county-level panel data from 2000 to 2017, we find that development zones significantly reduce per capita disposable income by approximately 1.68%. Zones attract firms primarily through policy-induced tax-preference effects rather than market agglomeration. The expansion of above-scale enterprise output partially mediates the negative effects on households. The adverse effect is larger in fiscally pressured counties. These findings highlight the distributional consequences of place-based industrial policies.
-        </p>
+        
       </div>
     </article>
 
@@ -129,29 +134,35 @@
       </div>
 
       <div class="study-body">
-        <p class="question">
+        <p class="question" data-i18n="p2_q">
           Density is a production engine but not automatically a consumption engine: cities have integrated migrants into <em>production</em>
           while leaving them outside the arrangements that turn urban location into <em>consumption</em>.
         </p>
 
-        <div class="s-meta">
+        <div class="s-meta" data-i18n="p2_meta">
           <span class="lab">Data</span> 226 cities south of the Hu Line, 2003–2022 (3,131 obs) + CHFS 2017/2019 (19,417 households)
           <span class="lab">Design</span> TWFE · IV (1820 historical density) · quadratic · 4 hukou-group regressions
           <span class="lab">Status</span> Major revision, HSSC · <a href="https://www.researchsquare.com/article/rs-9354774/v1" target="_blank" rel="noopener">Preprint ↗</a>
         </div>
 
-        <div class="figs two">
+        
+
+        <p class="abstract" data-i18n="p2_abs">
+          <strong>Abstract —</strong> Population agglomeration is widely regarded as an engine of growth, yet in China it has coexisted with a persistently low household consumption share. This paper documents a missing consumption dividend of density and traces it to exclusionary urbanization: cities have integrated migrants into production while leaving them partially outside the arrangements that convert urban income and location into consumption. Using a panel of 226 Chinese cities over 2003–2022, the net effect of population density on per-capita consumption follows an inverted U with a turning point near 256 people per km²; roughly three-quarters of city-years lie on the downward-sloping segment, and instrumenting density with historical (1820) density amplifies the negative effect. Household evidence from the CHFS shows the non-housing consumption response to city tier is positive for local-hukou households, weaker for non-local non-agricultural households, and absent for non-local agricultural households — who bear housing costs that rise for everyone while being denied the wage premium that agglomeration generates.
+        </p>
+
+<div class="figs two">
           <figure>
             <a href="assets/research/hssc_fig1_tradeoff.png" target="_blank" rel="noopener"><img loading="lazy" src="assets/research/hssc_fig1_tradeoff.png" alt="Trade-off between agglomeration benefits and costs (conceptual)"></a>
-            <figcaption>Inverted-U logic: diminishing agglomeration benefits vs escalating costs. Estimated turning point ≈ <strong>256 people/km²</strong> — 74.2% of city-years lie on the downward segment.</figcaption>
+            <figcaption data-i18n="p2_cap1">Inverted-U logic: diminishing agglomeration benefits vs escalating costs. Estimated turning point ≈ <strong>256 people/km²</strong> — 74.2% of city-years lie on the downward segment.</figcaption>
           </figure>
           <figure>
             <a href="assets/research/hssc_fig2_moderation.png" target="_blank" rel="noopener"><img loading="lazy" src="assets/research/hssc_fig2_moderation.png" alt="Institutional moderation: in-migrant share shifts the marginal net effect curve"></a>
-            <figcaption>Institutional moderation: where in-migrant shares are higher, the density threshold falls and the net consumption loss widens — exclusion shifts the density–consumption curve.</figcaption>
+            <figcaption data-i18n="p2_cap2">Institutional moderation: where in-migrant shares are higher, the density threshold falls and the net consumption loss widens — exclusion shifts the density–consumption curve.</figcaption>
           </figure>
         </div>
 
-        <div class="fig-bars">
+        <div class="fig-bars" data-i18n="p2_bars">
             <p class="fig-title">Supporting micro evidence — response to city tier, by hukou group</p>
             <div class="bars">
               <div class="bars-label">Non-housing consumption</div>
@@ -171,7 +182,7 @@
             <p class="fig-title miss-note">Red = the missing dividend: income premiums accrue to local households only (p&lt;0.01) while housing costs rise for everyone — non-local agricultural households pay full price without the premium.</p>
         </div>
 
-        <div class="flow">
+        <div class="flow" data-i18n="p2_flow">
           <div class="flow-box"><b>Population density ↑</b></div>
           <div class="arrow">→</div>
           <div class="flow-box mid"><b>Incomplete urbanization</b><br><small>integrated into production, excluded from consumption</small></div>
@@ -180,7 +191,7 @@
         </div>
 
         <p class="fig-title">Incomplete urbanization — three channels, each matched with its empirical result</p>
-        <div class="mech">
+        <div class="mech" data-i18n="p2_mech">
           <div class="mech-row">
             <div class="mech-channel"><b>① Income — labour-market segmentation</b><small>blocks the agglomeration wage premium</small></div>
             <div class="mech-arrow">↔</div>
@@ -198,14 +209,12 @@
           </div>
         </div>
 
-        <ul class="s-key">
+        <ul class="s-key" data-i18n="p2_key">
           <li><b>Macro pattern:</b> density–consumption is an inverted U (turning point ≈ 256 people/km²; 74.2% of city-years on the downward segment); linear estimate −0.120%, amplified to <b>−0.694***</b> when density is instrumented by 1820 historical density.</li>
           <li><b>City-level moderation:</b> the negative density effect strengthens where net in-migrant shares are higher (density × in-migrant share −0.075***) — the institutional imprint of exclusion.</li>
         </ul>
 
-        <p class="abstract">
-          <strong>Abstract —</strong> Population agglomeration is widely regarded as an engine of growth, yet in China it has coexisted with a persistently low household consumption share. This paper documents a missing consumption dividend of density and traces it to exclusionary urbanization: cities have integrated migrants into production while leaving them partially outside the arrangements that convert urban income and location into consumption. Using a panel of 226 Chinese cities over 2003–2022, the net effect of population density on per-capita consumption follows an inverted U with a turning point near 256 people per km²; roughly three-quarters of city-years lie on the downward-sloping segment, and instrumenting density with historical (1820) density amplifies the negative effect. Household evidence from the CHFS shows the non-housing consumption response to city tier is positive for local-hukou households, weaker for non-local non-agricultural households, and absent for non-local agricultural households — who bear housing costs that rise for everyone while being denied the wage premium that agglomeration generates.
-        </p>
+        
       </div>
     </article>
 
@@ -217,18 +226,24 @@
       </div>
 
       <div class="study-body">
-        <p class="question">
+        <p class="question" data-i18n="p3_q">
           Is generative AI an equalizer or a new maker of inequality? Through the lens of <em>skill diversity</em>, the answer is both:
           <b>convergence within occupations, divergence between occupations, and selective equalization of wages</b>.
         </p>
 
-        <div class="s-meta">
+        <div class="s-meta" data-i18n="p3_meta">
           <span class="lab">Data</span> 170 cities × 99 occupations × month, 2021.01–2024.12 (~120,000 obs, online job postings)
           <span class="lab">Design</span> Continuous-treatment DID (ChatGPT, Dec 2022) · mediation · quantile regression
           <span class="lab">Exposure</span> GPT-4 occupation-level AI exposure index (PKU × Zhaopin)
         </div>
 
-        <div class="flow">
+        
+
+        <p class="abstract" data-i18n="p3_abs">
+          <strong>Abstract —</strong> The public release of ChatGPT in December 2022 marked the transition of generative AI from a niche technology to a widely deployable general-purpose tool. Exploiting this quasi-natural experiment, we construct a city × occupation × month panel from January 2021 to December 2024 using job postings from China's major online recruitment platforms, and employ a continuous-treatment difference-in-differences framework to identify the causal effects of generative AI exposure on skill diversity and wage inequality. We find: (1) AI exposure significantly reduces within-occupation skill diversity (β₂ = −0.054, p &lt; 0.001) but increases between-occupation skill diversity (β₂ = 0.172, p &lt; 0.001) after ChatGPT's release, revealing a "convergence-within, divergence-between" dual pattern; (2) the wage Gini coefficient declines with AI exposure (β₂ = −0.041, p = 0.017), but quantile regression reveals this equalizing effect concentrates at lower quantiles while vanishing at higher quantiles, confirming a "selective equalization" hypothesis; (3) mediation analysis shows that general auxiliary skill displacement mediates within-occupation diversity decline, while occupation-specific auxiliary skill expansion mediates between-occupation diversity divergence; (4) spatial heterogeneity indicates effects are most pronounced in high-GDP cities and medium-exposure industries.
+        </p>
+
+<div class="flow" data-i18n="p3_flow">
           <div class="flow-box"><b>GenAI exposure ↑<br><small>(ChatGPT, 12/2022)</small></b></div>
           <div class="arrow">→</div>
           <div class="flow-box">General auxiliary skills displaced <small>α₂ −0.009***</small></div>
@@ -241,16 +256,14 @@
           <div class="flow-note">"Convergence within, divergence between" plus selective equalization: the Gini falls −0.041**, with compression driven by lower-end wage gains (p90–p10 gap −0.800**).</div>
         </div>
 
-        <ul class="s-key">
+        <ul class="s-key" data-i18n="p3_key">
           <li><b>Convergence-within, divergence-between:</b> within-occupation skill diversity ↓ −0.054*** while between-occupation diversity ↑ +0.172*** after ChatGPT's release.</li>
           <li><b>Selective equalization:</b> wage Gini ↓ −0.041**; by quantile, +0.116*** (p10) → +0.055*** (p50) → −0.040* (p90).</li>
           <li><b>Mechanisms:</b> general auxiliary-skill displacement mediates within-occupation convergence; occupation-specific auxiliary-skill expansion mediates between-occupation divergence (bootstrap CIs exclude zero).</li>
           <li><b>Heterogeneity:</b> between-occupation divergence is strongest in high-GDP cities (Q4: 0.337***); wage equalization is most visible in medium-GDP cities.</li>
         </ul>
 
-        <p class="abstract">
-          <strong>Abstract —</strong> The public release of ChatGPT in December 2022 marked the transition of generative AI from a niche technology to a widely deployable general-purpose tool. Exploiting this quasi-natural experiment, we construct a city × occupation × month panel from January 2021 to December 2024 using job postings from China's major online recruitment platforms, and employ a continuous-treatment difference-in-differences framework to identify the causal effects of generative AI exposure on skill diversity and wage inequality. We find: (1) AI exposure significantly reduces within-occupation skill diversity (β₂ = −0.054, p &lt; 0.001) but increases between-occupation skill diversity (β₂ = 0.172, p &lt; 0.001) after ChatGPT's release, revealing a "convergence-within, divergence-between" dual pattern; (2) the wage Gini coefficient declines with AI exposure (β₂ = −0.041, p = 0.017), but quantile regression reveals this equalizing effect concentrates at lower quantiles while vanishing at higher quantiles, confirming a "selective equalization" hypothesis; (3) mediation analysis shows that general auxiliary skill displacement mediates within-occupation diversity decline, while occupation-specific auxiliary skill expansion mediates between-occupation diversity divergence; (4) spatial heterogeneity indicates effects are most pronounced in high-GDP cities and medium-exposure industries.
-        </p>
+        
       </div>
     </article>
 
@@ -260,10 +273,10 @@
         <span class="title" data-expand>Regional Development: Both the Creator and Acceptor of Light Pollution</span>
         <span class="badge award">ICM 2023 · Meritorious Winner (Top 13%)</span>
       </div>
-      <p class="desc">
+      <p class="desc" data-i18n="icm_desc">
         Modeling-competition paper on who creates and who absorbs light pollution in regional development; responsible for framework design, variable construction, and English writing (2011–2019 city panel).
       </p>
-      <div class="study-body" hidden>
+      <div class="study-body" hidden data-i18n="icm_body">
         <ul class="s-key">
           <li><b>Question:</b> regional development is simultaneously the creator and the acceptor of light pollution — the light pollution of developed regions spills over to their neighbors.</li>
           <li><b>Work:</b> modeling and measurement on a 2011–2019 Chinese prefecture-level panel; framework, variable construction, result interpretation, and English paper writing.</li>
@@ -272,9 +285,9 @@
       </div>
     </article>
 
-    <h2 class="sec-title" data-reveal>Proposed PhD Research</h2>
+    <h2 class="sec-title" data-reveal data-i18n="sec_phd">Proposed PhD Research</h2>
     <div class="card phd" data-reveal>
-      <p style="margin-top:0;">
+      <p style="margin-top:0;" data-i18n="phd">
         <strong>Generative AI, Skill Diversity, and Wage Inequality: A Computational Sociological Study of China's Urban Labor Markets.</strong>
         The PhD proposal scales the working-paper agenda into sociology: exploiting ChatGPT's 2022 launch as a quasi-natural experiment to investigate how generative AI restructures skill composition and wage inequality across 170 Chinese cities, with PPMI-based skill co-occurrence measures of within- and between-occupation diversity, integrating economic task models (Autor et al., 2003) with sociological theories of occupational closure (Weeden &amp; Grusky, 2005; Abbott, 1988) and the labor process (Braverman, 1974). Empirical strategy: continuous-treatment DID, mediation analysis, and quantile regression on a city × occupation × month panel (~120,000 observations; Python pipeline complete).
       </p>
@@ -283,23 +296,23 @@
 
   <!-- ============ Education ============ -->
   <section id="education">
-    <h2 class="sec-title" data-reveal>Education</h2>
+    <h2 class="sec-title" data-reveal data-i18n="sec_edu">Education</h2>
     <div class="item card" data-reveal>
       <div class="head"><strong>East China University of Science and Technology — M.A. in Applied Economics</strong><span class="when">2024.09 – 2027.02 (expected)</span></div>
-      <div class="sub">GPA 3.91/4.00 · Advanced Econometrics (94), Advanced Macro/Microeconomics (91), Urban Economics (94)</div>
+      <div class="sub" data-i18n="edu_m">GPA 3.91/4.00 · Advanced Econometrics (94), Advanced Macro/Microeconomics (91), Urban Economics (94)</div>
     </div>
     <div class="item card" data-reveal>
       <div class="head"><strong>East China University of Science and Technology — B.A. in Economics</strong><span class="when">2020.09 – 2024.07</span></div>
-      <div class="sub">GPA 3.79/4.00 · Outstanding Undergraduate Thesis: <em>The Impact of National or Industry Standard Setter Identity on Firm Innovation</em></div>
+      <div class="sub" data-i18n="edu_b">GPA 3.79/4.00 · Outstanding Undergraduate Thesis: <em>The Impact of National or Industry Standard Setter Identity on Firm Innovation</em></div>
     </div>
   </section>
 
   <!-- ============ Experience ============ -->
   <section id="experience">
-    <h2 class="sec-title" data-reveal>Experience</h2>
+    <h2 class="sec-title" data-reveal data-i18n="sec_exp">Experience</h2>
     <div class="item card" data-reveal>
       <div class="head"><strong>Data Product Intern — China Economic Information Service (Xinhua News Agency)</strong><span class="when">2026.06 – Present</span></div>
-      <ul>
+      <ul data-i18n="exp_1">
         <li>Independent data collection, writing, and proofreading of 17 country-industry reports (Poland, Ireland, Luxembourg, Hungary), benchmarked against World Bank, Eurostat, and IMF data</li>
         <li>Built the underlying database of a country risk assessment product from an established indicator framework; ongoing retrieval and synthesis of industrial developments to support dynamic data-product updates</li>
         <li>AI-assisted development of product pages (HTML samples)</li>
@@ -307,22 +320,22 @@
     </div>
     <div class="item card" data-reveal>
       <div class="head"><strong>Industry Research Intern — AI Department, CAICT East China Branch</strong><span class="when">2024.03 – 2024.08</span></div>
-      <ul>
+      <ul data-i18n="exp_2">
         <li>Co-authored the intelligent-computing talent chapter of the Huawei–CAICT <em>White Paper on Intelligent Computing and Large Model Talent</em></li>
         <li>Assisted in drafting the data infrastructure section of the Shanghai New Infrastructure Handbook; consolidated the Yangtze River Delta Digital Economy Work Plan (2023) outcomes report</li>
       </ul>
     </div>
     <div class="item card" data-reveal>
       <div class="head"><strong>Research Assistant — Public Economic Governance Research Center, ECUST</strong><span class="when">2024.09 – Present</span></div>
-      <ul><li>Coordinated the Chinese-Style Modernization Academic Forum; built and maintain the center's official website</li></ul>
+      <ul data-i18n="exp_3"><li>Coordinated the Chinese-Style Modernization Academic Forum; built and maintain the center's official website</li></ul>
     </div>
   </section>
 
   <!-- ============ Honors ============ -->
   <section id="honors">
-    <h2 class="sec-title" data-reveal>Honors</h2>
+    <h2 class="sec-title" data-reveal data-i18n="sec_hon">Honors</h2>
     <div class="item card" data-reveal>
-      <ul>
+      <ul data-i18n="hon_l">
         <li>Third Prize, 5th National College Student Development Economics Paper Competition (2025)</li>
         <li>First-Class Graduate Academic Scholarship; Outstanding Scholarship (Special Prize), ECUST (2024)</li>
         <li>Outstanding Graduate of Shanghai Municipality (2024)</li>
@@ -331,7 +344,7 @@
     </div>
   </section>
 
-  <footer>
+  <footer data-i18n="footer">
     © <span id="year">2026</span> Shuhan Wang · Built with plain HTML/CSS/JS · <a href="#top">Back to top ↑</a>
   </footer>
 </main>
@@ -339,6 +352,7 @@
 <button id="toTop" class="to-top" title="Back to top" aria-label="Back to top">↑</button>
 <div id="toast" class="toast" hidden></div>
 
+<script src="js/zh-i18n.js"></script>
 <script src="js/app.js"></script>
 </body>
 </html>

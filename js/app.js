@@ -18,6 +18,36 @@
   const $$ = (s, c) => Array.from((c || document).querySelectorAll(s));
   const on = (el, ev, fn, opts) => el.addEventListener(ev, fn, opts);
 
+  /* ---------- 0. 语言切换 (EN / 中文) ---------- */
+  const langBtn = $("#langToggle");
+  let lang = localStorage.getItem("lang") || "en";
+  function setYear() {
+    const y = $("#year");
+    if (y) y.textContent = new Date().getFullYear();
+  }
+  function applyLang(l) {
+    lang = l;
+    document.documentElement.setAttribute("lang", l);
+    document.querySelectorAll("[data-i18n]").forEach((el) => {
+      if (l === "zh") {
+        if (el.dataset.enHtml === undefined) el.dataset.enHtml = el.innerHTML;
+        const t = (window.I18N_ZH || {})[el.dataset.i18n];
+        el.innerHTML = t !== undefined ? t : el.dataset.enHtml;
+      } else if (el.dataset.enHtml !== undefined) {
+        el.innerHTML = el.dataset.enHtml;
+      }
+    });
+    document.title =
+      l === "zh"
+        ? "Shuhan WANG｜研究主页"
+        : "Shuhan WANG | Research — Agglomeration, Place-Based Policy & Generative AI";
+    if (langBtn) langBtn.textContent = l === "zh" ? "EN" : "中文";
+    setYear();
+    localStorage.setItem("lang", l);
+  }
+  applyLang(lang);
+  if (langBtn) on(langBtn, "click", () => applyLang(lang === "zh" ? "en" : "zh"));
+
   /* ---------- 1. 主题切换 ---------- */
   const root = document.documentElement;
   const themeBtn = $("#themeToggle");
@@ -179,7 +209,5 @@
     if (e.key === "Escape") navLinks.classList.remove("open");
   });
 
-  /* ---------- Footer year ---------- */
-  const yr = $("#year");
-  if (yr) yr.textContent = new Date().getFullYear();
+  /* ---------- 页脚年份（由语言模块的 setYear 维护） ---------- */
 })();
