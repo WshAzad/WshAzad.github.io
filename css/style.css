@@ -225,10 +225,11 @@ footer { margin-top: 2.4rem; color: var(--muted); font-size: .85rem; border-top:
 .bar { height: 1.45rem; margin-bottom: .2rem; position: relative; }
 .bar span {
   display: flex; align-items: center; padding: 0 .6rem; height: 100%; font-size: .74rem;
-  background: linear-gradient(90deg, var(--accent), color-mix(in srgb, var(--accent) 60%, #22d3ee));
-  color: #fff; border-radius: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 40px;
+  background: linear-gradient(90deg, color-mix(in srgb, var(--accent) 45%, #fff), color-mix(in srgb, var(--accent) 60%, #22d3ee));
+  color: #111; font-weight: 600; border-radius: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 40px;
+  text-shadow: 0 0 3px rgba(255,255,255,.65), 0 0 1px rgba(255,255,255,.9);
 }
-.bar.miss span { background: linear-gradient(90deg, #dc2626, #f59e0b); }
+.bar.miss span { background: linear-gradient(90deg, #e04a3f, #f7b955); color:#111; font-weight:600; text-shadow: 0 0 3px rgba(255,255,255,.65); }
 .miss-note { color: #b91c1c; }
 [data-theme="dark"] .miss-note { color: #f59e0b; }
 .s-key { margin: .5rem 0 0; padding-left: 1.2rem; font-size: .94rem; }
