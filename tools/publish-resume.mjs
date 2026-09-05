@@ -2,9 +2,9 @@
 // ============================================================
 // publish-resume.mjs — 简历一键「编译 + 提交 + 上线」
 //
-//   一条命令走完 6 步：
-//     1) 编译 ~/Desktop/CV 里的中英文简历 .tex（latexmk -xelatex）
-//     2) 在 CV 仓库提交这两个 .tex + 两个 .pdf（只提交这四个文件）
+//   一条命令走完 6 步（英文简历 + 英文求职信一起）：
+//     1) 编译 ~/Desktop/CV 里的 .tex（latexmk -xelatex）
+//     2) 在 CV 仓库提交这些 .tex + .pdf（只提交这几个文件）
 //     3) 把最新 PDF 拷进本站 career/assets/resumes/
 //     4) 给下载链接加 ?v=<内容哈希> 破缓存（HR 拿到的一定是新版）
 //     5) 重建 career 页面 + 提交 + pull --rebase + push
@@ -54,6 +54,13 @@ const JOBS = [
     tex: "Resume_General_EN_Wang_Shuhan.tex",
     pdf: "Resume_General_EN_Wang_Shuhan.pdf",
     site: "career/assets/resumes/Resume_EN.pdf",
+  },
+  {
+    // 求职信：跟简历同一条链路（编译 → 覆盖 → 入口加 ?v= 破缓存 → 提交 → push → 校 md5）
+    label: "英文求职信",
+    tex: "Cover_Letter_General_EN_Wang_Shuhan.tex",
+    pdf: "Cover_Letter_General_EN_Wang_Shuhan.pdf",
+    site: "career/assets/resumes/Cover_Letter_EN.pdf",
   },
   {
     // site: null = 只在本地编译+提交留痕，**不发布**；retire 里的路径一旦出现会被删掉

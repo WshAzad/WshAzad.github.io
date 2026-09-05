@@ -12,12 +12,7 @@ import { readFileSync, writeFileSync, existsSync } from "node:fs";
 import { execFileSync, execFile } from "node:child_process";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
-import {
-  readTheme,
-  render,
-  resetTheme,
-  writeTheme,
-} from "./build.mjs";
+import { readTheme, render, resetTheme, writeTheme } from "./build.mjs";
 import {
   FONT_PRESETS,
   THEME_DEFAULTS,
@@ -255,7 +250,11 @@ const server = createServer(async (req, res) => {
       // 只提本站 + 仓库根共享图：/api/upload 会把 career 里引用的共享研究图写到 REPO/assets，
       // 以前只 add ROOT 子树 → 图没上去但 UI 说「已发布」（静默假成功）
       const rel = (p) =>
-        p === REPO ? "." : p.startsWith(REPO + "/") ? p.slice(REPO.length + 1) : p;
+        p === REPO
+          ? "."
+          : p.startsWith(REPO + "/")
+            ? p.slice(REPO.length + 1)
+            : p;
       const stage = [...new Set([rel(ROOT), "assets"])];
       const dirtyCount = execFileSync(
         "git",
@@ -263,16 +262,17 @@ const server = createServer(async (req, res) => {
         { cwd: REPO },
       )
         .toString()
-        .split("\n").filter(Boolean).length;
+        .split("\n")
+        .filter(Boolean).length;
       let ahead = 0;
       try {
         ahead =
           Number(
-            execFileSync(
-              "git",
-              ["rev-list", "--count", "origin/main..HEAD"],
-              { cwd: REPO },
-            ).toString().trim(),
+            execFileSync("git", ["rev-list", "--count", "origin/main..HEAD"], {
+              cwd: REPO,
+            })
+              .toString()
+              .trim(),
           ) || 0;
       } catch {
         ahead = 0; // 还没有 origin/main 引用 → 当作有东西要推
@@ -281,7 +281,10 @@ const server = createServer(async (req, res) => {
       if (dirtyCount) {
         try {
           execFileSync("git", ["add", "-A", "--", ...stage], { cwd: REPO });
-          execFileSync("git", ["commit", "-m", msg], { cwd: REPO, stdio: "pipe" });
+          execFileSync("git", ["commit", "-m", msg], {
+            cwd: REPO,
+            stdio: "pipe",
+          });
           committed = true;
         } catch (e) {
           const out = String(e.stdout || "") + String(e.stderr || "");

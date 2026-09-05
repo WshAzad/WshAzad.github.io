@@ -20,7 +20,16 @@
 
   /* ---------- 0. 语言切换 (EN / 中文) ---------- */
   const langBtn = $("#langToggle");
-  let lang = localStorage.getItem("lang") || "en";
+  // 默认永远英文：只有 ?lang=zh 或本标签页里刚切过中文才显示中文。
+  // 以前用 localStorage 永久记住，谁误点一次「中文」，之后每次打开都是中文。
+  const normLang = (l) => (l === "zh" || l === "en" ? l : null);
+  let lang =
+    normLang(new URLSearchParams(location.search).get("lang")) ||
+    normLang(sessionStorage.getItem("lang")) ||
+    "en";
+  try {
+    localStorage.removeItem("lang"); // 抹掉历史残留
+  } catch {}
   function setYear() {
     const y = $("#year");
     if (y) y.textContent = new Date().getFullYear();
@@ -43,7 +52,9 @@
         : "Shuhan WANG | Research — Agglomeration, Place-Based Policy & Generative AI";
     if (langBtn) langBtn.textContent = l === "zh" ? "EN" : "中文";
     setYear();
-    localStorage.setItem("lang", l);
+    try {
+      sessionStorage.setItem("lang", l); // 只在当前标签页内记住
+    } catch {}
   }
   applyLang(lang);
   if (langBtn) on(langBtn, "click", () => applyLang(lang === "zh" ? "en" : "zh"));

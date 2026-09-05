@@ -217,7 +217,9 @@
 	// 只把「跟打开时不一样」的 key 写回 content.json（未 ✘ 保存的文字也算进去）
 	async function saveChanged(lg) {
 		const cur = lg === "zh" ? "zh" : "en";
-		const byKey = Object.fromEntries((snap?.list || []).map((it) => [it.key, it]));
+		const byKey = Object.fromEntries(
+			(snap?.list || []).map((it) => [it.key, it]),
+		);
 		let n = 0;
 		for (const el of els()) {
 			const html = el.innerHTML.trim();
@@ -278,7 +280,7 @@
 	// 面板标签是模板拼接，全部过一遂转义（数据源是本地 theme.json / tools/theme.mjs）
 	const esc = (s) =>
 		String(s).replace(
-			/[&<>\""]/g,
+			/[&<>""]/g,
 			(c) =>
 				({
 					"&": "&amp;",
@@ -302,8 +304,7 @@
 		const px = Math.round(16 * (vals.fs_root_pct / 100) * 10) / 10;
 		const cur = ty.querySelector(".ve-ty-cur");
 		if (cur)
-			cur.textContent =
-				`当前：1rem = ${px}px・正文 ${vals.lh_body} 行距・版心 ${vals.wrap_max_px}px`;
+			cur.textContent = `当前：1rem = ${px}px・正文 ${vals.lh_body} 行距・版心 ${vals.wrap_max_px}px`;
 	}
 
 	async function tyOpen() {
@@ -382,7 +383,10 @@
 					if (!d.ok) throw new Error(d.error || "save fail");
 					dirty = false;
 					TY.theme = d.theme;
-					tySay("✓ 已保存到 theme.json，并重生 css/theme.css——点 🚀 发布才上线", true);
+					tySay(
+						"✓ 已保存到 theme.json，并重生 css/theme.css——点 🚀 发布才上线",
+						true,
+					);
 				} catch (err) {
 					tySay("保存失败: " + err.message, false);
 				}
