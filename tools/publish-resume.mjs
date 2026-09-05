@@ -22,8 +22,8 @@
 //     node tools/publish-resume.mjs --no-verify     # 推完就走，不等部署
 //
 //   只碰简历相关文件；站点里其他未提交改动一律不动（会提示你有几个）。
-//   中文简历：site: null → 本地照常编译提交，但**不上传**；已传上去的按 retire 删掉。
-//   要恢复发布：把那条 job 的 site 填回 career/assets/resumes/Resume_CN.pdf、删掉 retire。
+//   中文简历：2026-09-05 恢复发布（页面入口在 career/content.json 的 doc_a，链接版本号由 step 4 自动补）。
+//   某条 job 若只想本地留痕不发布：site 写 null + retire 列出已传上去的路径（出现即被删）。
 //   ⚠ content.json / index.html 是整体生成物：改简历链接和改文案在同一个文件里，
 //     拆不开。所以 step 5 会问你「文案改动要不要一起上线」（--yes / --pdf-only 免提问）。
 // ============================================================
@@ -63,12 +63,11 @@ const JOBS = [
     site: "career/assets/resumes/Cover_Letter_EN.pdf",
   },
   {
-    // site: null = 只在本地编译+提交留痕，**不发布**；retire 里的路径一旦出现会被删掉
-    label: "中文简历（仅本地，2026-09-04 停止发布）",
+    // 2026-09-05 恢复发布。若要回到「只本地留痕」：site 改 null 并加 retire: ["career/assets/resumes/Resume_CN.pdf"]
+    label: "中文简历",
     tex: "Resume_General_CN_Wang_Shuhan.tex",
     pdf: "Resume_General_CN_Wang_Shuhan.pdf",
-    site: null,
-    retire: ["career/assets/resumes/Resume_CN.pdf"],
+    site: "career/assets/resumes/Resume_CN.pdf",
   },
 ];
 
