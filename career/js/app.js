@@ -11,9 +11,7 @@
    9. Mobile menu
    ===================================================================== */
 
-(function () {
-  "use strict";
-
+(() => {
   const $ = (s, c) => (c || document).querySelector(s);
   const $$ = (s, c) => Array.from((c || document).querySelectorAll(s));
   const on = (el, ev, fn, opts) => el.addEventListener(ev, fn, opts);
@@ -41,7 +39,7 @@
       if (l === "zh") {
         if (el.dataset.enHtml === undefined) el.dataset.enHtml = el.innerHTML;
         const t = (window.I18N_ZH || {})[el.dataset.i18n];
-        el.innerHTML = t !== undefined ? t : el.dataset.enHtml;
+        el.innerHTML = t === undefined ? el.dataset.enHtml : t;
       } else if (el.dataset.enHtml !== undefined) {
         el.innerHTML = el.dataset.enHtml;
       }
@@ -202,7 +200,7 @@
         const t0 = performance.now();
         (function tick(t) {
           const p = Math.min(1, (t - t0) / dur);
-          const eased = 1 - Math.pow(1 - p, 3); // easeOutCubic
+          const eased = 1 - (1 - p) ** 3; // easeOutCubic
           el.textContent = (target * eased).toFixed(dec) + suffix;
           if (p < 1) requestAnimationFrame(tick);
           else el.textContent = target.toFixed(dec) + suffix;

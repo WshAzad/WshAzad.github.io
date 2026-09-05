@@ -6,7 +6,7 @@ window.I18N_ZH = {
   "nav_research": "研究",
   "nav_skills": "技能",
   "nav_docs": "简历与联系",
-  "h1": "Shuhan WANG",
+  "h1": "王姝涵",
   "hero_role": "应用经济学硕士（华东理工，2027.02 毕业）· 求职方向：产业研究 · AI 应用交付",
   "hero_int": "经济学分析 × AI 应用 —— Stata/Python 因果推断 · 多国产业报告 · AI 辅助产品交付",
   "contact_email": "✉ 20003003@mail.ecust.edu.cn",
