@@ -4,7 +4,7 @@ window.I18N_ZH = {
   "nav_education": "教育背景",
   "nav_experience": "实践经历",
   "nav_honors": "荣誉",
-  "hero_role": "应用经济学 硕士在读（研二）<br>华东理工大学 · 上海",
+  "hero_role": "应用经济学 硕士在读（2027年 2月 毕业）<br>华东理工大学 · 上海",
   "hero_int": "集聚与家庭福利 · 地方产业政策 · 生成式AI与劳动力市场 · 户籍分割 · 准实验方法",
   "cv_chip": "⬇ 下载简历 (PDF)",
   "st_rr": "期刊修改中",
