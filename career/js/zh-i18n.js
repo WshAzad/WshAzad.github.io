@@ -69,7 +69,7 @@ window.I18N_ZH = {
   "sk1": "<b>数据与计量</b><p class=\"desc\">Stata（因果推断：交错 DID、PSM-DID、IV、事件研究、Honest-DID）· Python（分析与可视化）· 长面板数据与数据库构建</p>",
   "sk2": "<b>产业研究</b><p class=\"desc\">多国产业报告 · 政策梳理与白皮书写作 · 官方统计数据库检索（世界银行、欧盟统计局、IMF）</p>",
   "sk3": "<b>AI 应用</b><p class=\"desc\">生成式AI与提示词工程 · Agent/Skill 工作流 · AI 辅助页面开发（HTML）· 快速上手新工具</p>",
-  "sk4": "<b>写作与沟通</b><p class=\"desc\">中英双语研究写作 · 2 篇论文修改再审中 · 1篇工作论文进行中</p>",
+  "sk4": "<b>写作</b><p class=\"desc\">中英双语研究写作 · 2 篇论文修改再审中 · 1篇工作论文进行中</p>",
   "sec_docs": "简历与联系",
   "doc_a": "<a href=\"assets/resumes/Resume_EN.pdf?v=f9b12c99\" download=\"\">英文简历</a>",
   "doc_b": "<a href=\"assets/resumes/Cover_Letter_EN.pdf\" download=\"\">求职信（英文）</a>",
