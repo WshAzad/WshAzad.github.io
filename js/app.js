@@ -57,7 +57,8 @@
     } catch {}
   }
   applyLang(lang);
-  if (langBtn) on(langBtn, "click", () => applyLang(lang === "zh" ? "en" : "zh"));
+  if (langBtn)
+    on(langBtn, "click", () => applyLang(lang === "zh" ? "en" : "zh"));
 
   /* ---------- 1. 主题切换 ---------- */
   const root = document.documentElement;
@@ -70,7 +71,8 @@
     theme = t;
     root.setAttribute("data-theme", t);
     themeBtn.textContent = t === "dark" ? "☀️" : "🌙";
-    themeBtn.title = t === "dark" ? "Switch to light mode" : "Switch to dark mode";
+    themeBtn.title =
+      t === "dark" ? "Switch to light mode" : "Switch to dark mode";
     localStorage.setItem("theme", t);
   }
   applyTheme(theme);
@@ -79,7 +81,9 @@
   /* ---------- 2. 进度条 + 导航高亮 ---------- */
   const bar = $("#progressBar");
   const sections = $$("main section[id]");
-  const navMap = new Map($$(".nav-links a[data-nav]").map((a) => [a.dataset.nav, a]));
+  const navMap = new Map(
+    $$(".nav-links a[data-nav]").map((a) => [a.dataset.nav, a]),
+  );
 
   function onScroll() {
     const h = document.documentElement;
@@ -100,7 +104,7 @@
         }
       });
     },
-    { rootMargin: "-40% 0px -55% 0px" }
+    { rootMargin: "-40% 0px -55% 0px" },
   );
   sections.forEach((s) => secObs.observe(s));
 
@@ -116,7 +120,7 @@
           }
         });
       },
-      { threshold: 0.12 }
+      { threshold: 0.12 },
     );
     revealEls.forEach((el) => io.observe(el));
   } else {
@@ -136,14 +140,17 @@
         p.style.display = show ? "" : "none";
         if (show) p.classList.add("in"); // 确保重新显示时可见
       });
-    })
+    }),
   );
 
   /* ---------- 5. Study cards: expand/collapse body or abstract ---------- */
   $$(".title[data-expand]").forEach((title) =>
     on(title, "click", (e) => {
       const paper = title.closest(".paper");
-      const target = paper && (paper.querySelector(".study-body") || paper.querySelector(".abstract"));
+      const target =
+        paper &&
+        (paper.querySelector(".study-body") ||
+          paper.querySelector(".abstract"));
       if (!target) return;
       if (target.hidden) {
         target.hidden = false;
@@ -154,7 +161,7 @@
       }
       // 标题若是外链（preprint），展开时不跳转；跳转走 p-meta / s-meta 里的链接
       if (title.tagName === "A") e.preventDefault();
-    })
+    }),
   );
 
   /* ---------- 6. Copy email ---------- */
@@ -202,12 +209,14 @@
         })(t0);
       });
     },
-    { threshold: 0.6 }
+    { threshold: 0.6 },
   );
   nums.forEach((n) => countObs.observe(n));
 
   /* ---------- 8. Back to top ---------- */
-  on($("#toTop"), "click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+  on($("#toTop"), "click", () =>
+    window.scrollTo({ top: 0, behavior: "smooth" }),
+  );
 
   /* ---------- 9. Mobile menu ---------- */
   const navLinks = $("#navLinks");
