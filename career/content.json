@@ -201,7 +201,7 @@
  },
  "p2_flow": {
   "en": "<div class=\"flow-box\"><b>Population density ↑</b></div> <div class=\"arrow\">→</div> <div class=\"flow-box mid\"><b>Incomplete urbanization</b><small>Agricultural migrants are&nbsp;&nbsp;<span style=\"color: rgb(90, 98, 112); font-size: 0.74rem;\">integrated in urban production system, but without its rewards: no wage premium, while housing costs are still paid in full</span></small></div> <div class=\"arrow\">→</div><div class=\"flow-box bad\"><b>Missing consumption dividend</b><small>Non-housing consumption of non-local agricultrual households don't rise with population agglomeration</small></div>",
-  "zh": "<div class=\"flow-box\"><b>人口密度 ↑</b></div><div class=\"arrow\">→</div><div class=\"flow-box mid\"><b>不完整的城市化</b><small>被整合进城市生产体系，却拿不到城市收益：工资无溢价<br>且躲不开城市成本：住房照付全价<br>最终无法获得集聚带来的消费红利</small></div><div class=\"arrow\">→</div><div class=\"flow-box bad\"><b>缺失的消费红利</b><br><small>结果：非住房消费不再响应城市等级</small></div>"
+  "zh": "<div class=\"flow-box\"><b>人口密度 ↑</b></div><div class=\"arrow\">→</div><div class=\"flow-box mid\"><b>不完整的城市化</b><small>农民工被整合进城市生产体系，却拿不到城市收益：工资无溢价<br>且躲不开城市成本：住房照付全价<br>最终无法获得集聚带来的消费红利</small></div><div class=\"arrow\">→</div><div class=\"flow-box bad\"><b>缺失的消费红利</b><small>结果：非本地农业家庭的非住房消费不响应城市等级</small></div>"
  },
  "p2_mid": {
   "en": "Incomplete urbanization — two pieces of evidence (income · housing), one outcome (non-housing consumption)",
