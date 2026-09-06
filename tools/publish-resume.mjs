@@ -2,8 +2,8 @@
 // ============================================================
 // publish-resume.mjs — 简历一键「编译 + 提交 + 上线」
 //
-//   一条命令走完 6 步（英文简历 + 英文求职信一起）：
-//     1) 编译 ~/Desktop/CV 里的 .tex（latexmk -xelatex）
+//   一条命令走完 6 步（默认**不跑 latex**：上线的就是你手上现成的 PDF）：
+//     1) 查 PDF 新不新（.tex 比 PDF 新才提醒你，要脚本代劳加 --compile，且只编译变了的那几份）
 //     2) 在 CV 仓库提交这些 .tex + .pdf（只提交这几个文件）
 //     3) 把最新 PDF 拷进本站 career/assets/resumes/
 //     4) 给下载链接加 ?v=<内容哈希> 破缓存（HR 拿到的一定是新版）
@@ -13,8 +13,9 @@
 //   用法（仓库根执行，或直接双击桌面「发布简历.command」）：
 //     node tools/publish-resume.mjs                 # 全流程
 //     node tools/publish-resume.mjs --dry-run       # 只演一遍，不写不推
-//     node tools/publish-resume.mjs --no-push       # 编译+提交到本地，先不上线
-//     node tools/publish-resume.mjs --no-compile    # 用现有 PDF 直接发布
+//     node tools/publish-resume.mjs --no-push       # 本地留痕，先不上线
+//     node tools/publish-resume.mjs --compile       # 让脚本跑一次 latexmk（默认不编译；且只编译 .tex 变新的）
+//     node tools/publish-resume.mjs --no-clean      # 发布完不要把编译中间文件扫走
 //     node tools/publish-resume.mjs --no-bust       # 不改链接版本号
 //     node tools/publish-resume.mjs --msg "补 CET-4" # 自定义提交说明
 //     node tools/publish-resume.mjs --yes          # 不提问：文案改动跟简历一起上线
@@ -35,6 +36,7 @@ import {
   copyFileSync,
   statSync,
   rmSync,
+  readdirSync,
 } from "node:fs";
 import { createHash } from "node:crypto";
 import { dirname, join } from "node:path";
@@ -88,7 +90,9 @@ const optVal = (f) => {
 };
 const DRY = has("--dry-run");
 const opts = {
-  compile: !has("--no-compile"),
+  // 默认不编译：你编辑器保存时已经编译好了，发布只负责拿现成 PDF 上线
+  compile: has("--compile"),
+  clean: !has("--no-clean"),
   cvCommit: !has("--no-cv-commit"),
   push: !has("--no-push"),
   bust: !has("--no-bust"),
@@ -180,11 +184,35 @@ if (opts.push) {
 }
 
 // ---------------- 1. 编译 ----------------
-step(1, "编译 LaTeX（xelatex）");
+step(1, opts.compile ? "编译 LaTeX（--compile）" : "检查 PDF（默认不编译，直接用现成 PDF）");
+// .tex 比 .pdf 新 = 改了没编译（或编译失败）
+const texNewer = (j) =>
+  existsSync(join(CV, j.pdf)) &&
+  statSync(join(CV, j.tex)).mtimeMs > statSync(join(CV, j.pdf)).mtimeMs + 1000;
+const stale = JOBS.filter(texNewer);
+if (!opts.compile && !DRY && stale.length) {
+  warn(
+    `${stale.length} 份 .tex 比它的 PDF 新（这些改动的 PDF 还是旧的）：${stale.map((j) => j.label).join("、")}`,
+  );
+  const a = opts.yes
+    ? "p"
+    : await ask(
+        "  [c] 先编译这几份再发 / [p] 就用现有 PDF 发布 / 其他文字=取消 ： ",
+      );
+  if (a === null)
+    die(
+      "非交互环境不能代你决定：加 --compile 让脚本编译，或 --yes 直接用现有 PDF",
+    );
+  if (a !== "p" && a !== "c") {
+    console.log("\n  已取消：未提交、未推送，本地也没动。");
+    process.exit(0);
+  }
+  if (a === "c") opts.compile = true;
+}
 if (!opts.compile) {
-  warn("--no-compile：跳过编译，直接用手上现有的 PDF");
+  ok(stale.length ? "按你的选择：直接发布现有 PDF" : "每份 PDF 都不比 .tex 旧 → 无需编译");
 } else if (DRY) {
-  warn("dry-run：跳过编译");
+  warn("dry-run：不编译");
 } else {
   const runLatexmk = (j, force) =>
     spawnSync(
@@ -199,6 +227,11 @@ if (!opts.compile) {
       { cwd: CV, encoding: "utf8", maxBuffer: 1 << 24 },
     );
   for (const j of JOBS) {
+    // 只编译真正变了的：没动的 .tex 一律不碰，不白跑一遍也不生一堆中间文件
+    if (existsSync(join(CV, j.pdf)) && !texNewer(j)) {
+      ok(`${j.label} .tex 没有更新 → 跳过编译`);
+      continue;
+    }
     const logPath = join(CV, j.pdf.replace(/\.pdf$/, ".log"));
     const r = runLatexmk(j, false);
     if (r.status !== 0) {
@@ -224,20 +257,26 @@ if (!opts.compile) {
         `${j.label} pdf 比 tex 旧、且强制重编译没生效（${r2.status === 0 ? "latexmk 报 up-to-date" : "latexmk 失败"}）——去 CV 目录手动跑一次看 .log`,
       );
     }
-    // 页数提醒：简历一般要求一页
-    const raw = readFileSync(join(CV, j.pdf), "latin1");
-    const pages = [...raw.matchAll(/\/Count\s+(\d+)/g)].pop();
-    if (pages && Number(pages[1]) > 1)
-      warn(`${j.label} 编译成功，但现在是 ${pages[1]} 页（原本要求一页）`);
-    else ok(`${j.label} → ${j.pdf}`);
+    ok(`${j.label} 已编译 → ${j.pdf}`);
   }
 }
 for (const j of JOBS) {
   need(
     existsSync(join(CV, j.pdf)),
-    `缺成品 ${join(CV, j.pdf)}（先编译，或去掉 --no-compile）`,
+    `缺成品 ${join(CV, j.pdf)}（编辑器里保存编译一次，或跑本脚本时加 --compile）`,
   );
-  ok(`${j.label} md5=${md5(join(CV, j.pdf)).slice(0, 8)}`);
+  const raw = readFileSync(join(CV, j.pdf), "latin1");
+  const cnt = [...raw.matchAll(/\/Count\s+(\d+)/g)].pop();
+  // 压缩对象流里没 /Count → 问 Spotlight，再不行才留空
+  let pages = cnt ? Number(cnt[1]) : 0;
+  if (!pages) {
+    const m = spawnSync("mdls", ["-name", "kMDItemNumberOfPages", "-raw", join(CV, j.pdf)], { encoding: "utf8" });
+    const n = Number((m.stdout || "").trim());
+    if (Number.isFinite(n) && n > 0) pages = n;
+  }
+  ok(
+    `${j.label} md5=${md5(join(CV, j.pdf)).slice(0, 8)}${pages ? ` · ${pages} 页${pages > 1 ? "\x1b[33m（简历一般要求一页）\x1b[0m" : ""}` : ""}`,
+  );
 }
 
 // ---------------- 2. CV 仓库提交 ----------------
@@ -501,6 +540,19 @@ const sitePaths = [
   }
   ok("仓库内容已核对：上传的字节 = 编译结果，该下架的已下架");
 
+  {
+    // 上次“提交了但没推出去”会让网页永远停在旧版（本次静默补推）
+    const ahead = git(
+      ["rev-list", "--count", `${REMOTE.name}/${REMOTE.branch}..HEAD`],
+      SITE,
+      true,
+    ).trim();
+    if (!DRY && ahead && ahead !== "0")
+      warn(
+        `本地比远端多 ${ahead} 个未推的提交（上次点了发布没推完，这就是网页没更新的原因）——本次补推`,
+      );
+  }
+
   if (!opts.push || DRY) {
     warn("--no-push / dry-run：未推送，线上还是旧版");
     opts.verify = false;
@@ -583,8 +635,37 @@ if (!opts.verify || DRY) {
   }
 }
 
+// ---------------- 收尾：把编译中间文件扫走（都不是 git 跟踪文件，可再生） ----------------
+if (!DRY && opts.clean) {
+  const EXT = [
+    ".aux", ".log", ".out", ".fls", ".fdb_latexmk", ".xdv", ".toc",
+    ".bbl", ".blg", ".lof", ".lol", ".nav", ".snm", ".vrb", ".synctex.gz",
+  ].sort((a, b) => b.length - a.length);
+  const bases = new Set(
+    readdirSync(CV)
+      .filter((f) => f.endsWith(".tex"))
+      .map((f) => f.replace(/\.tex$/, "")),
+  );
+  const junk = [];
+  for (const f of readdirSync(CV)) {
+    if (f.endsWith(".tex") || f.endsWith(".pdf")) continue;
+    const ext = EXT.find((e) => f.endsWith(e));
+    if (ext && bases.has(f.slice(0, -ext.length))) junk.push(f);
+  }
+  for (const f of junk) {
+    try {
+      rmSync(join(CV, f));
+    } catch {}
+  }
+  if (junk.length)
+    ok(
+      `扫走 ${junk.length} 个编译中间文件（${junk.slice(0, 3).join(", ")}${junk.length > 3 ? " …" : ""}）；.tex 与 .pdf 未动`,
+    );
+  else ok("CV 目录没有中间文件需要清理");
+}
+
 console.log(
-  "\n\x1b[32m完成。\x1b[0m 下次改完 .tex，直接双击桌面「发布简历.command」或再跑一次本脚本即可。\n",
+  "\n\x1b[32m完成。\x1b[0m 流程就是：改 .tex → 编辑器保存自动出 PDF → 双击桌面「发布简历.command」（不跑 latex，直接上线）。\n",
 );
 function sleep(ms) {
   return new Promise((res) => setTimeout(res, ms));
