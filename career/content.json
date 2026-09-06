@@ -137,19 +137,19 @@
  },
  "p1_q": {
   "en": "When local governments attract firms into development zones with tax preferences rather than genuine market agglomeration,\n          do <em>households</em> end up paying for the expansion of industry? This paper says yes.",
-  "zh": "当地方政府用税收优惠、而非真实的市场集聚把企业“请”进开发区时，为产业扩张买单的，会不会是居民家庭？本文的答案是：会。"
+  "zh": "当地方政府用税收优惠、而非真实的市场集聚把企业“请”进开发区时，为产业扩张买单的，会不会是家庭部门？本文的答案是：会。"
  },
  "p1_meta": {
   "en": "<span class=\"lab\">Data：</span> 2000–2017 county panel · 2,598 provincial+ zones · 4,455 county-year observations<div><span class=\"lab\">Design：</span> Staggered DID → CSDID · PSM · event study · Oster δ</div>",
   "zh": "<span class=\"lab\">数据：</span> 2000–2017 年县域面板 · 2,598 个省级及以上开发区 · 4,455 县-年观测值<div><span class=\"lab\">方法：</span> 交错 DID → CSDID · PSM · 事件研究 · Oster δ</div>"
  },
  "p1_cap1": {
-  "en": "Dynamic effects of zone establishment: no pre-treatment advantage, then a negative effect that sets in from year 0 and <strong>deepens over time</strong>.",
-  "zh": "设立开发区的动态效应：政策前无先行走势；政策后负效应自第 0 年起出现并逐年加深。"
+  "en": "Dynamic effects of zone establishment: no pre-treatment advantage, then a negative effect that sets in the implication year and&nbsp;<strong>deepens over time</strong>.",
+  "zh": "设立开发区的动态效应：政策前无先行走势；政策实施当期负效应出现并逐年加深。"
  },
  "p1_cap2": {
-  "en": "Mediation in action: within treated counties, faster firm output growth goes together with <strong>slower household income growth</strong>.",
-  "zh": "中介在起作用：处理组县域内，企业产出增长越快，居民收入增长越慢。"
+  "en": "Mediation in action: within treated counties, faster firm output growth goes together with <strong>lower household income.</strong>",
+  "zh": "中介在起作用：处理组县域内，企业产出增长越快，居民收入越低。"
  },
  "p1_chant": {
   "en": "Attraction mode — <em>how</em> zones pull firms",
