@@ -40,8 +40,12 @@
   "zh": "✉ 20003003@mail.ecust.edu.cn"
  },
  "dl_en": {
-  "en": "⬇ Resume",
-  "zh": "⬇ 简历"
+  "en": "⬇ Resume (EN)",
+  "zh": "⬇ 简历（英文）"
+ },
+ "dl_cn": {
+  "en": "⬇ Resume (Chinese)",
+  "zh": "⬇ 中文简历"
  },
  "dl_cl": {
   "en": "Cover Letter",
