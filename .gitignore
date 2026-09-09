@@ -4,3 +4,8 @@ tools/.sync-research.state.json
 
 # Actions 构建产物（tools/pack-site.sh 输出）
 _site/
+
+# 学术CV 自动同步的运行痕迹 / 锁 / 暂停标记
+tools/.publish-cv.log
+tools/.publish-cv.lock/
+tools/.publish-cv.paused
